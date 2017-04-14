@@ -25,10 +25,10 @@
 export default {
   name: 'home-top',
   data () {
-  	return {
-  	}
+    return {
+    }
   },
-  components:{
+  components: {
   },
   beforeCreate () {
     fetch('static/json/shop_page.json')

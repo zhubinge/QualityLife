@@ -14,7 +14,7 @@ export default {
       msg: 'Search'
     }
   },
-  components:{
+  components: {
     BottomNav
   }
 }

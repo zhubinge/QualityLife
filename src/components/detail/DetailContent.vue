@@ -19,33 +19,33 @@
     </div>
 </template>
 <script>
-import { mapGetters, mapActions ,mapState } from 'vuex'
+import { mapGetters, mapActions, mapState } from 'vuex'
 export default {
   name: 'detail-content',
   computed: mapState({
     shopMessages: 'shopMessages'
   }),
-  methods:{
+  methods: {
     otherTouchFun: function () {
 
     },
-    add:function(detail){
+    add: function (detail) {
       detail.count++
     },
-    minus:function(detail){
+    minus: function (detail) {
       if (detail.count <= 1) {
-          detail.count = 0
-    　}else{
-        　　detail.count--            
-    　}
+        detail.count = 0
+      } else {
+        detail.count--
+      }
     }
-　},
+  },
   beforeCreate () {
     fetch('static/json/shop_page.json')
       .then(response => response.json())
       .then(data => {
         this.shopMessages = data.shop_list[this.$route.params.id]
-      });
+      })
   }
 }
 </script>

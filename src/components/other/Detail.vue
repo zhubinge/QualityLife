@@ -47,7 +47,7 @@
 import BottomNav from '../BottomNav'
 export default {
   name: 'mine-noLogin',
-  components:{
+  components: {
     BottomNav
   }
 }

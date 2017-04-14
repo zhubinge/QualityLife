@@ -10,14 +10,11 @@ import HomeTop from './home/HomeTop'
 import BottomNav from './BottomNav'
 export default {
   name: 'stroll',
-  components:{
+  components: {
     HomeTop,
     BottomNav
   }
- }
+}
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 </style>

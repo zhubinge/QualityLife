@@ -9,11 +9,11 @@
 import HomeTop from './home/HomeTop'
 import BottomNav from './BottomNav'
 export default {
-	name: 'account',
-    components:{
-        HomeTop,
-        BottomNav
-    }
+  name: 'account',
+  components: {
+    HomeTop,
+    BottomNav
+  }
 }
 </script>
 <style scoped>

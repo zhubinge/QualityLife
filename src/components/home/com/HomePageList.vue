@@ -44,12 +44,12 @@
 export default {
   name: 'home-page-list',
   data () {
-  	return {
-      recommend:{},
-      recommends:{},
-      carousels:{},
-      shopLists:{}
-  	}
+    return {
+      recommend: {},
+      recommends: {},
+      carousels: {},
+      shopLists: {}
+    }
   },
   beforeCreate () {
     fetch('static/json/shop_page.json')

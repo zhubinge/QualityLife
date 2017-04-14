@@ -29,7 +29,7 @@
 import BottomNav from '../BottomNav'
 export default {
   name: 'mine-register',
-  components:{
+  components: {
     BottomNav
   }
 }

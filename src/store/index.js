@@ -1,11 +1,11 @@
-// import Vue from 'vue'
-// import Vuex from 'vuex'
+import Vue from 'vue'
+import Vuex from 'vuex'
 // import * as actions from './actions'
 // import * as mutations from './mutations'
 // import * as getters from './getters'
 // import state from './state'
 
-// Vue.use(Vuex)
+Vue.use(Vuex)
 // const store = new Vuex.Store({
 //   state: {
 //     state,
@@ -14,4 +14,8 @@
 //     mutations
 //   }
 // })
-// export default store
+const store = new Vuex.Store({
+  strict: process.env.NODE_ENV !== 'production'
+})
+
+export default store

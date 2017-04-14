@@ -11,21 +11,21 @@
 export default {
   name: 'home-page-carousels',
   data () {
-  	return {
-      carousels:{},
-      ul:{},
-      key:{},
-      val:{},
-      imgSrc:'',
-      text:''
-  	}
+    return {
+      carousels: {},
+      ul: {},
+      key: {},
+      val: {},
+      imgSrc: '',
+      text: ''
+    }
   },
   beforeCreate () {
     fetch('static/json/shop_page.json')
       .then(response => response.json())
       .then(data => {
         this.carousels = data.home_carousels
-        console.log(this.carousels)
+        // console.log(this.carousels)
       })
   }
 }

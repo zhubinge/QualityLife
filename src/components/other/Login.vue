@@ -1,5 +1,5 @@
 <template>
-  <div id="mine-isLogin">
+  <div id="login">
 		<div id="login_header">
 			<a href="/"><</a>
 			<span>我的</span>
@@ -46,8 +46,8 @@
 <script>
 import BottomNav from '../BottomNav'
 export default {
-  name: 'mine-isLogin',
-  components:{
+  name: 'login',
+  components: {
     BottomNav
   }
 }
@@ -55,13 +55,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#mine-isLogin .login_orange{color: #ff9900;}
-#mine-isLogin .login_red{color:#ff5f3e;}
-#mine-isLogin .login_green{color:#6ac20b ;}
-#mine-isLogin .login_blue{color:#4aa5f0 ;}
+#login .login_orange{color: #ff9900;}
+#login .login_red{color:#ff5f3e;}
+#login .login_green{color:#6ac20b ;}
+#login .login_blue{color:#4aa5f0 ;}
 
 
-#mine-isLogin #login_header{
+#login #login_header{
 	height: 0.8rem;
 	line-height: 0.8rem;
 	display: flex;
@@ -69,61 +69,61 @@ export default {
 	background: #0097ff;
 	padding: 0 0.18rem;
 }
-#mine-isLogin #login_header span,#mine-isLogin #login_header a{
+#login #login_header span,#login #login_header a{
 	color: #fff;
 	font-size: 16px;
 	font-weight: bold;
 }
-#mine-isLogin #login_banner1{
+#login #login_banner1{
 	overflow: hidden;
 	padding: 0.16rem;
 	background: #0097ff;
 	color: #fff;
 }
-#mine-isLogin #login_banner1 img{
+#login #login_banner1 img{
 	margin-right: 0.24rem;
 }
-#mine-isLogin #login_banner1 div.l a{
+#login #login_banner1 div.l a{
 	height:0.3rem;
 	line-height: 0.3rem;
 	font-size: 20px;
 	margin-top:0.4rem;
 	color: white;
 }
-#mine-isLogin #login_banner1 div.l p{
+#login #login_banner1 div.l p{
 	height: 0.25rem;
 	line-height: 0.25rem;
 	margin-top:0.3rem; 
 }
-#mine-isLogin #login_banner2{
+#login #login_banner2{
 	display: flex;
 	border-bottom: 1px solid #ccc;
 
 }
-#mine-isLogin #login_banner2 div{
+#login #login_banner2 div{
 	flex: 1;
 	text-align: center;
 	height: 1.2rem;
 	padding-top: 0.2rem;
 	border-right: 1px solid #ccc;
 }
-#mine-isLogin #login_banner2 i{
+#login #login_banner2 i{
 	font-size: 30px;
 }
-#mine-isLogin #login_banner2 p{
+#login #login_banner2 p{
 	height: 0.3rem;
 }
-#mine-isLogin #login_bottom{
+#login #login_bottom{
 	background: #f4f4f4;
 	height: 100%;	
 }
-#mine-isLogin #login_bottom ul i{
+#login #login_bottom ul i{
 	margin-right: 0.15rem;
 }
-#mine-isLogin .login_hui{
+#login .login_hui{
 	height: 0.15rem;
 }
-#mine-isLogin #login_bottom li{
+#login #login_bottom li{
 	height: 0.8rem;
 	line-height: 0.8rem;
 	font-size:16px ;
@@ -131,7 +131,7 @@ export default {
 	border-bottom: 1px solid #ccc;
 	background: #fff;
 }
-#mine-isLogin #login_bottom i{
+#login #login_bottom i{
 	font-size: 18px;
 }
 </style>
