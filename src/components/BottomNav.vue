@@ -15,8 +15,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .bottom-nav{
-  width: 7.3rem;
-  padding: 0 0.1rem;
+  width: 7.5rem;
   height: 1rem;
   line-height: 1rem;
   background: #fff;
@@ -34,6 +33,7 @@ export default {
   text-align: center;
 }
 .active{
-  color: #0096ff;
+  color: #fff;
+  background: #ffda75;
 }
 </style>

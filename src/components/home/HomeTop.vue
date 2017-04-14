@@ -80,7 +80,7 @@ header.home-top{
 .home-top .two .twoul li{
   width: 1.1rem;
   height: 0.9rem;
-  line-height: 0.9rem;
+  line-height: 1rem;
   padding: 0 0.2rem;
 }
 .home-top .two .twoul li:nth-child(9),.home-top .two .twoul li:nth-child(10){

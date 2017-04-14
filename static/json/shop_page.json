@@ -1,25 +1,14 @@
 {	
-	"home_carousels":{
-		"carousels_page1":[
-			{"text":"欧式家居","imgSrc":"static/images/home/carousel_01.jpeg"},
-			{"text":"客厅沙发","imgSrc":"static/images/home/carousel_02.jpeg"},
-			{"text":"毛巾","imgSrc":"static/images/home/carousel_03.jpeg"},
-			{"text":"绿色沙发","imgSrc":"static/images/home/carousel_04.jpeg"},
-			{"text":"简约沙发","imgSrc":"static/images/home/carousel_05.jpeg"},
-			{"text":"温馨家居","imgSrc":"static/images/home/carousel_06.jpeg"},
-			{"text":"沙发","imgSrc":"static/images/home/carousel_07.jpeg"},
-			{"text":"美式客厅","imgSrc":"static/images/home/carousel_08.jpeg"}
-		],
-		"carousels_page2":[
-			{"text":"天丝四件套","imgSrc":"static/images/home/carousel_09.jpeg"},
-			{"text":"卧室","imgSrc":"static/images/home/carousel_10.jpeg"},
-			{"text":"甜蜜厨房","imgSrc":"static/images/home/carousel_11.jpeg"},
-			{"text":"大气房间","imgSrc":"static/images/home/carousel_12.jpeg"},
-			{"text":"小清新","imgSrc":"static/images/home/carousel_13.jpeg"},
-			{"text":"纯绿色","imgSrc":"static/images/home/carousel_14.jpeg"},
-			{"text":"星空主体","imgSrc":"static/images/home/carousel_15.jpeg"}
-		]
-	},
+	"home_carousels":[
+			{"imgSrc":"static/images/home/swiper1.jpg"},
+			{"imgSrc":"static/images/home/swiper2.jpg"},
+			{"imgSrc":"static/images/home/swiper3.jpg"},
+			{"imgSrc":"static/images/home/swiper4.jpg"},
+			{"imgSrc":"static/images/home/swiper5.jpg"},
+			{"imgSrc":"static/images/home/swiper6.jpg"},
+			{"imgSrc":"static/images/home/swiper7.jpg"},
+			{"imgSrc":"static/images/home/swiper8.jpeg"}	
+	],
 	"shop_class":{
 		
 	},
