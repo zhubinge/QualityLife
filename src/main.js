@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './App'
-// import store from './store'
 import router from './router'
 import 'mint-ui/lib/style.css'
 import jQuery from 'jQuery'
