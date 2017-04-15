@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import { Swipe, SwipeItem } from 'mint-ui'
+// import { Waterfall, WaterfallSlot } from 'vue-waterfall'
 import Home from '@/components/Home'
 import HomePage from '@/components/home/HomePage'
 import NewDetail from '@/components/home/NewDetail'
@@ -29,6 +30,8 @@ import Cart from '@/components/Cart'
 Vue.use(Router)
 Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)
+// Vue.component(Waterfall.name, Waterfall)
+// Vue.component(WaterfallSlot.name, WaterfallSlot)
 export default new Router({
   routes: [
     {

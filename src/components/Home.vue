@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="home">
 	<home-top></home-top>
     <router-view class="child-view"></router-view>
 	<bottom-nav></bottom-nav>
@@ -17,5 +17,9 @@ export default {
 }
 </script>
 <style scoped>
-
+.home{
+	width: 7.5rem;
+	height: 100%;
+	background: #fff;
+}
 </style>

@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <mt-swipe :auto="3000" :speed="1500" :show-indicators="false" id="home_carousel">
-      <mt-swipe-item class="l page" v-for=" val in carousels" key="mt1">
-          <img :src="val.imgSrc">
+  <div class="carousel_box">
+    <mt-swipe :auto="3000" :speed="1500" :show-indicators="true" id="home_carousel">
+      <mt-swipe-item class="l page" v-for=" carousel in carousels" key="mt1">
+          <img :src="carousel.imgSrc">
       </mt-swipe-item>
     </mt-swipe>
   </div>
@@ -13,11 +13,7 @@ export default {
   data () {
     return {
       carousels: {},
-      ul: {},
-      key: {},
-      val: {},
-      imgSrc: '',
-      text: ''
+      carousel: {}
     }
   },
   beforeCreate () {
@@ -31,11 +27,18 @@ export default {
 }
 </script>
 <style scoped>
+.carousel_box{
+  width: 7.5rem;
+  height: 5rem;
+  z-index: -1;
+  position: relative;
+}
 #home_carousel{
   width: 7.5rem;
   height: 5rem;
   position: relative;
 }
+
 #home_carousel div.page{
   width: 7.5rem;
   height: 5rem;

@@ -1,0 +1,27 @@
+{	
+	"shop_list": [
+		{
+			"shopDetailId":"010401",
+			"shopDetailName":"抽真空防潮收纳袋(大-2只装)",
+			"shopDetailImg":"static/images/detailAll/detail_010401.jpg",
+			"shoptype":{
+				"typeId":"type_01",
+				"typeName":"家务"
+			},
+			"shopClass":{
+				"classId":"class_04",
+				"classText":"遮光窗帘",
+				"classImg":"static/images/stroll/class04_01.jpg"
+			},
+			"shopDetailIsStroll":true,
+			"shopDetailStrollImg":"static/images/stroll/detail_010401.jpg",
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailFreeShipping":true,
+			"shopDetailCount":1190,
+			"shopDetailComment":14,
+			"shopDetailSize":["大号2只装","中号2只装","小号2只装","抽气泵"],
+			"shopDetailColor":["清新","花漾","叶影"]
+		}
+	]
+}
