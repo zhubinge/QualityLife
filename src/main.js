@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import App from './App'
-// import { Waterfall, WaterfallSlot } from 'vue-waterfall'
 import router from './router'
 import store from './store'
 import 'mint-ui/lib/style.css'
 import jQuery from 'jQuery'
+import VueResource from 'vue-resource'
+Vue.use(VueResource)
 window.$ = jQuery
 Vue.config.productionTip = false
 Vue.config.silent = true
@@ -17,8 +18,6 @@ new Vue({
   el: '#app',
   store,
   router,
-  // Waterfall,
-  // WaterfallSlot,
   template: '<App/>',
   components: { App }
 })

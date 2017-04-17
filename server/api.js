@@ -1,4 +1,3 @@
-// 可能是我的node版本问题，不用严格模式使用ES6语法会报错
 const models = require('./db');
 const express = require('express');
 const router = express.Router();
@@ -7,7 +6,7 @@ const router = express.Router();
 
 // 创建账号接口
 router.post('/api/login/createAccount',(req,res) => {
-    // 这里的req.body能够使用就在index.js中引入了const bodyParser = require('body-parser')
+// 这里的req.body能够使用就在index.js中引入了const bodyParser = require('body-parser')
     let newAccount = new models.Login({
         account : req.body.account,
         password : req.body.password

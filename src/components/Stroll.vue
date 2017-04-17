@@ -22,9 +22,7 @@
         move-class="item-move"
       >
       <div v-for="detail in details">
-        <a class="item" :index="item.index" :style="'border-color:' + item.ranborder"
-          
-        >
+        <a class="item" :index="item.index" :style="'border-color:' + item.ranborder">
           <b>
             <a href="/" :style="'background:' + item.ranborder">新价格</a>
             <a href="/" :style="'background:' + item.ranborder">hot热卖</a>
@@ -85,7 +83,6 @@ export default {
       })
   }
 }
-
 var ItemFactory = (function () {
   var lastIndex = 0
   function generateRandomItems (count) {
