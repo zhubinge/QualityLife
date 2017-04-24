@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost/life');
 // 为这次连接绑定事件
 const db = mongoose.connection;
 db.once('error',() => console.log('Mongo connection error'));
-db.once('open',() => console.log('Mongo connection successed'));
+db.once('open',() => {console.log('Mongo connection successed')});
 /************** 定义模式loginSchema **************/
 const loginSchema = mongoose.Schema({
     account : String,

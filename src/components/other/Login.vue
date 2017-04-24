@@ -5,30 +5,33 @@
 			<span class="one">登录</span>
 		</div>
 		<div class="two">
-			<input type="text" placeholder="请输入手机号"
-				onfocus="this.placeholder=''" 
-				onblur="this.placeholder='请输入手机号'"
-				class="ipt" v-if="tel" ref="tel" id="tel"
-				
-				><b></b>
-			<input type="text" placeholder="用户名"
-				onfocus="this.placeholder=''" 
-				onblur="this.placeholder='用户名'"
-				class="ipt" v-if="user" ref="user" id="user"
-				 v-model="account"
-				>
+			<div class="ipt-box">
+				<input type="text" placeholder="请输入手机号"
+					onfocus="this.placeholder=''" 
+					onblur="this.placeholder='请输入手机号'"
+					class="ipt" v-if="tel" ref="tel"
+					>
+				<input type="text" placeholder="用户名"
+					onfocus="this.placeholder=''" 
+					onblur="this.placeholder='用户名'"
+					class="ipt" v-if="user" ref="user"
+					>
+				<b v-if="rule === true" class="ok">√</b>
+				<b v-if="rule === false" class="no">×</b>
+				<b v-if="rule === 0" class="atwill">○</b>
+			</div>
 			<input type="password" placeholder="请输入密码"
 				onfocus="this.placeholder=''"
 				onblur="this.placeholder='请输入密码'"
-				class="ipt" ref="password" v-model="password"
+				class="ipt" ref="password"
 				>
-			<button @touchend="loginFun">登录</button>
-			<button @touchend="regFun">注册</button>
+			<button @touchend="ruleFun">登录</button>
+			<button @touchend="ruleFun">注册</button>
 			<span v-if="tel" @touchend="userFun">切换到用户名登录 ⇆</span>
 			<span v-if="user" @touchend="telFun">切换到手机号登录 ⇆</span>
 			<p class="rule ok" v-if="rule === true">* 密码8-16位,必须以字母开头,<br/>&nbsp;&nbsp;包含数字、字母、下划线</p>
-			<p class="rule no" v-if="rule === false">* 密码8-16位,必须以字母开头,<br/>&nbsp;&nbsp;包含数字、字母、下划线</p>
-			<p class="rule atwill" v-if="rule === 0">* 密码8-16位,必须以字母开头,<br/>&nbsp;&nbsp;包含数字、字母、下划线</p>
+			<p class="rule no" v-if="rule === false">* 密码8-16位,必须以字母开头,<br/>&nbsp;&nbsp;可以包含数字、字母、下划线</p>
+			<p class="rule atwill" v-if="rule === 0">* 密码8-16位,必须以字母开头,<br/>&nbsp;&nbsp;可以包含数字、字母、下划线</p>
 		</div>
   </div>
 </template>
@@ -41,8 +44,6 @@ export default {
 			tel: false,
 			user: true,
 			userRule: /^[A-Za-z]{1}\w{8,16}/,
-		    account : '',
-		    password : '',
 		    rule: 0
 	  	}
 	},
@@ -61,21 +62,30 @@ export default {
 	  		this.tel = false
 	  		this.user = true
 	  	},
-	  	regFun () {
+	  	setCookie(){
+		  	document.cookie = 'user=' + this.$refs.user.value
+		  	// console.log(document.cookie)
+	  	},
+	  	ruleFun () {
+	  		let params = { 
+            	account : this.$refs.user.value, //this.account,
+            	password : this.$refs.password.value //this.password
+            };
 	  		if (this.$refs.password.value !== '' && this.$refs.password.value !== undefined ) {
 		  		if (this.user === true && this.$refs.user.value !== '' && this.$refs.user.value !== undefined ) {
 		  			let userRule = this.userRule
 		  			if(userRule.test(this.$refs.user.value)){
 		  				this.rule = true
-		  			}else{
+		  				alert('注册成功,请登录！')
+		  				this.setCookie()
+		  				this.login(params);
+					}else{
 		  				this.rule = false
+						alert('false')
 		  			}
-					console.log( 'user----' + this.$refs.user.value)
-					console.log( 'password----' + this.$refs.password.value)
-		  			this.$refs.user.value = ''
-					this.$refs.password.value = ''
+	  				this.$refs.user.value = ''
+			  		this.$refs.password.value = ''
 		  		}else if (this.tel === true && this.$refs.tel.value !== '' && this.$refs.tel.value !== undefined ) {
-
 		  			console.log('tel----' + this.$refs.tel.value)
 		  			console.log('password----' + this.$refs.password.value)
 		  			this.$refs.tel.value = ''
@@ -84,13 +94,17 @@ export default {
 		  			alert('请输入正确的用户名/手机号！！')
 		  		}
 	  		}else{
-				this.$refs.password.value = ''
+				this.$refs.user.value = ''
 				alert('密码不能为空！')
 	  		}
 	  	},
-    	login () {
+    	register () {
 	        // 获取已有账号密码
-	        this.$http.get('/api/login/getAccount')
+            let params = { 
+              account : this.account,
+              password : this.password
+            };
+	        this.$http.get('/api/login/getAccount',params)
 	          .then((response) => {
 	            // 响应成功回调
 	            console.log(response.data)
@@ -100,22 +114,66 @@ export default {
 		            	console.log( key + "-------" + res[i][key])
 		            }	            	
 	            }
-	            let params = { 
-	              account : this.account,
-	              password : this.password
-	            };
+
 	            // 创建一个账号密码
-	            return this.$http.post('/api/login/createAccount',params);
+	            // return this.$http.post('/api/login/createAccount',params);
 	          })
-	          .then((response) => {
-	            console.log(response)
-	          })
+	          // .then((response) => {
+	          //   console.log(response)
+	          // })
 	          .catch((reject) => {
 	            console.log(reject)
 	          })
-		}
-    }
+		},
+		login (params) {
+	        // 获取已有账号密码
+	        this.$http.get('/api/login/getAccount',params)
+	        	.then((res) => {
+	            // 响应成功回调,进行格式化取值,判断是否有相同用户名
+            	var obj = this.pretty(res,params.account,params.password,'login')
+            	console.log(obj)
+	        })
+	    },
+	    pretty (res,user,passwd,type) {
+            let bodytext, respon;
+            let username = [] , pwd = [];
+        	for(let key in res){
+        		if (key === 'bodyText') {
+        			bodytext = Object.assign(JSON.parse(res[key]))
+		        }
+            }
+            let exist;
+        	for(let val in bodytext){
+        		if (bodytext[val].account === user) {
+        			//有此用户
+		           if(type === "register"){
+		           	 //如果是注册就返回
+		           		return 
+		            }
+        		}else{
+        			//没有此用户
+        			exist = false
+        		}
+        	}
+    		if (exist === true) {
+    			if (bodytext[val].password === passwd) {
+    				return true
+    			}else{
+    				//密码不匹配
+    				return 'no'
+    			}
+    		}else{
+    			return false
+    		}
+	    }
+	}
 }
+
+	          // // .then((response) => {
+	          // //   console.log(response)
+	          // // })
+	          // .catch((reject) => {
+	          //   console.log(reject)
 </script>
 <style scoped>
 #login{
@@ -140,10 +198,26 @@ export default {
 #login .two{
 	width: 6.4rem;
 	position: absolute;
-	bottom: 3rem;
+	bottom: 2rem;
 	left: 50%;
 	margin-left: -3.2rem;
 	overflow: hidden;
+}
+#login .two .ipt-box{
+	position: relative;
+}
+#login .two .ipt-box b{
+	margin: 0;
+	display: block;
+	width: 0.6rem;
+	height: 0.6rem;
+	line-height: 0.4rem;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	margin-top: -0.3rem;
+	text-align: center;
+	font-size: 50px;
 }
 #login .two input,#login .two button,#login .two a{
 	display: block;
@@ -184,14 +258,17 @@ export default {
 #login .two p.rule{
 	font-weight: bold;
 }
-#login .two p.ok{
+#login .two .ok{
 	color: green;
 }
-#login .two p.no{
+#login .two .no{
 	color: red;
 }
 #login .two p.atwill{
 	color: blue;
+}
+#login .two p.atwill{
+	color: #ccc;
 }
 
 </style>

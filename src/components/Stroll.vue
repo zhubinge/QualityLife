@@ -186,7 +186,7 @@ var ItemFactory = (function () {
   box-sizing: border-box;
   padding: 0.14rem;
   border: 0.04rem solid;
-  border-radius: 0.1rem;
+  border-radius: 0.2rem;
   overflow: hidden;
 }
 .item img{
