@@ -1,0 +1,138 @@
+{
+	"content":"home_carousels",
+	"this_data":[
+			{"imgSrc":"swiper1.jpg"},
+			{"imgSrc":"swiper2.jpg"},
+			{"imgSrc":"swiper3.jpg"},
+			{"imgSrc":"swiper4.jpg"},
+			{"imgSrc":"swiper5.jpg"},
+			{"imgSrc":"swiper6.jpg"},
+			{"imgSrc":"swiper7.jpg"},
+			{"imgSrc":"swiper8.jpg"}
+	]
+},
+{
+	"class_id":01,
+	"class_name":"家居饰品",
+	"class_info":[
+		{"text":"装饰摆件","imgSrc":"101.jpg"},
+		{"text":"装饰画","imgSrc":"102.jpg"},
+		{"text":"花瓶/花器","imgSrc":"103.jpg"},
+		{"text":"挂饰/壁饰","imgSrc":"104.jpg"},
+		{"text":"相框/画框","imgSrc":"105.jpg"},
+		{"text":"相片墙/画片","imgSrc":"106.jpg"},
+		{"text":"雕刻工艺","imgSrc":"107.jpg"},
+		{"text":"装饰器皿","imgSrc":"108.jpg"},
+		{"text":"工艺扇","imgSrc":"109.jpg"}
+	]
+},
+{
+	"class_id":02,
+	"class_name":"厨房餐饮",
+	"class_info":[
+		{"text":"饮具","imgSrc":"201.jpg"},
+		{"text":"中西餐具","imgSrc":"202.jpg"},
+		{"text":"中西烹饪","imgSrc":"203.jpg"},
+		{"text":"厨房小物","imgSrc":"204.jpg"},
+		{"text":"厨房家务配件","imgSrc":"205.jpg"},
+		{"text":"餐桌小物","imgSrc":"206.jpg"},
+		{"text":"西点烘焙","imgSrc":"207.jpg"},
+		{"text":"DIY工具","imgSrc":"208.jpg"},
+		{"text":"保鲜容器","imgSrc":"209.jpg"},
+		{"text":"蛋糕模具","imgSrc":"210.jpg"}
+	]
+},
+{
+	"class_id":03,
+	"class_name":"家居布艺",
+	"class_info":[
+		{"text":"靠枕靠垫","imgSrc":"301.jpg"},
+		{"text":"定制窗帘","imgSrc":"302.jpg"},
+		{"text":"坐垫","imgSrc":"303.jpg"},
+		{"text":"桌布/桌旗","imgSrc":"304.jpg"},
+		{"text":"地毯","imgSrc":"305.jpg"},
+		{"text":"十字绣DIY套件","imgSrc":"306.jpg"},
+		{"text":"地垫","imgSrc":"307.jpg"},
+		{"text":"门帘","imgSrc":"308.jpg"},
+		{"text":"窗帘","imgSrc":"309.jpg"},
+		{"text":"挂毯/壁毯","imgSrc":"310.jpg"}
+	]
+},
+{
+	"class_id":04,
+	"class_name":"节日/礼品",
+	"class_info":[
+		{"text":"婚礼用品","imgSrc":"401.jpg"},
+		{"text":"圣诞用品","imgSrc":"402.jpg"},
+		{"text":"主题装扮","imgSrc":"403.jpg"},
+		{"text":"气球","imgSrc":"404.jpg"},
+		{"text":"道具","imgSrc":"405.jpg"},
+		{"text":"装饰灯","imgSrc":"406.jpg"},
+		{"text":"年货春节","imgSrc":"407.jpg"},
+		{"text":"创意礼品","imgSrc":"408.jpg"}
+	]
+},
+{
+	"class_id":05,
+	"class_name":"床品",
+	"class_info":[
+		{"text":"夏被盖毯","imgSrc":"501.jpg"},
+		{"text":"凉席","imgSrc":"502.jpg"},
+		{"text":"四季被","imgSrc":"503.jpg"},
+		{"text":"北欧简约床品","imgSrc":"504.jpg"},
+		{"text":"轻奢床品","imgSrc":"505.jpg"},
+		{"text":"婚庆床品","imgSrc":"506.jpg"},
+		{"text":"美式田园床品","imgSrc":"507.jpg"},
+		{"text":"席梦思保护套","imgSrc":"508.jpg"},
+		{"text":"床垫","imgSrc":"509.jpg"},
+		{"text":"安睡枕","imgSrc":"510.jpg"},
+		{"text":"冬被","imgSrc":"511.jpg"}
+	]
+},
+{
+	"class_id":06,
+	"class_name":"花卉仿真/绿植园艺",
+	"class_info":[
+		{"text":"多肉植物","imgSrc":"601.jpg"},
+		{"text":"花卉","imgSrc":"602.jpg"},
+		{"text":"绿植","imgSrc":"603.jpg"},
+		{"text":"盆栽","imgSrc":"604.jpg"},
+		{"text":"花架","imgSrc":"605.jpg"},
+		{"text":"园艺用具","imgSrc":"606.jpg"},
+		{"text":"园艺用品","imgSrc":"607.jpg"},
+		{"text":"花瓶/花器/花盆","imgSrc":"608.jpg"},
+		{"text":"大型绿植","imgSrc":"609.jpg"}
+	]
+},
+{
+	"class_id":07,
+	"class_name":"收纳整理",
+	"class_info":[
+		{"text":"收纳盒","imgSrc":"701.jpg"},
+		{"text":"储物箱","imgSrc":"702.jpg"},
+		{"text":"收纳篮","imgSrc":"703.jpg"},
+		{"text":"衣帽架","imgSrc":"704.jpg"},
+		{"text":"挂钩/粘钩","imgSrc":"705.jpg"},
+		{"text":"衣架","imgSrc":"706.jpg"},
+		{"text":"整理架/置物架","imgSrc":"707.jpg"},
+		{"text":"晒衣架","imgSrc":"708.jpg"},
+		{"text":"餐桌罩","imgSrc":"709.jpg"}
+	]
+}
+
+{	
+	"content":"shop_list",
+	"this_data":[
+		{
+			"shopDetailId":10101,
+			"shopDetailName":"简约现代家居装饰品微景观摆件 客厅办公室桌面创意玻璃罩摆设",
+			"shopDetailImg":"shop_05.jpeg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailCount":1190,
+			"shopDetailComment":14
+		}						
+	]
+}
