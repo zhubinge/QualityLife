@@ -15,10 +15,20 @@ const loginSchema = mongoose.Schema({
     account : String,
     password : String
 });
+const homeSchema = mongoose.Schema({
+    content : String
+});
+const classeSchema = mongoose.Schema({
+	class_id : String,
+    class_name : String,
+    class_info : String
+});
 
 /************** 定义模型Model **************/
 const Models = {
-    Login : mongoose.model('Login',loginSchema)
+    Login : mongoose.model('Login',loginSchema),
+    Home : mongoose.model('Home',homeSchema),
+    Classe : mongoose.model('Home',classeSchema)
 };
 
 module.exports = Models;

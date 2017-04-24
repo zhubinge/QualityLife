@@ -16,7 +16,7 @@
 			"class_id":01,
 			"class_name":"家务",
 			"class_info":[
-				{"text":"家务工具","imgSrc":"static/images/home/class01_01.jpg"},
+				{"text":"家居装饰","imgSrc":"static/images/home/class01_01.jpg"},
 				{"text":"生活必备","imgSrc":"static/images/home/class01_02.jpg"},
 				{"text":"家庭清洁剂","imgSrc":"static/images/home/class01_03.jpg"},
 				{"text":"衣物收纳","imgSrc":"static/images/home/class01_04.jpg"},
