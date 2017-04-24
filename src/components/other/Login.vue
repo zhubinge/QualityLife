@@ -25,16 +25,8 @@
 				onblur="this.placeholder='请输入密码'"
 				class="ipt" ref="password"
 				>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 			<button @touchend="ruleFun">登录</button>
 			<button @touchend="ruleFun">注册</button>
-=======
->>>>>>> 489bb65a41e1b47aba6abda0f76dfcb88b843f32
-			<button @touchend="login">登录</button>
-			<button @touchend="regFun">注册</button>
->>>>>>> c71a40c0f48bd19a218861e22342a6d24009ba6b
 			<span v-if="tel" @touchend="userFun">切换到用户名登录 ⇆</span>
 			<span v-if="user" @touchend="telFun">切换到手机号登录 ⇆</span>
 			<p class="rule ok" v-if="rule === true">* 密码8-16位,必须以字母开头,<br/>&nbsp;&nbsp;包含数字、字母、下划线</p>
