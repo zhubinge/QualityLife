@@ -22,7 +22,7 @@
 				onblur="this.placeholder='请输入密码'"
 				class="ipt" ref="password" v-model="password"
 				>
-			<button @touchend="loginFun">登录</button>
+			<button @touchend="login">登录</button>
 			<button @touchend="regFun">注册</button>
 			<span v-if="tel" @touchend="userFun">切换到用户名登录 ⇆</span>
 			<span v-if="user" @touchend="telFun">切换到手机号登录 ⇆</span>
