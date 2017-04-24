@@ -2,7 +2,7 @@
 	<header class="home-top">
   <div class="one">
     <h2 class="l">Quality Life</h2>
-    <a href="/search">搜索</a>
+    <router-link to="/login">搜索</router-link>
   </div>
 <!--     <input type="text" class="two" placeholder="搜索商家、商品" onfocus="this.placeholder=''" onblur="this.placeholder='搜索商家、商品'"/> -->
     <div class="two">
