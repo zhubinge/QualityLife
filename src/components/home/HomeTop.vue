@@ -1,8 +1,8 @@
 <template>
-	<header class="home-top">
+  <header class="home-top">
   <div class="one">
     <h2 class="l">Quality Life</h2>
-    <router-link to="/login">搜索</router-link>
+    <a href="/search">搜索</a>
   </div>
 <!--     <input type="text" class="two" placeholder="搜索商家、商品" onfocus="this.placeholder=''" onblur="this.placeholder='搜索商家、商品'"/> -->
     <div class="two">
@@ -42,9 +42,6 @@ export default {
 </script>
 <style scoped>
 header.home-top{
-  position: fixed;
-  left: 0;
-  top: 0;
   width: 100%;
   color: #fff;
   text-align: center;
@@ -96,7 +93,6 @@ li{
   color: #ffda75;
   border-bottom: 0.1rem solid #ffda75;
 }
-
 /*.home-top input.two{
   width: 100%;
   height: 0.7rem;

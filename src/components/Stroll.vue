@@ -117,17 +117,17 @@ var ItemFactory = (function () {
     get: generateRandomItems
   }
 })()
-// document.body.addEventListener('click', function () {
-//   app.shuffle()
-//   // app.$refs.waterfall.$emit('reflow') // manually trigger reflow action
-// }, false)
+document.body.addEventListener('click', function () {
+  app.shuffle()
+  // app.$refs.waterfall.$emit('reflow') // manually trigger reflow action
+}, false)
 
-// window.addEventListener('scroll', function () {
-//   var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-//   if (scrollTop + window.innerHeight >= document.body.clientHeight) {
-//     this.addItems()
-//   }
-// })
+window.addEventListener('scroll', function () {
+  var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+  if (scrollTop + window.innerHeight >= document.body.clientHeight) {
+    this.addItems()
+  }
+})
 
 </script>
 <style scoped>

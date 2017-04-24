@@ -10,40 +10,357 @@
 			{"imgSrc":"static/images/home/swiper8.jpg"}	
 	],
 	"shop_class":{
-		
+			"1" : {"imgSrc":"static/images/home/shop_04.jpeg"},
+			"2"	: {"imgSrc":"static/images/home/shop_05.jpeg"},
+			"3"	: {"imgSrc":"static/images/home/shop_06.jpeg"}	
 	},
 	"shop_list":{
 		"050501":{
 			"shopDetailId":"050501",
-			"shopDetailName":"加厚欧式提花窗帘(2幅-罗曼)",
+			"shopDetailName":"欧式家居",
 			"shopDetailImg":"static/images/home/shop_05.jpeg",
 			"shoptype":{"typeId":"type05","typeName":"软装"},
 			"shopClass":{"classId":"class05","className":"遮光窗帘"},
 			"shopDetailIsNew":true,
 			"shopDetailIsHot":true,
-			"shopDetailCount":1190,
+			"shopDetailprize":1190,
 			"shopDetailComment":14
 		},
 		"050502":{
 			"shopDetailId":"050502",
-			"shopDetailName":"积分详情",
+			"shopDetailName":"皇家气派家居",
 			"shopDetailImg":"static/images/home/carousel_12.jpeg",
 			"shoptype":{"typeId":"type05","typeName":"软装"},
 			"shopClass":{"classId":"class05","className":"遮光窗帘"},
 			"shopDetailIsNew":true,
 			"shopDetailIsHot":true,
-			"shopDetailCount":1190,
+			"shopDetailprize":1690,
 			"shopDetailComment":14
 		},
 		"050503":{
 			"shopDetailId":"050503",
-			"shopDetailName":"欧式家居",
+			"shopDetailName":"韩式家居",
 			"shopDetailImg":"static/images/home/carousel_01.jpeg",
 			"shoptype":{"typeId":"type05","typeName":"软装"},
 			"shopClass":{"classId":"class05","className":"遮光窗帘"},
 			"shopDetailIsNew":true,
 			"shopDetailIsHot":true,
-			"shopDetailCount":1190,
+			"shopDetailprize":1384,
+			"shopDetailComment":14
+		},
+		"050504":{
+			"shopDetailId":"050504",
+			"shopDetailName":"大红大紫床单",
+			"shopDetailImg":"static/images/home/shop_02.jpeg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":119,
+			"shopDetailComment":14
+		},
+		"050505":{
+			"shopDetailId":"050505",
+			"shopDetailName":"淡雅毛巾",
+			"shopDetailImg":"static/images/home/shop_03.jpeg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":39,
+			"shopDetailComment":14
+		},
+		"050506":{
+			"shopDetailId":"050506",
+			"shopDetailName":"绿色椅子",
+			"shopDetailImg":"static/images/home/shop_14.jpeg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":149,
+			"shopDetailComment":14
+		}						
+	},
+	"shop_picture":{
+		"050501":{
+			"shopDetailId":"050501",
+			"shopDetailName":"棉麻夏被(生如夏花)",
+			"shopDetailImg":"static/images/home/shop_16.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":269,
+			"shopDetailComment":14
+		},
+		"050502":{
+			"shopDetailId":"050502",
+			"shopDetailName":"天丝夏被(温柔粉黛)",
+			"shopDetailImg":"static/images/home/shop_17.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":269,
+			"shopDetailComment":14
+		},
+		"050503":{
+			"shopDetailId":"050503",
+			"shopDetailName":"纯棉夏被(花园)",
+			"shopDetailImg":"static/images/home/shop_18.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":129,
+			"shopDetailComment":14
+		},
+		"050504":{
+			"shopDetailId":"050504",
+			"shopDetailName":"竹麻凉席(盛夏繁花)",
+			"shopDetailImg":"static/images/home/shop_19.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":339,
+			"shopDetailComment":14
+		},
+		"050505":{
+			"shopDetailId":"050505",
+			"shopDetailName":"冰藤席(浅草)",
+			"shopDetailImg":"static/images/home/shop_20.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":179,
+			"shopDetailComment":14
+		},
+		"050506":{
+			"shopDetailId":"050506",
+			"shopDetailName":"温柔凉席(温暖如你)",
+			"shopDetailImg":"static/images/home/shop_21.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":229,
+			"shopDetailComment":14
+		}						
+	},
+	"shop_circle":{
+		"050501":{
+			"shopDetailId":"050501",
+			"shopDetailName":"防潮收纳袋(两只装)",
+			"shopDetailImg":"static/images/home/shop_22.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":10,
+			"shopDetailComment":14,
+			"cost":15
+		},
+		"050502":{
+			"shopDetailId":"050502",
+			"shopDetailName":"免洗抹布(3袋装)",
+			"shopDetailImg":"static/images/home/shop_23.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":29,
+			"shopDetailComment":14,
+			"cost":45
+		},
+		"050503":{
+			"shopDetailId":"050503",
+			"shopDetailName":"多功能食品加工机",
+			"shopDetailImg":"static/images/home/shop_24.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":169,
+			"shopDetailComment":14,
+			"cost":179
+		},
+		"050504":{
+			"shopDetailId":"050504",
+			"shopDetailName":"不粘少油烟炒锅",
+			"shopDetailImg":"static/images/home/shop_25.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":139,
+			"shopDetailComment":14,
+			"cost":179
+		},
+		"050505":{
+			"shopDetailId":"050505",
+			"shopDetailName":"养生锅(20项功能)",
+			"shopDetailImg":"static/images/home/shop_26.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":249,
+			"shopDetailComment":14,
+			"cost":179
+		},
+		"050506":{
+			"shopDetailId":"050506",
+			"shopDetailName":"无漆玻纤筷(2双装)",
+			"shopDetailImg":"static/images/home/shop_27.jpeg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":19,
+			"shopDetailComment":14,
+			"cost":39
+		},
+		"050507":{
+			"shopDetailId":"050507",
+			"shopDetailName":"婴童植物洗衣皂",
+			"shopDetailImg":"static/images/home/shop_28.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":15,
+			"shopDetailComment":14,
+			"cost":19
+		},
+		"050508":{
+			"shopDetailId":"050508",
+			"shopDetailName":"防菌泡沫洗手液",
+			"shopDetailImg":"static/images/home/shop_29.jpeg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":9,
+			"shopDetailComment":14,
+			"cost":15
+		},
+		"050509":{
+			"shopDetailId":"050509",
+			"shopDetailName":"无死角平板拖把",
+			"shopDetailImg":"static/images/home/shop_30.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":69,
+			"shopDetailComment":14,
+			"cost":79
+		},
+		"050510":{
+			"shopDetailId":"050510",
+			"shopDetailName":"牛津布百纳箱",
+			"shopDetailImg":"static/images/home/shop_31.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":49,
+			"shopDetailComment":14,
+			"cost":59
+		},
+		"050511":{
+			"shopDetailId":"050511",
+			"shopDetailName":"白领可扩容旅行箱",
+			"shopDetailImg":"static/images/home/shop_32.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":269,
+			"shopDetailComment":14,
+			"cost":349
+		},
+		"050512":{
+			"shopDetailId":"050512",
+			"shopDetailName":"青花瓷碗",
+			"shopDetailImg":"static/images/home/shop_33.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":249,
+			"shopDetailComment":14,
+			"cost":349
+		}						
+	},
+	"shop_round":{
+		"050501":{
+			"shopDetailId":"050501",
+			"shopDetailName":"家居装饰",
+			"shopDetailImg":"static/images/home/shop_34.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":1190,
+			"shopDetailComment":14
+		},
+		"050502":{
+			"shopDetailId":"050502",
+			"shopDetailName":"生活电器",
+			"shopDetailImg":"static/images/home/shop_35.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":1690,
+			"shopDetailComment":14
+		},
+		"050503":{
+			"shopDetailId":"050503",
+			"shopDetailName":"韩式家居",
+			"shopDetailImg":"static/images/home/shop_36.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":1384,
+			"shopDetailComment":14
+		},
+		"050504":{
+			"shopDetailId":"050504",
+			"shopDetailName":"大红大紫床单",
+			"shopDetailImg":"static/images/home/shop_37.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":119,
+			"shopDetailComment":14
+		},
+		"050505":{
+			"shopDetailId":"050505",
+			"shopDetailName":"淡雅毛巾",
+			"shopDetailImg":"static/images/home/shop_38.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":39,
+			"shopDetailComment":14
+		},
+		"050506":{
+			"shopDetailId":"050506",
+			"shopDetailName":"绿色椅子",
+			"shopDetailImg":"static/images/home/shop_39.jpg",
+			"shoptype":{"typeId":"type05","typeName":"软装"},
+			"shopClass":{"classId":"class05","className":"遮光窗帘"},
+			"shopDetailIsNew":true,
+			"shopDetailIsHot":true,
+			"shopDetailprize":149,
 			"shopDetailComment":14
 		}						
 	}
