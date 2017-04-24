@@ -28,7 +28,7 @@ const classeSchema = mongoose.Schema({
 const Models = {
     Login : mongoose.model('Login',loginSchema),
     Home : mongoose.model('Home',homeSchema),
-    Classe : mongoose.model('Home',classeSchema)
+    Classe : mongoose.model('Classe',classeSchema)
 };
 
 module.exports = Models;
