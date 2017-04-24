@@ -63,7 +63,6 @@ export default {
 }
 .household_ul{
 	overflow: hidden;
-	margin-top: 100px;
 	width: 100%;
 	background: #fff;
 }
