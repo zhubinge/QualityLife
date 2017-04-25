@@ -1,6 +1,6 @@
 <template>
   <div class="account_page">
-    <!-- <h2>carousels</h2>
+    <h2>carousels</h2>
     <ul>
       <li v-for="carousel in carousels">
         _id:》》》{{carousel._id}}<br/>
@@ -18,8 +18,8 @@
           {{item.text}}
         </div>
       </li>
-    </ul> -->
-      商品ID：<input type="number" ref="com_id" /><br/>
+    </ul>
+<!--       商品ID：<input type="number" ref="com_id" /><br/>
       商品名字：<input type="text" ref="com_name" /><br/>
       商品img：<input type="flie" ref="com_img" /><br/>
       大类ID：<input type="number" ref="class_id" /><br/>
@@ -28,8 +28,8 @@
       推荐：<input type="text" ref="is_recommend" /><br/>
       原价：<input type="number" ref="original_price" /><br/>
       现价：<input type="number" ref="present_price" /><br/>
-      salesCount：<input type="number" ref="sales_count" /><br/>
-      <button @touchend="gogo">提交</button>
+      salesCount：<input type="number" ref="sales_count" /><br/> -->
+      <!-- <button @touchend="gogo">提交</button> -->
     <bottom-nav></bottom-nav>
   </div>
 </template>

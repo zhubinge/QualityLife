@@ -8,18 +8,18 @@
     </div>
     <div class="h_box" v-for="h_item in h_items">
         <div class="h_title">
-            <p>{{h_item.typeName}}</p>
+            <p>{{h_item.class_name}}</p>
 
         </div>
         <ul class="product">
-            <li class="l" v-for="product in h_items">
-                <img :src="product.typeName"/>
-            <p class="product_title">{{product.typeName}}</p>
-            <div v-for="pre in product">
+            <li class="l" v-for="product in h_item.class_info">
+                <img :src="'static/images/dateilAll/' + product.imgSrc"/>
+            <p class="product_title">{{product.text}}</p>
+<!--             <div v-for="pre in product">
                 <p>{{pre.classText}}</p>
                 <p>{{pre.imgsrc}}</p>
             </div>         
-            </li>
+ -->            </li>
         </ul>
     </div>
 
@@ -44,11 +44,21 @@ export default {
         }
       },
       beforeCreate () {
-        fetch('../static/json/detail_all.json')
-          .then(response => response.json())
-          .then(data => {
-            console.log(data.shoptype);
-            this.h_items = data.shoptype
+        // fetch('../static/json/detail_all.json')
+        //   .then(response => response.json())
+        //   .then(data => {
+        //     console.log(data.shoptype);
+        //     this.h_items = data.shoptype
+        //   })
+            //分类
+        this.$http.get('/api/class/getClass')
+          .then((response) => {
+            this.h_items = response.data;
+            console.log(this.h_items);
+
+          })
+          .catch((reject) => {
+            console.log(reject)
           })
     },
     components:{
@@ -113,7 +123,7 @@ export default {
 }
 .h_box{
     width:100%;
-    overflow: hidden;
+    overflow: auto;
 }
 .h_box .h_title{
     width: 100%;
@@ -128,7 +138,9 @@ export default {
 }
 .h_box .product{
     width: 100%;
-    
+}
+.h_box:nth-child(9){
+    margin-bottom: 2rem;
 }
 .h_box .product li{
     width: 33%;
@@ -136,6 +148,7 @@ export default {
     border-left: none;
     border-top: none;
 }
+
 .h_box .product li img{
     width: 60%!important;
     margin: auto;
