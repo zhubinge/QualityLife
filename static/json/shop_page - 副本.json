@@ -120,19 +120,14 @@
 	]
 }
 
-{	
-	"content":"shop_list",
-	"this_data":[
-		{
-			"shopDetailId":10101,
-			"shopDetailName":"简约现代家居装饰品微景观摆件 客厅办公室桌面创意玻璃罩摆设",
-			"shopDetailImg":"shop_05.jpeg",
-			"shoptype":{"typeId":"type05","typeName":"软装"},
-			"shopClass":{"classId":"class05","className":"遮光窗帘"},
-			"shopDetailIsNew":true,
-			"shopDetailIsHot":true,
-			"shopDetailCount":1190,
-			"shopDetailComment":14
-		}						
-	]
+{
+	"shopDetailId":10101,
+	"shopDetailName":"简约现代家居装饰品微景观摆件 客厅办公室桌面创意玻璃罩摆设",
+	"shopDetailImg":"shop_05.jpeg",
+	"shoptype":{"typeId":"type05","typeName":"软装"},
+	"shopClass":{"classId":"class05","className":"遮光窗帘"},
+	"shopDetailIsNew":true,
+	"shopDetailIsHot":true,
+	"shopDetailCount":1190,
+	"shopDetailComment":14
 }
