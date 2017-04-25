@@ -51,43 +51,9 @@ export default {
             this.h_items = data.shoptype
           })
     },
-    //  beforeCreate () {
-    //     fetch('static/json/shop_page.json')
-    //     .then(response => response.json())
-    //     .then(data => {
-    //     this.shopMessages = data.shop_list[this.$route.params.id]
-    // })
     components:{
         BottomNav
     },
-//     methods:{
-//     listTouchFun: function (e) {
-//         var li = document.getElementsByClassName('list')[0].children
-//         for (var i = 0; i < li.length; i++) {
-//             li[i].className = ''
-//         }
-//         e.target.className = 'active'
-//     },
-//     add:function(detail){
-//         detail.count++
-//         console.log(detail.count)
-//     },
-//     minus:function(detail){
-//         if (detail.count <= 1) {
-//             detail.count = 0
-//         }else{
-//             detail.count--            
-//         }
-//         console.log(detail.count)
-//     }
-// },
-//     beforeCreate () {
-//         fetch('static/json/shop_page.json')
-//         .then(response => response.json())
-//         .then(data => {
-//         this.shopMessages = data.shop_list[this.$route.params.id]
-//     });
-//   }
  }
 </script>
 <style scoped>
