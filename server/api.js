@@ -54,6 +54,36 @@ router.get('/api/class/getClass',(req,res) => {
         }
     });
 });
+router.post('/api/com/setcom',(req,res) => {
+    let newSetCom = new models.Login({
+        com_id : req.body.com_id,
+        com_name : req.body.com_name,
+        com_img : req.body.com_img,
+        class_id : req.body.class_id,
+        info_id : req.body.info_id,
+        is_new : req.body.is_new,
+        is_hot : req.body.is_hot,
+        original_price : req.body.original_price,
+        present_price : req.body.present_price,
+        sales_count : req.body.sales_count
+    });
+    newSetCom.save((err,data) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(data);
+        }
+    });
+});
+router.get('/api/com/getcom',(req,res) => {
+    models.Commoditie.find((err,data) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(data);
+        }
+    });
+});
 
 
 

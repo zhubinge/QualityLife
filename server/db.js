@@ -19,16 +19,33 @@ const homeSchema = mongoose.Schema({
     content : String
 });
 const classeSchema = mongoose.Schema({
-	class_id : String,
+    class_id : Number,
     class_name : String,
-    class_info : String
+    class_info : {
+        info_id : Number,
+        text : String,
+        imgSrc : String
+    }
+});
+const comSchema = mongoose.Schema({
+    com_id : Number,
+    com_name : String,
+    com_img : String,
+    class_id : Number,
+    info_id : Number,
+    is_new : Boolean,
+    is_recommend : Boolean,
+    original_price : Number,
+    present_price : Number,
+    sales_count : Number
 });
 
 /************** 定义模型Model **************/
 const Models = {
     Login : mongoose.model('Login',loginSchema),
     Home : mongoose.model('Home',homeSchema),
-    Classe : mongoose.model('Classe',classeSchema)
+    Classe : mongoose.model('Classe',classeSchema),
+    Commoditie : mongoose.model('Commoditie',comSchema)
 };
 
 module.exports = Models;
