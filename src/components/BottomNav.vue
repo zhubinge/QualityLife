@@ -31,6 +31,7 @@ export default {
   float: left;
   font-size: 12px;
   text-align: center;
+  overflow: hidden;
 }
 .active{
   color: #fff;

@@ -1,77 +1,51 @@
 <template>
-    <ul class="list l" id="detail-list">
-        <li v-for="(details,detailType) in shopMessages.shopDetailType" v-on:touchend="listTouchFun">
-            {{detailType}}
-        </li>
-    </ul>
+  <div>
+    <mt-swipe :auto="3000" :speed="1500" :show-indicators="false" id="detail_list">
+      <mt-swipe-item class="l page" v-for=" val in carousels" key="mt1">
+          <img :src="val.imgSrc">
+      </mt-swipe-item>
+    </mt-swipe>
+  </div>
 </template>
 <script>
 export default {
     name: 'detail-list',
     data () {
-        return {
-        	shopMessages: {},
-            detailType:{},
-            details:{},
-            detail:{},
-            count:0
-        }
-    },
-    methods:{
-    listTouchFun: function (e) {
-        var li = document.getElementsByClassName('list')[0].children
-        for (var i = 0; i < li.length; i++) {
-            li[i].className = ''
-        }
-        e.target.className = 'active'
-    },
-    add:function(detail){
-        detail.count++
-        console.log(detail.count)
-    },
-    minus:function(detail){
-        if (detail.count <= 1) {
-            detail.count = 0
-        }else{
-            detail.count--            
-        }
-        console.log(detail.count)
+    return {
+      carousels: {},
+      ul: {},
+      key: {},
+      val: {},
+      imgSrc: '',
+      text: ''
     }
-},
-    beforeCreate () {
-        fetch('static/json/shop_page.json')
-        .then(response => response.json())
-        .then(data => {
-        this.shopMessages = data.shop_list[this.$route.params.id]
-    });
+  },
+  beforeCreate () {
+    fetch('static/json/shop_page.json')
+      .then(response => response.json())
+      .then(data => {
+        this.carousels = data.home_carousels
+        // console.log(this.carousels)
+      })
   }
 }
 </script>
 <style scoped>
-#detail-list{
-    width:1.45rem;
-    height: 100%;
-    background: #f8f8f8;
-    overflow: hidden;
-    position: fixed;
-    top:  3.9rem;
-    left: 0;
+#detail_list{
+  width: 7.5rem;
+  height: 5rem;
+  position: relative;
 }
-#detail-list li{
-    width:1.45rem;
-    height: 1rem;
-    line-height: 1rem;
-    text-align: center;
-    font-size: 14px;
-    color: #a0a0a0;
-    box-sizing: border-box;
-    border-left: 0.06rem solid #eee;
-    border-bottom: 0.02rem solid #eee;
+#detail_list div.page{
+  width: 7.5rem;
+  height: 5rem;
+  background: #fff;
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
 }
-
-#detail-list li.active{
-    background: #fff;
-    color: #0096ff;
-    border-left: 0.06rem solid #0096ff;
+#detail_list div.page img{
+  width: 100%;
+  height: 5.1rem;
 }
 </style>
