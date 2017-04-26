@@ -93,20 +93,28 @@ export default new Router({
       path: '/detail',
       name: 'detail',
       component: Detail,
-      redirect: '/detailall',
+      redirect: '/detail/all',
       children: [
         {
-          path: '/detailall',
+          path: '/detail/all',
           name: 'detail-all',
           component: DetailAll
         },
         {
+<<<<<<< HEAD
           path: '/detailall/:classId',
+=======
+          path: '/detail/class/classid',
+>>>>>>> b24098966189a584761dceaed44ace7377568b99
           name: 'detail-class',
           component: DetailClass
         },
         {
+<<<<<<< HEAD
           path: '/detailall/:detailId',
+=======
+          path: '/detail/:detailId',
+>>>>>>> b24098966189a584761dceaed44ace7377568b99
           name: 'detail-content',
           component: DetailContent
         },
