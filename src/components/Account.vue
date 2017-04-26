@@ -1,6 +1,6 @@
 <template>
   <div class="account_page">
-    <h2>carousels</h2>
+<!--     <h2>carousels</h2>
     <ul>
       <li v-for="carousel in carousels">
         _id:》》》{{carousel._id}}<br/>
@@ -18,8 +18,8 @@
           {{item.text}}
         </div>
       </li>
-    </ul>
-<!--       商品ID：<input type="number" ref="com_id" /><br/>
+    </ul> -->
+      商品ID：<input type="number" ref="com_id" /><br/>
       商品名字：<input type="text" ref="com_name" /><br/>
       商品img：<input type="flie" ref="com_img" /><br/>
       大类ID：<input type="number" ref="class_id" /><br/>
@@ -28,8 +28,10 @@
       推荐：<input type="text" ref="is_recommend" /><br/>
       原价：<input type="number" ref="original_price" /><br/>
       现价：<input type="number" ref="present_price" /><br/>
-      salesCount：<input type="number" ref="sales_count" /><br/> -->
-      <!-- <button @touchend="gogo">提交</button> -->
+      销售数量：<input type="number" ref="sales_count" /><br/>
+      轮播：<input type="number" ref="carousel_count" /><br/>
+      详情：<input type="number" ref="detail_count" /><br/>
+      <button @touchend="gogo">提交</button>
     <bottom-nav></bottom-nav>
   </div>
 </template>
@@ -80,7 +82,9 @@ export default {
          is_recommend : this.$refs.is_recommend.value,
          original_price : this.$refs.original_price.value,
          present_price : this.$refs.present_price.value,
-         sales_count : this.$refs.sales_count.value
+         sales_count : this.$refs.sales_count.value,
+         carousel_count : this.$refs.carousel_count.value,
+         detail_count : this.$refs.detail_count.value
       }
       for(var key in searchData){
         if (searchData[key] === '') {
@@ -92,14 +96,17 @@ export default {
         .then((response) => {
           console.log(response.data)
         })
-        this.$http.get('/api/com/getcom')
-          .then((response) => {
-            this.comList = response.data
-            console.log(this.comList)
-          })
         .catch((reject) => {
           console.log(reject)
         })
+      // this.$http.get('/api/com/getcom')
+      //   .then((response) => {
+      //     this.comList = response.data
+      //     console.log(this.comList)
+      //   })
+      // .catch((reject) => {
+      //   console.log(reject)
+      // })
     }    
   }
 }

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import { Swipe, SwipeItem } from 'mint-ui'
 // import { Waterfall, WaterfallSlot } from 'vue-waterfall'
 import Home from '@/components/Home'
@@ -13,11 +14,11 @@ import Decorate from '@/components/home/decorate'
 import Bedding from '@/components/home/bedding'
 import Travel from '@/components/home/Travel'
 //
-import DetailAll from '@/components/DetailAll'
+import Detail from '@/components/Detail'
+import DetailAll from '@/components/detail/DetailAll'
 import DetailContent from '@/components/detail/DetailContent'
 import DetailEvaluate from '@/components/detail/DetailEvaluate'
 // import DetailMessage from '@/components/detail/DetailMessage'
-import Detail from '@/components/other/Detail'
 import Login from '@/components/other/Login'
 import Register from '@/components/other/Register'
 import Search from '@/components/other/Search'
@@ -88,12 +89,18 @@ export default new Router({
       ]
     },
     {
-      path: '/detailall',
-      name: 'detail-all',
-      component: DetailAll,
+      path: '/detail',
+      name: 'detail',
+      component: Detail,
+      redirect: '/detailall',
       children: [
         {
-          path: '/detailall/:detailId',
+          path: '/detailall',
+          name: 'detail-all',
+          component: DetailAll
+        },
+        {
+          path: '/detail/:detailId',
           name: 'detail-content',
           component: DetailContent
         },

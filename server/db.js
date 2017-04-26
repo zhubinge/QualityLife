@@ -37,7 +37,9 @@ const comSchema = mongoose.Schema({
     is_recommend : Boolean,
     original_price : Number,
     present_price : Number,
-    sales_count : Number
+    sales_count : Number,
+    carousel_count: Number,
+    detail_count: Number
 });
 
 /************** 定义模型Model **************/
