@@ -1,7 +1,7 @@
 <template>
   <ul class="bottom-nav">
     <router-link to="/index" tag="li" active-class="active">首页</router-link>
-    <router-link to="/detail" tag="li" active-class="active">全部商品</router-link>
+    <router-link to="/detailall" tag="li" active-class="active">全部商品</router-link>
     <router-link to="/stroll" tag="li" active-class="active">闲逛</router-link>
     <router-link to="/cart" tag="li" active-class="active">购物车</router-link>
     <router-link to="/account" tag="li" active-class="active">账户中心</router-link>

@@ -11,15 +11,11 @@
             <p>{{detailList.class_name}}</p>
 
         </div>
-        <ul class="product">
-            <li class="l" v-for="list in detailList.class_info">
+        <ul class="product" v-for="list in detailList.class_info">
+            <router-link tag="li" :to="'/detailall/' + list.info_id" class="l" >
                 <img :src="'static/images/dateilAll/' + list.imgSrc"/>
-            <p class="product_title">{{list.text}}</p>
-<!--             <div v-for="pre in product">
-                <p>{{pre.classText}}</p>
-                <p>{{pre.imgsrc}}</p>
-            </div>         
- -->        </li>
+                <p class="product_title">{{list.text}}</p>
+            </router-link>
         </ul>
     </div>
     <bottom-nav></bottom-nav>
@@ -36,9 +32,11 @@ export default {
         }
     },
     beforeCreate () {
+        var that = this;//=======================
         this.$http.get('/api/class/getClass')
           .then((response) => {
-            this.detailLists = response.data;
+            that.detailLists = response.data;
+            console.log(that.detailLists)
           })
           .catch((reject) => {
             console.log(reject)

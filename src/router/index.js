@@ -16,6 +16,7 @@ import Travel from '@/components/home/Travel'
 //
 import Detail from '@/components/Detail'
 import DetailAll from '@/components/detail/DetailAll'
+import DetailClass from '@/components/detail/DetailClass'
 import DetailContent from '@/components/detail/DetailContent'
 import DetailEvaluate from '@/components/detail/DetailEvaluate'
 // import DetailMessage from '@/components/detail/DetailMessage'
@@ -100,7 +101,12 @@ export default new Router({
           component: DetailAll
         },
         {
-          path: '/detail/:detailId',
+          path: '/detailall/:classId',
+          name: 'detail-class',
+          component: DetailClass
+        },
+        {
+          path: '/detailall/:detailId',
           name: 'detail-content',
           component: DetailContent
         },
