@@ -16,6 +16,11 @@ export default {
     }
   },
   beforeCreate () {
+    //首页轮播图
+    var homeSearch = {
+      content :'home_carousels'
+    };
+    this.$http.post('/api/home/getContent',homeSearch)
     var homeSearch = {
       content :'home_carousels'
     };
