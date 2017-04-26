@@ -22,7 +22,6 @@
  -->        </li>
         </ul>
     </div>
-    <router-view class="child-view"></router-view>
     <bottom-nav></bottom-nav>
 </div>
 </template>

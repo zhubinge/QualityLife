@@ -92,9 +92,10 @@ export default new Router({
       path: '/detail',
       name: 'detail',
       component: Detail,
+      redirect: '/detailall',
       children: [
         {
-          path: '/detail',
+          path: '/detailall',
           name: 'detail-all',
           component: DetailAll
         },
