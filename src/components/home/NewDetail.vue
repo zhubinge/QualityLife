@@ -1,7 +1,7 @@
 <template>
   <div class="new-detail">
     <h1>最近一周新品</h1>
-    <div v-for="list in lists">
+    <div v-for="list in lists" id="goods">
     	<img :src="list.shopDetailImg">
     	<p>防滑洗碗手套</p>
     	<div id="bot">

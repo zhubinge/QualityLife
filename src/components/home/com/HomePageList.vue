@@ -40,7 +40,36 @@
           <img :src="year.shopDetailImg">
           <span>{{year.shopDetailName}}</span>
         </li>
-      </ul> 
+      </ul>
+      <div class="empty"></div>
+      <div class="sale">
+        <h2>热卖中</h2>
+        <p>大家都在买的好东西</p>
+      </div>
+      <ul class="col">
+        <li v-for="col in cols">
+          <img :src="col.shopDetailImg">
+          <div class="pos">
+            <div class="poss">
+              <p>{{col.shopDetailName}}</p>
+              <p>￥{{col.shopDetailprize}}</p>              
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="slow">
+        <h2>慢慢逛</h2>        
+      </div>
+      <ul class="last">
+        <li v-for="last in lasts">
+          <img :src="last.shopDetailImg">
+          <p>{{last.shopDetailName}}</p>
+          <p>￥{{last.shopDetailprize}}</p>
+        </li>
+      </ul>
+      <div class="foot">
+        <p>O(∩_∩)O没有更多了</p>
+      </div>
       <div class="faker"></div>   
 	</div>
 </template>
@@ -60,7 +89,11 @@ export default {
       loop: {},
       loops: {},
       year: {},
-      years: {}
+      years: {},
+      col: {},
+      cols: {},
+      last: {},
+      lasts: {}
     }
   },
   beforeCreate () {
@@ -72,6 +105,8 @@ export default {
         this.pics = data.shop_picture
         this.loops = data.shop_circle
         this.years = data.shop_round
+        this.cols = data.shop_data
+        this.lasts = data.shop_last
       })
   }
 }
@@ -245,6 +280,107 @@ export default {
 }
 .shop-page-list .year .second{
   color:#ac2c2b;
+}
+
+.shop-page-list .empty{
+  background:#ccc;
+  height:.3rem;
+  width:100%;
+  margin-top:.5rem;
+  margin-bottom:.3rem;
+}
+
+
+.shop-page-list .sale{
+  height:1.5rem;
+  text-align: center;
+}
+.shop-page-list .sale h2{
+  color:#ac2c2b;
+}
+
+
+
+
+.shop-page-list .col{
+  text-align: center;
+  overflow:hidden;
+}
+.shop-page-list .col li{
+  float:left;
+  width:3.5rem;
+  height:4rem;
+}
+.shop-page-list .col li img{
+  width:3.5rem;
+  height:4rem;
+}
+.shop-page-list .col li p{
+  font-size:12px;
+}
+.shop-page-list .col .second{
+  color:#ac2c2b;
+}
+.shop-page-list .col li{
+  margin:0 0.1rem;
+}
+.shop-page-list .col .pos{
+  position:relative;
+}
+.shop-page-list .col .poss{
+  position:absolute;
+  bottom:3rem;
+  left:.1rem;
+  color:black;
+}
+.shop-page-list .col .poss P:nth-child(2){
+  font-size: 16px;
+}
+
+.shop-page-list .slow{
+  text-align: center;
+  height:1.5rem;
+  line-height: 1.5rem;
+  color:#ac2c2b;
+}
+
+
+
+
+
+.shop-page-list .last{
+  overflow: hidden;
+  text-align: center;
+}
+.shop-page-list .last li{
+  float:left;
+  width:3.5rem;
+  height:4rem;
+  margin-left:.15rem;
+}
+.shop-page-list .last li img{
+  width:3.5rem;
+  height:3rem;
+}
+.shop-page-list .last li p{
+  font-size:12px;
+}
+.shop-page-list .last li p:nth-child(3){
+  color:#ac2c2b;
+}
+.shop-page-list .last li:nth-child(2){
+  margin:0 0.1rem;
+}
+.shop-page-list .last li:nth-child(5){
+  margin:0 0.1rem;
+}
+
+
+.shop-page-list .foot{
+  text-align: center;
+  background:#eee;
+  height:1rem;
+  line-height: 1rem;
 }
 
 
