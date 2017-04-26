@@ -47,6 +47,7 @@ router.post('/api/home/getContent',(req,res) => {
 });
 router.get('/api/class/getClass',(req,res) => {
     models.Classe.find((err,data) => {
+        console.log(data)
         if (err) {
             res.send(err);
         } else {
@@ -67,7 +68,8 @@ router.post('/api/com/setcom',(req,res) => {
         present_price : req.body.present_price,
         sales_count : req.body.sales_count,
         carousel_count: req.body.carousel_count,
-        detail_count: req.body.detail_count
+        detail_count: req.body.detail_count,
+        create_date: req.body.create_date
     });
     // console.log(req.body)
     // console.log(newSetCom)

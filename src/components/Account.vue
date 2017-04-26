@@ -32,6 +32,7 @@
       轮播：<input type="number" ref="carousel_count" /><br/>
       详情：<input type="number" ref="detail_count" /><br/>
       <button @touchend="gogo">提交</button>
+      <button @touchend="all">获取全部</button>
     <bottom-nav></bottom-nav>
   </div>
 </template>
@@ -72,6 +73,14 @@ export default {
   },
   methods: {
     gogo () {
+      var times = new Date();
+      var year = times.getFullYear()
+      var month = times.getMonth()
+      var date = times.getDate();
+      var hours = times.getHours()
+      var minutes = times.getMinutes()
+      var seconds = times.getSeconds()
+      var time = year +'年'+ month +'月'+ date + '日' + hours +':'+ minutes +':'+ seconds
       var searchData = {
          com_id : this.$refs.com_id.value,
          com_name : this.$refs.com_name.value,
@@ -84,7 +93,8 @@ export default {
          present_price : this.$refs.present_price.value,
          sales_count : this.$refs.sales_count.value,
          carousel_count : this.$refs.carousel_count.value,
-         detail_count : this.$refs.detail_count.value
+         detail_count : this.$refs.detail_count.value,
+         create_date: time
       }
       for(var key in searchData){
         if (searchData[key] === '') {
@@ -107,6 +117,22 @@ export default {
       // .catch((reject) => {
       //   console.log(reject)
       // })
+    },
+    all(){
+      this.$http.get('/api/com/getcom')
+        .then((response) => {
+          var data = response.data
+          var val;
+          var arr = [];
+          for(var key in data){
+            val = data[key]
+            arr.push(val.com_id)
+          }
+          console.log(arr)
+        })
+        .catch((reject) => {
+          console.log(reject)
+        })
     }    
   }
 }
@@ -118,6 +144,7 @@ ul.l{
 }
 input,button{
   border: 0.04rem solid #ccc;
-  height: 1rem;
+  height: 0.8rem;
+  font-size: 20px;
 }
 </style>
