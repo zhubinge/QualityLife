@@ -1,13 +1,15 @@
 <template>
   <div class="new-detail">
     <h1>最近一周新品</h1>
-    <div v-for="list in lists" id="goods">
-    	<img :src="list.shopDetailImg">
-    	<p>防滑洗碗手套</p>
-    	<div id="bot">
-    	<span class="new">新品首发优惠</span><span class="newPrice">￥ 49</span><span class="oldPrice">￥ 59</span><span class="sign">新</span>
-    	<span class="right">评论：0</span>
-    	</div>
+    <div v-for="shopList in shopLists" id="goods">
+    	<router-link :to="'/detail/' + shopList.com_id">
+        <img :src="'static/images/commodity/'+shopList.com_img">
+      	<p>{{shopList.com_name}}}</p>
+      	<div id="bot">
+        	<span class="new">新品首发优惠</span><span class="newPrice">￥ {{shopList.original_price}}</span><span class="oldPrice">￥{{shopList.present_price}}</span><span class="sign">新</span>
+        	<span class="right">评论：0</span>
+    	 </div>
+       </router-link>
     </div>
   </div>
 </template>
@@ -17,32 +19,26 @@ export default {
   name: 'new-detail',
   data () {
     return {
-      lists: {},
-      list: {},
-      carousels: {},
-      shopLists: {},
-      img: {},
-      imgs: {},
-      pic: {},
-      pics: {},
-      loop: {},
-      loops: {},
-      year: {},
-      years: {}
+      shopLists: {}
     }
   },
 
 
   beforeCreate () {
-    fetch('static/json/shop_page.json')
-      .then(response => response.json())
-      .then(data => {
-        this.lists = data.shop_list
-        this.imgs = data.shop_class
-        this.pics = data.shop_picture
-        this.loops = data.shop_circle
-        this.years = data.shop_round
-      })
+          var search = {is_new:true}
+      this.$http.post('/api/com/getcom',search)
+        .then((response) => {
+          this.shopLists = response.data;
+          console.log(this.shopLists)
+        })
+        .catch((reject) => {
+          console.log(reject)
+        })
+  },
+  methods:{
+    search(){
+
+    }
   }
 }
 </script>
@@ -71,10 +67,15 @@ img{
 }
 p{
 	width: 100%;
+  box-sizing: border-box;
 	height: 0.6rem;
 	line-height: 0.6rem;
-	text-indent: 0.5rem;
-	font-size: 0.3rem
+	padding:0 0.2rem;
+	font-size: 0.3rem;
+  overflow: hidden;
+  text-overflow:ellipsis;
+
+
 }
 span.new{
 	display: inline-block;

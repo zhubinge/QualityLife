@@ -1,11 +1,13 @@
 <template>
 	<div class="shop-page-list">
       <ul class="img">
+      	<li v-for="img in imgs">
       	<li v-for="img in carousels">
       		<img :src="img.imgSrc">	
       	</li> 
       </ul>
       <ul class="group">
+        <li v-for="list in lists">
         <li v-for="list in carousels">
           <img :src="list.shopDetailImg">
           <p>{{list.shopDetailName}}</p>
@@ -15,6 +17,7 @@
       <div class="slide"></div>
       <h2 class="word">夏凉床品 新品首发</h2>
       <ul class="picture">
+        <li v-for="pic in pics">
         <li v-for="pic in carousels">
           <img :src="pic.shopDetailImg">
           <p>{{pic.shopDetailName}}</p>
@@ -26,6 +29,7 @@
         <p>700款人气商品 超值新价格</p>      
       </div>
       <ul class="loop">
+        <li v-for="loop in loops">
         <li v-for="loop in carousels">
           <img :src="loop.shopDetailImg">
           <p class="second">￥{{loop.shopDetailprize}}<span>￥{{loop.cost}}</span> </p>
@@ -36,6 +40,7 @@
         <h2>更多，6周年新价格</h2>
       </div>
       <ul class="year">
+        <li v-for="year in years">
         <li v-for="year in carousels">
           <img :src="year.shopDetailImg">
           <span>{{year.shopDetailName}}</span>
@@ -78,10 +83,27 @@ export default {
   name: 'home-page-list',
   data () {
     return {
+      lists: {},
+      list: {},
+      carousels: {},
+      shopLists: {},
+      img: {},
+      imgs: {},
+      pic: {},
+      pics: {},
+      loop: {},
+      loops: {},
+      year: {},
+      years: {},
+      col: {},
+      cols: {},
+      last: {},
+      lasts: {}
       carousels: {}
     }
   },
   beforeCreate () {
+<<<<<<< HEAD
     //首页轮播图
     var homeSearch = {
       content :'home_carousels'
@@ -93,6 +115,19 @@ export default {
       .catch((reject) => {
         console.log(reject)
       })
+=======
+    // fetch('static/json/shop_page.json')
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     this.lists = data.shop_list
+    //     this.imgs = data.shop_class
+    //     this.pics = data.shop_picture
+    //     this.loops = data.shop_circle
+    //     this.years = data.shop_round
+    //     this.cols = data.shop_data
+    //     this.lasts = data.shop_last
+    //   })
+>>>>>>> 0a286c381ee78ceab894394a4b65b81c48ff6330
   }
 }
 </script>

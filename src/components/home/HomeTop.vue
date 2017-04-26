@@ -31,12 +31,7 @@ export default {
   components: {
   },
   beforeCreate () {
-    fetch('static/json/shop_page.json')
-      .then(response => response.json())
-      .then(data => {
-        this.items_shopList = data.home_shopList
-        this.carousels = data.home_carousels
-      })
+
   }
 }
 </script>

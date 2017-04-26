@@ -9,17 +9,12 @@
     <div class="h_box" v-for="detailList in detailLists">
         <div class="h_title">
             <p>{{detailList.class_name}}</p>
-
         </div>
-        <ul class="product">
-            <li class="l" v-for="list in detailList.class_info">
+        <ul class="product" v-for="list in detailList.class_info">
+            <router-link tag="li" :to="'/detail/class/' + list.info_id" class="l" >
                 <img :src="'static/images/dateilAll/' + list.imgSrc"/>
-            <p class="product_title">{{list.text}}</p>
-<!--             <div v-for="pre in product">
-                <p>{{pre.classText}}</p>
-                <p>{{pre.imgsrc}}</p>
-            </div>         
- -->        </li>
+                <p class="product_title">{{list.text}}</p>
+            </router-link>
         </ul>
     </div>
     <bottom-nav></bottom-nav>
@@ -36,10 +31,19 @@ export default {
         }
     },
     beforeCreate () {
+        var that = this;//=======================
         this.$http.get('/api/class/getClass')
           .then((response) => {
-            this.detailLists = response.data;
-            console.log(this.detailLists)
+<<<<<<< HEAD
+
+            that.detailLists = response.data;
+            console.log(that.detailLists)
+            
+=======
+            that.detailLists = response.data;
+            console.log(that.detailLists)
+
+>>>>>>> fa77722879a201c8114d18f2468395c1ecaf773f
           })
           .catch((reject) => {
             console.log(reject)
@@ -141,7 +145,7 @@ export default {
 .h_box .product li p{
     height: 0.2rem;
     line-height: 0.2rem;
-    padding-bottom: 0.1rem;
+    padding-bottom: 0.2rem;
     padding-top: .5rem;
     margin:auto;
     text-align: center;
