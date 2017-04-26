@@ -9,10 +9,10 @@
     <div class="h_box" v-for="detailList in detailLists">
         <p class="h_title">{{detailList.class_name}}</p>
         <ul class="product">
-            <li class="l" v-for="list in detailList.class_info">
-                <img :src="'static/images/dateilAll/' + list.imgSrc"/>
+            <router-link :to="list.info_id" tag="li" class="l" v-for="list in detailList.class_info">
+                <img :src="'static/images/dateilall/' + list.imgSrc"/>
                 <p class="product_title">{{list.text}}</p>
-            </li>
+            </router-link>
         </ul>
     </div>
     <bottom-nav></bottom-nav>
@@ -32,13 +32,8 @@ export default {
         BottomNav
     },
     beforeCreate () {
-        this.$http.get('/api/class/getClass')
+        this.$http.get('/api/class/getclass')
           .then((response) => {
-<<<<<<< HEAD
-            that.detailLists = response.data;
-            console.log(that.detailLists)
-=======
->>>>>>> b24098966189a584761dceaed44ace7377568b99
             this.detailLists = response.data;
             console.log(this.detailLists)
           })
@@ -121,6 +116,7 @@ export default {
 }
 .h_box .product{
     width: 100%;
+    overflow:hidden;
 }
 .h_box:nth-child(9){
     margin-bottom: 2rem;
