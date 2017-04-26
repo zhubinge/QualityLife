@@ -47,7 +47,6 @@ router.post('/api/home/getContent',(req,res) => {
 });
 router.get('/api/class/getClass',(req,res) => {
     models.Classe.find((err,data) => {
-        console.log(data)
         if (err) {
             res.send(err);
         } else {
@@ -71,10 +70,7 @@ router.post('/api/com/setcom',(req,res) => {
         detail_count: req.body.detail_count,
         create_date: req.body.create_date
     });
-    // console.log(req.body)
-    // console.log(newSetCom)
     newSetCom.save((err,data) => {
-            // console.log(data)
         if (err) {
             res.send(err);
         } else {
@@ -82,8 +78,10 @@ router.post('/api/com/setcom',(req,res) => {
         }
     });
 });
-router.get('/api/com/getcom',(req,res) => {
-    models.Commoditie.find((err,data) => {
+router.post('/api/com/getcom',(req,res) => {
+    var search = req.body.search
+    console.log(search)
+    models.Commoditie.find(search,(err,data) => {
         if (err) {
             res.send(err);
         } else {
@@ -91,7 +89,5 @@ router.get('/api/com/getcom',(req,res) => {
         }
     });
 });
-
-
 
 module.exports = router;
