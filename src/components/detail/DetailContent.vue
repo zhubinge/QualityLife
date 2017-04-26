@@ -2,8 +2,8 @@
 <div>
 <h1>nihao</h1>
     <mt-swipe :auto="3000" :speed="1500" :show-indicators="false" id="detail_list">
-      <mt-swipe-item class="l page" v-for=" val in carousels" key="mt1">
-          <img :src="val.imgSrc">
+      <mt-swipe-item class="l page" v-for=" carousel in carousels" key="mt1">
+          <img :src="carousel.carousel_count">
           heiheihei
       </mt-swipe-item>
     </mt-swipe>
@@ -25,21 +25,18 @@ export default {
     name: 'detail-list',
     data () {
     return {
-      carousels: {},
-      ul: {},
-      key: {},
-      val: {},
-      imgSrc: '',
-      text: ''
+      carousels: {}
     }
   },
   beforeCreate () {
-    fetch('static/json/shop_page.json')
-      .then(response => response.json())
-      .then(data => {
-        this.carousels = data.home_carousels
-        // console.log(this.carousels)
-      })
+      var search = { is_new : true}
+      this.$http.post('/api/com/getcom',search)
+        .then((response) => {
+          console.log(response.data)
+        })
+        .catch((reject) => {
+          console.log(reject)
+        })
   }
 }
 </script>

@@ -97,17 +97,17 @@ export default {
     }
   },
   beforeCreate () {
-    fetch('static/json/shop_page.json')
-      .then(response => response.json())
-      .then(data => {
-        this.lists = data.shop_list
-        this.imgs = data.shop_class
-        this.pics = data.shop_picture
-        this.loops = data.shop_circle
-        this.years = data.shop_round
-        this.cols = data.shop_data
-        this.lasts = data.shop_last
-      })
+    // fetch('static/json/shop_page.json')
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     this.lists = data.shop_list
+    //     this.imgs = data.shop_class
+    //     this.pics = data.shop_picture
+    //     this.loops = data.shop_circle
+    //     this.years = data.shop_round
+    //     this.cols = data.shop_data
+    //     this.lasts = data.shop_last
+    //   })
   }
 }
 </script>
