@@ -33,6 +33,7 @@
       详情：<input type="number" ref="detail_count" /><br/>
       <button @touchend="gogo">提交</button>
       <button @touchend="all">获取全部</button>
+      <button @touchend="search">查找101</button>
     <bottom-nav></bottom-nav>
   </div>
 </template>
@@ -121,19 +122,22 @@ export default {
     all(){
       this.$http.get('/api/com/getcom')
         .then((response) => {
-          var data = response.data
-          var val;
-          var arr = [];
-          for(var key in data){
-            val = data[key]
-            arr.push(val.com_id)
-          }
-          console.log(arr)
+          console.log(response.data)
         })
         .catch((reject) => {
           console.log(reject)
         })
-    }    
+    },
+    search(){
+      var search = {"info_id":101}
+      this.$http.post('/api/com/getcom',search)
+        .then((response) => {
+          console.log(response.data)
+        })
+        .catch((reject) => {
+          console.log(reject)
+        })
+    }
   }
 }
 </script>

@@ -22,7 +22,7 @@ const classeSchema = mongoose.Schema({
     class_id : Number,
     class_name : String,
     class_info : [{
-        info_id : String,
+        info_id : Number,
         text : String,
         imgSrc : String
     }]
