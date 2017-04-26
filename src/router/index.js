@@ -100,7 +100,7 @@ export default new Router({
           component: DetailAll
         },
         {
-          path: '/detail/:detailId',
+          path: '/detailall/:detailId',
           name: 'detail-content',
           component: DetailContent
         },
