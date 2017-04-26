@@ -21,11 +21,11 @@ const homeSchema = mongoose.Schema({
 const classeSchema = mongoose.Schema({
     class_id : Number,
     class_name : String,
-    class_info : {
+    class_info : [{
         info_id : Number,
         text : String,
         imgSrc : String
-    }
+    }]
 });
 const comSchema = mongoose.Schema({
     com_id : Number,
@@ -39,7 +39,8 @@ const comSchema = mongoose.Schema({
     present_price : Number,
     sales_count : Number,
     carousel_count: Number,
-    detail_count: Number
+    detail_count: Number,
+    create_date: String
 });
 
 /************** 定义模型Model **************/

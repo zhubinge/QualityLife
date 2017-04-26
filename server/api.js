@@ -67,12 +67,10 @@ router.post('/api/com/setcom',(req,res) => {
         present_price : req.body.present_price,
         sales_count : req.body.sales_count,
         carousel_count: req.body.carousel_count,
-        detail_count: req.body.detail_count
+        detail_count: req.body.detail_count,
+        create_date: req.body.create_date
     });
-    // console.log(req.body)
-    // console.log(newSetCom)
     newSetCom.save((err,data) => {
-            // console.log(data)
         if (err) {
             res.send(err);
         } else {
@@ -80,8 +78,8 @@ router.post('/api/com/setcom',(req,res) => {
         }
     });
 });
-router.get('/api/com/getcom',(req,res) => {
-    models.Commoditie.find((err,data) => {
+router.post('/api/com/getcom',(req,res) => {
+    models.Commoditie.find(req.body,(err,data) => {
         if (err) {
             res.send(err);
         } else {
@@ -89,7 +87,5 @@ router.get('/api/com/getcom',(req,res) => {
         }
     });
 });
-
-
 
 module.exports = router;
