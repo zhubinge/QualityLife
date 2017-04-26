@@ -34,6 +34,11 @@ export default {
     beforeCreate () {
         this.$http.get('/api/class/getClass')
           .then((response) => {
+<<<<<<< HEAD
+            that.detailLists = response.data;
+            console.log(that.detailLists)
+=======
+>>>>>>> b24098966189a584761dceaed44ace7377568b99
             this.detailLists = response.data;
             console.log(this.detailLists)
           })
