@@ -39,6 +39,7 @@ export default {
         this.$http.get('/api/class/getClass')
           .then((response) => {
             this.detailLists = response.data;
+            console.log(this.detailLists)
           })
           .catch((reject) => {
             console.log(reject)
