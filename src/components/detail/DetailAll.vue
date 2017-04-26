@@ -7,19 +7,12 @@
         <input type="text" placeholder="搜索商品">
     </div>
     <div class="h_box" v-for="detailList in detailLists">
-        <div class="h_title">
-            <p>{{detailList.class_name}}</p>
-
-        </div>
+        <p class="h_title">{{detailList.class_name}}</p>
         <ul class="product">
             <li class="l" v-for="list in detailList.class_info">
                 <img :src="'static/images/dateilAll/' + list.imgSrc"/>
-            <p class="product_title">{{list.text}}</p>
-<!--             <div v-for="pre in product">
-                <p>{{pre.classText}}</p>
-                <p>{{pre.imgsrc}}</p>
-            </div>         
- -->        </li>
+                <p class="product_title">{{list.text}}</p>
+            </li>
         </ul>
     </div>
     <bottom-nav></bottom-nav>
@@ -35,6 +28,9 @@ export default {
             detailLists:{}
         }
     },
+    components:{
+        BottomNav
+    },
     beforeCreate () {
         this.$http.get('/api/class/getClass')
           .then((response) => {
@@ -44,10 +40,7 @@ export default {
           .catch((reject) => {
             console.log(reject)
           })
-    },
-    components:{
-        BottomNav
-    },
+    }
  }
 </script>
 <style scoped>
@@ -111,10 +104,11 @@ export default {
 }
 .h_box .h_title{
     width: 100%;
-    height: 1.3rem;
-    background: #f2f2f2;
-    line-height: 1.8rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
     font-size: 18px;
+    background: #f2f2f2;
+    text-align: center;
 }
 .h_box .h_title p{
     width: 100%;
