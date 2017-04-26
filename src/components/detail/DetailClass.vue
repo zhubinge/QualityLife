@@ -1,28 +1,77 @@
+<<<<<<< HEAD
 <template>
 <div>
-    <div class="top_nav">
-        <p>全部产品</p>
-    </div>
-    <div class="search">
-        <input type="text" placeholder="搜索商品">
-    </div>
-    <div class="h_box" v-for="detailList in detailLists">
-        <p class="h_title">{{detailList.class_name}}</p>
-        <ul class="product">
-            <li class="l" v-for="list in detailList.class_info">
-                <img :src="'static/images/dateilAll/' + list.imgSrc"/>
-                <p class="product_title">{{list.text}}</p>
-            </li>
-        </ul>
-    </div>
+	<div class="top_nav">
+		<!-- 		  v-for="detailList in detailLists"-->
+ 		<a href="javascript:history.back()" class="l"> < </a>
+<!--         <p class="l">{{detailList.class_name}}</p>
+ -->    </div>
+
+</div>
+</template>
+
+<script>
+export default {
+  name: 'detail-class',
+    data () {
+        return {
+            detailLists:{},
+
+
+        }
+    },
+    beforeCreate () {
+    	// var cla = location.href;
+    	// cla = cla.slice(34);
+    	console.log(this.$route.params.classId)
+        // var that = this;
+      var search = {info_id:this.$route.params.classId}
+      this.$http.post('/api/com/getcom',search)
+        .then((response) => {
+          console.log(response.data);
+          // console.log(response.data.$parent.$data);
+          detailLists = response.data
+        })
+        .catch((reject) => {
+          console.log(reject)
+        })
+
+    },
+}
+</script>
+<style scoped>
+.top_nav{
+    width:100%;
+    height: 1rem;
+    /*background: #ffda75;*/
+    background:#ffda75;
+}
+.top_nav a{
+	width: 10%;
+	color: white;
+	font-size: 0.5rem;
+    height: 1rem;
+    line-height: 1rem;
+}
+.top_nav p{
+	width: 80%;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    height: 1rem;
+    line-height: 1rem;
+}
+</style>
+=======
+<template>
+<div>
     <bottom-nav></bottom-nav>
 </div>
 </template>
 <script>
-import Vuex from 'vuex'
 import BottomNav from '../BottomNav'
 export default {
-    name: 'detail-all',
+    name: 'detail-class',
     data () {
         return {
             detailLists:{}
@@ -32,16 +81,14 @@ export default {
         BottomNav
     },
     beforeCreate () {
-        this.$http.get('/api/class/getClass')
-          .then((response) => {
-
-            that.detailLists = response.data;
-            console.log(that.detailLists)
-            
-          })
-          .catch((reject) => {
-            console.log(reject)
-          })
+        // this.$http.get('/api/class/getClass')
+        //   .then((response) => {
+        //     this.detailLists = response.data;
+        //     console.log(this.detailLists)
+        //   })
+        //   .catch((reject) => {
+        //     console.log(reject)
+        //   })
     }
  }
 </script>
@@ -106,11 +153,10 @@ export default {
 }
 .h_box .h_title{
     width: 100%;
-    height: 1.2rem;
-    line-height: 1.2rem;
-    font-size: 18px;
+    height: 1.3rem;
     background: #f2f2f2;
-    text-align: center;
+    line-height: 1.8rem;
+    font-size: 18px;
 }
 .h_box .h_title p{
     width: 100%;
@@ -144,3 +190,4 @@ export default {
 }
 
 </style>
+>>>>>>> b24098966189a584761dceaed44ace7377568b99

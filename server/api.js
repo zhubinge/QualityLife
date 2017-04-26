@@ -32,7 +32,7 @@ router.get('/api/login/getAccount',(req,res) => {
         }
     });
 });
-router.post('/api/home/getContent',(req,res) => {
+router.post('/api/home/getcontent',(req,res) => {
     // 通过模型去查找数据库
     let obj = {
         content : req.body.content
@@ -45,7 +45,7 @@ router.post('/api/home/getContent',(req,res) => {
         }
     });
 });
-router.get('/api/class/getClass',(req,res) => {
+router.get('/api/class/getclass',(req,res) => {
     models.Classe.find((err,data) => {
         if (err) {
             res.send(err);

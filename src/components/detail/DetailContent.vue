@@ -2,9 +2,11 @@
 <div>
 <h1>nihao</h1>
     <mt-swipe :auto="3000" :speed="1500" :show-indicators="false" id="detail_list">
-      <mt-swipe-item class="l page" v-for=" val in carousels" key="mt1">
-          <img :src="val.imgSrc" >
-          heiheihei
+
+  
+      <mt-swipe-item class="l page" v-for=" carousel in carousels" key="mt1">
+          <img :src="carousel.carousel_count">
+
       </mt-swipe-item>
     </mt-swipe>
 
@@ -35,10 +37,9 @@ export default {
         .then((response) => {
           this.detailLists = response.data;
           console.log(this.detailLists)
-        })
-        .catch((reject) => {
-          console.log(reject)
-        })
+
+      
+    })
   }
 }
 </script>
