@@ -3,13 +3,13 @@
 <h1>nihao</h1>
     <mt-swipe :auto="3000" :speed="1500" :show-indicators="false" id="detail_list">
       <mt-swipe-item class="l page" v-for=" val in carousels" key="mt1">
-          <img :src="val.imgSrc">
+          <img :src="val.imgSrc" >
           heiheihei
       </mt-swipe-item>
     </mt-swipe>
 
-    <div class="goodstop">
-      <h3>懒人清洁喷水拖把</h3>
+    <div class="goodstop" v-for="detailLists in detailLists">
+      <h3>{{detailLists.com_name}}</h3>
       <span class="newprice price">￥69</span>
       <span class="oldprice price">￥79</span>
       <div class="left"><span class="new">新价格</span> </div>
@@ -25,21 +25,20 @@ export default {
     name: 'detail-list',
     data () {
     return {
-      carousels: {},
-      ul: {},
-      key: {},
-      val: {},
-      imgSrc: '',
-      text: ''
+      detailLists: {},
+     
     }
   },
   beforeCreate () {
-    fetch('static/json/shop_page.json')
-      .then(response => response.json())
-      .then(data => {
-        this.carousels = data.home_carousels
-        // console.log(this.carousels)
-      })
+    var search = {com_id:10101}
+      this.$http.post('/api/com/getcom',search)
+        .then((response) => {
+          this.detailLists = response.data;
+          console.log(this.detailLists)
+        })
+        .catch((reject) => {
+          console.log(reject)
+        })
   }
 }
 </script>
