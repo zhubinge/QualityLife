@@ -101,7 +101,11 @@ export default new Router({
           component: DetailAll
         },
         {
+<<<<<<< HEAD
           path: '/detail/class/classid',
+=======
+          path: '/detail/class/:classid',
+>>>>>>> fa77722879a201c8114d18f2468395c1ecaf773f
           name: 'detail-class',
           component: DetailClass
         },
