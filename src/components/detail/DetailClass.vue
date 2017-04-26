@@ -1,9 +1,10 @@
 <template>
 <div>
-	<div class="top_nav"  v-for="detailList in detailLists">
-		<a href="javascript:history.back()" class="l"> < </a>
-        <p class="l">{{detailList.class_name}}</p>
-    </div>
+	<div class="top_nav">
+		<!-- 		  v-for="detailList in detailLists"-->
+ 		<a href="javascript:history.back()" class="l"> < </a>
+<!--         <p class="l">{{detailList.class_name}}</p>
+ -->    </div>
 
 </div>
 </template>
@@ -22,15 +23,18 @@ export default {
     	// var cla = location.href;
     	// cla = cla.slice(34);
     	console.log(this.$route.params.classId)
-        var that = this;//=======================
-        this.$http.get('/api/class/getClass')
-          .then((response) => {
-            that.detailLists = response.data;
-            console.log('父组件的数据' + $that.$route.params.classId.$parent.$data)
-          })
-          .catch((reject) => {
-            // console.log(reject)
-          })
+        // var that = this;
+      var search = {info_id:this.$route.params.classId}
+      this.$http.post('/api/com/getcom',search)
+        .then((response) => {
+          console.log(response.data);
+          // console.log(response.data.$parent.$data);
+          detailLists = response.data
+        })
+        .catch((reject) => {
+          console.log(reject)
+        })
+
     },
 }
 </script>

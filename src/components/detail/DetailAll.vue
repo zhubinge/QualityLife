@@ -35,13 +35,10 @@ export default {
         var that = this;//=======================
         this.$http.get('/api/class/getClass')
           .then((response) => {
-<<<<<<< HEAD
             that.detailLists = response.data;
             console.log(that.detailLists)
-=======
             this.detailLists = response.data;
             console.log(this.detailLists)
->>>>>>> 9a4b3d7774a9ed3950a3555448e1e21b59422710
           })
           .catch((reject) => {
             console.log(reject)
