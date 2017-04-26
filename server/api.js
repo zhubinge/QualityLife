@@ -79,9 +79,7 @@ router.post('/api/com/setcom',(req,res) => {
     });
 });
 router.post('/api/com/getcom',(req,res) => {
-    var search = req.body.search
-    console.log(search)
-    models.Commoditie.find(search,(err,data) => {
+    models.Commoditie.find(req.body,(err,data) => {
         if (err) {
             res.send(err);
         } else {

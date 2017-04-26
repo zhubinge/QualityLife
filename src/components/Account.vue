@@ -129,7 +129,7 @@ export default {
         })
     },
     search(){
-      var search = {"search":{"info_id":101}}
+      var search = {"info_id":101}
       this.$http.post('/api/com/getcom',search)
         .then((response) => {
           console.log(response.data)
