@@ -10,7 +10,6 @@
 			<input type="text" name="tel" placeholder="手机号" id="u_name" />
 			<input type="button" value="获取验证码"  id="btnmessage"/><!-- <span id = "s_name">  </span> -->
 			<input type="text" name="yanzheng" placeholder="验证码" id="s_name"/><!-- <span id="s_pass"> </span> -->
-			
 	  </form>
 	</div>
 	<div class="register_http">

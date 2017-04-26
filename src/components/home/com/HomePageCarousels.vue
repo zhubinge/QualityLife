@@ -1,8 +1,8 @@
 <template>
   <div>
     <mt-swipe :auto="3000" :speed="1500" :show-indicators="false" id="home_carousel">
-      <mt-swipe-item class="l page" v-for=" val in carousels" key="mt1">
-          <img :src="val.imgSrc">
+      <mt-swipe-item class="l page" v-for="val in carousels" key="mt1">
+          <img :src="'static/images/'+ val.imgSrc">
       </mt-swipe-item>
     </mt-swipe>
   </div>
@@ -12,20 +12,21 @@ export default {
   name: 'home-page-carousels',
   data () {
     return {
-      carousels: {},
-      ul: {},
-      key: {},
-      val: {},
-      imgSrc: '',
-      text: ''
+      carousels: {}
     }
   },
   beforeCreate () {
-    fetch('static/json/shop_page.json')
-      .then(response => response.json())
-      .then(data => {
-        this.carousels = data.home_carousels
-        // console.log(this.carousels)
+    //首页轮播图
+    var homeSearch = {
+      content :'home_carousels'
+    };
+    this.$http.post('/api/home/getContent',homeSearch)
+      .then((response) => {
+        this.carousels = response.data
+        console.log(this.carousels)
+      })
+      .catch((reject) => {
+        console.log(reject)
       })
   }
 }
