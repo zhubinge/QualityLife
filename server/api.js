@@ -65,7 +65,9 @@ router.post('/api/com/setcom',(req,res) => {
         is_recommend : req.body.is_recommend,
         original_price : req.body.original_price,
         present_price : req.body.present_price,
-        sales_count : req.body.sales_count
+        sales_count : req.body.sales_count,
+        carousel_count: req.body.carousel_count,
+        detail_count: req.body.detail_count
     });
     // console.log(req.body)
     // console.log(newSetCom)

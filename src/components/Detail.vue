@@ -1,11 +1,9 @@
 <template>
-	<div id="content">
-        <h1>详情</h1>
-    </div>
+    <router-view class="child-view"></router-view>
 </template>
 <script>
 export default {
-  name: 'detail-content'
+    name: 'detail'
 }
 </script>
 <style scoped>
