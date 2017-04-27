@@ -2,7 +2,7 @@
   <div class="new-detail">
     <h1>最近一周新品</h1>
     <div v-for="shopList in shopLists" id="goods">
-    	<router-link :to="'/detail/' + shopList.com_id">
+    	<router-link :to="'/detail/' + shopList.class_info">
         <img :src="'static/images/commodity/'+shopList.com_img">
       	<p>{{shopList.com_name}}}</p>
       	<div id="bot">
@@ -29,7 +29,7 @@ export default {
       this.$http.post('/api/com/getcom',search)
         .then((response) => {
           this.shopLists = response.data;
-          console.log(this.shopLists)
+          console.log(this.shopLists.class_info)
         })
         .catch((reject) => {
           console.log(reject)

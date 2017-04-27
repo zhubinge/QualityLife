@@ -2,9 +2,6 @@
 <div class="detail_all">
     <div class="detail_top">
         <div class="top_nav">全部产品</div>
-        <div class="top_search nofocus">
-            <input type="text" placeholder="搜索商品" class="ints" @focus="handleFocus">
-        </div>
         <div class="top_search focusinput">
             <input type="text" placeholder="搜索商品" class="int" @focus="handleFocus" :style="blocks">
             <input type="button" value="取消" class="off" v-if="none===true" v-on:click="cli">
