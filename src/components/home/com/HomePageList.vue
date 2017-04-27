@@ -1,6 +1,54 @@
 <template>
-	<div class="shop-page-list">
-      <ul class="img">
+	<div class="shop_page_list">
+    <ul class="one">
+      <router-link class="l" tag="li" to="">
+        <i class="iconfont">&#xe601;</i>
+        全场折扣
+      </router-link>
+      <router-link class="l" tag="li" to="/index/newdetail">
+        新品首发
+        <i class="iconfont">&#xe501;</i>
+      </router-link>
+    </ul>
+    <div class="recommend_title">
+      <h2>周年庆，新商品</h2>
+      <p>700款人气商品&nbsp;&nbsp;超值新价格</p>
+    </div>
+    <ul class="shop_recommend_list">
+      <router-link
+       v-for="(shopList,idx) in shopLists"
+       :to="'/detail/' + shopList.com_id"
+       :key="idx"
+       tag="li"
+       class="l"
+       >
+        <img :src="'static/images/commodity/' + shopList.com_img">
+        <p class="price">
+          <b class="red">￥{{shopList.original_price}}</b>
+          <span class="line">￥{{shopList.present_price}}</span>
+        </p>
+        <p class="shop_name">{{shopList.com_name}}</p>
+      </router-link>
+      <router-link to="/index/newdetail" class="bottom">周年庆，新商品，新价格<b>></b></router-link>
+    </ul>
+    <ul class="three">
+      <li class="three_title">
+        <h2>新品首发优惠</h2>
+        <span>天天有新品&nbsp;&nbsp;每天来逛逛</span>
+        <b></b>
+        <b></b>
+      </li>
+      <li class="hot_list"
+       v-for="(hotList,idx) in hotLists"
+       :to="'/detail/' + hotList.com_id"
+       :key="idx"
+       tag="li"
+      >
+        <img :src="'static/images/commodity/detail_' + hotList.com_id + '_2' +'.jpg'">
+      </li>
+    </ul>
+
+      <!-- <ul class="img">
       	<li v-for="img in imgs">
       	<li v-for="img in carousels">
       		<img :src="img.imgSrc">	
@@ -75,7 +123,8 @@
       <div class="foot">
         <p>O(∩_∩)O没有更多了</p>
       </div>
-      <div class="faker"></div>   
+      <div class="faker"></div> -->
+      <div class="box"></div>
 	</div>
 </template>
 <script>
@@ -83,332 +132,194 @@ export default {
   name: 'home-page-list',
   data () {
     return {
-      lists: {},
-      list: {},
       carousels: {},
-      shopLists: {},
-      img: {},
-      imgs: {},
-      pic: {},
-      pics: {},
-      loop: {},
-      loops: {},
-      year: {},
-      years: {},
-      col: {},
-      cols: {},
-      last: {},
-      lasts: {}
-      carousels: {}
+      shopLists:[],
+      hotLists:[]
     }
   },
   beforeCreate () {
-<<<<<<< HEAD
-    //首页轮播图
     var homeSearch = {
       content :'home_carousels'
     };
-    this.$http.post('/api/home/getContent',homeSearch)
+    this.$http.post('/api/home/getcontent',homeSearch)
       .then((response) => {
         this.carousels = response.data
       })
       .catch((reject) => {
         console.log(reject)
       })
-=======
-    // fetch('static/json/shop_page.json')
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     this.lists = data.shop_list
-    //     this.imgs = data.shop_class
-    //     this.pics = data.shop_picture
-    //     this.loops = data.shop_circle
-    //     this.years = data.shop_round
-    //     this.cols = data.shop_data
-    //     this.lasts = data.shop_last
-    //   })
->>>>>>> 0a286c381ee78ceab894394a4b65b81c48ff6330
+    var newSearch = {
+      is_recommend :true
+    }
+    this.$http.post('/api/com/getcom',newSearch)
+      .then((response) => {
+        var data = response.data;
+        var arr = [];
+        for (var i = 0; i < data.length; i++) {
+          if (i < 6) {
+            arr.push(data[i])
+          }
+        }
+        this.shopLists = arr;
+        var arr2 = [];
+        var len = data.length;
+        for (var i = 0; i < 3; i++) {
+          arr2.push(data[Math.floor(Math.random()*len)])
+        }
+        this.hotLists = arr2;
+      })
+      .catch((reject) => {
+        console.log(reject)
+      })
   }
 }
 </script>
 <style scoped>
-.shop-page-list{
-  overflow:hidden;
+.box{
+  width: 100%;
+  height: 1rem;
 }
-.shop-page-list .img li{
-	margin-top:.2rem;
-  overflow:hidden;
-}
-.shop-page-list .img  img{
-	width:100%;
-	height:3rem;
-}
-.shop-page-list .group{
-  text-align: center;
-  overflow:hidden;
-}
-.shop-page-list .group li{
-  float:left;
-  width:2.4rem;
-  height:3rem;
-}
-.shop-page-list .group li img{
-  width:2.4rem;
-  height:2rem;
-}
-.shop-page-list .group li p{
-  font-size:12px;
-}
-.shop-page-list .group .second{
-  color:#ac2c2b;
-}
-.shop-page-list .group li:nth-child(2){
-  margin:0 0.1rem;
-}
-.shop-page-list .group li:nth-child(5){
-  margin:0 0.1rem;
-}
-
-.slide{
-  width:100%;
-  height:.3rem;
-  background:#ccc;
-}
-.word{
-  text-align: center;
-  color:red;
-  margin-top:.5rem;
-  margin-bottom:.2rem;
-  color:#ac2c2b;
-}
-
-
-.shop-page-list .picture{
-  text-align: center;
-  overflow:hidden;
-}
-.shop-page-list .picture li{
-  float:left;
-  width:2.4rem;
-  height:3rem;
-}
-.shop-page-list .picture li img{
-  width:2.4rem;
-  height:2rem;
-}
-.shop-page-list .picture li p{
-  font-size:12px;
-}
-.shop-page-list .picture .second{
-  color:#ac2c2b;
-}
-.shop-page-list .picture li:nth-child(2){
-  margin:0 0.1rem;
-}
-.shop-page-list .picture li:nth-child(5){
-  margin:0 0.1rem;
-}
-
-
-
-.shop-page-list .loop{
-  text-align: center;
-  overflow:hidden;
-  font-size:12px;
-  border:.1rem solid #ac2c2b;
-}
-.shop-page-list .loop li{
-  float:left;
-  width:2.3rem;
-  height:3rem;
-}
-.shop-page-list .loop li img{
-  width:2.4rem;
-  height:2rem;
-}
-.shop-page-list .loop li p span{
-  margin-left:.1rem;
-  text-decoration:line-through;
-  color:#bebebe;
-}
-.shop-page-list .loop .second{
-  color:#ac2c2b;
-}
-/*.shop-page-list .loop span{
-  display:inline-block;
-}*/
-.shop-page-list .loop li:nth-child(2){
-  margin:0 0.1rem;
-}
-.shop-page-list .loop li:nth-child(5){
-  margin:0 0.1rem;
-}
-
-
-
-
-
-
-.shop-page-list .content{
-  text-align: center;
-  height:1.5rem;
-  background:#ac2c2b;
-  overflow:hidden;
-  color:#d4c6bd;
-}
-.shop-page-list .content h2{
-  margin-top:.2rem;
-}
-
-.shop-page-list .nav{
-  height:1rem;
-  background:#ac2c2b;
-  line-height:1rem;
-  text-align: center;
-  color:#d4c6bd;
-  margin-top:.2rem;
-}
-
-
-.shop-page-list .year{
-  text-align: center;
-  overflow:hidden;
-}
-.shop-page-list .year li{
-  float:left;
-  width:3.6rem;
-  height:3rem;
-  border:.1rem solid #ac2c2b;
-}
-.shop-page-list .year li:nth-child(odd){
-  border-right:none;
-}
-.shop-page-list .year li:nth-child(3){
-  border-top:none;
-  border-bottom:none;
-}
-.shop-page-list .year li:nth-child(4){
-  border-top:none;
-  border-bottom:none;
-}
-.shop-page-list .year li img{
-  width:3.6rem;
-  height:3rem;
-}
-.shop-page-list .year li p{
-  font-size:12px;
-}
-.shop-page-list .year .second{
-  color:#ac2c2b;
-}
-
-.shop-page-list .empty{
-  background:#ccc;
-  height:.3rem;
-  width:100%;
-  margin-top:.5rem;
-  margin-bottom:.3rem;
-}
-
-
-.shop-page-list .sale{
-  height:1.5rem;
-  text-align: center;
-}
-.shop-page-list .sale h2{
-  color:#ac2c2b;
-}
-
-
-
-
-.shop-page-list .col{
-  text-align: center;
-  overflow:hidden;
-}
-.shop-page-list .col li{
-  float:left;
-  width:3.5rem;
-  height:4rem;
-}
-.shop-page-list .col li img{
-  width:3.5rem;
-  height:4rem;
-}
-.shop-page-list .col li p{
-  font-size:12px;
-}
-.shop-page-list .col .second{
-  color:#ac2c2b;
-}
-.shop-page-list .col li{
-  margin:0 0.1rem;
-}
-.shop-page-list .col .pos{
-  position:relative;
-}
-.shop-page-list .col .poss{
-  position:absolute;
-  bottom:3rem;
-  left:.1rem;
-  color:black;
-}
-.shop-page-list .col .poss P:nth-child(2){
-  font-size: 16px;
-}
-
-.shop-page-list .slow{
-  text-align: center;
-  height:1.5rem;
-  line-height: 1.5rem;
-  color:#ac2c2b;
-}
-
-
-
-
-
-.shop-page-list .last{
+.shop_page_list{
+  width: 100%;
   overflow: hidden;
+}
+.shop_page_list .one{
+  width: 100%;
+  height: 2rem;
+  box-sizing: border-box;
+  padding: 0.2rem 0;
+  display: flex;
   text-align: center;
 }
-.shop-page-list .last li{
-  float:left;
-  width:3.5rem;
-  height:4rem;
-  margin-left:.15rem;
+.shop_page_list .one li{
+  flex: 1;
+  width: 50%;
+  height: 100%;
+  line-height: 1.6rem;
+  background: #70a8c4;
+  color: #fff;
+  font-size: 18px;
 }
-.shop-page-list .last li img{
-  width:3.5rem;
-  height:3rem;
+.shop_page_list .one li:nth-child(1){
+  margin-right: 0.1rem;
 }
-.shop-page-list .last li p{
-  font-size:12px;
+.shop_page_list .one li i{
+  font-size: 60px;
 }
-.shop-page-list .last li p:nth-child(3){
-  color:#ac2c2b;
-}
-.shop-page-list .last li:nth-child(2){
-  margin:0 0.1rem;
-}
-.shop-page-list .last li:nth-child(5){
-  margin:0 0.1rem;
-}
-
-
-.shop-page-list .foot{
+.shop_page_list .recommend_title{
+  width: 100%;
+  background: #72a553;
+  color: #fff;
+  box-sizing: border-box;
+  padding: 0.3rem 0.2rem;
   text-align: center;
-  background:#eee;
-  height:1rem;
+}
+.shop_page_list .recommend_title h2{
+  height: 0.7rem;
+}
+.shop_page_list .recommend_title p{
+  font-size: 14px;
+}
+.shop_page_list .shop_recommend_list{
+  width: 100%;
+  height: auto;
+  padding: 0.25rem;
+  background: #72a553;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.shop_page_list .shop_recommend_list li{
+  width: 3.4rem;
+  height: 4.5rem;
+  padding: 0.2rem;
+  background: #fff;
+  box-sizing: border-box;
+  margin-bottom: 0.2rem;
+  overflow: hidden;
+}
+.shop_page_list .shop_recommend_list li:nth-child(odd){
+  margin-right: 0.2rem;
+}
+.shop_page_list .shop_recommend_list li img{
+  width: 100%;
+}
+.shop_page_list .shop_recommend_list li p.price{
+  height: 0.4rem;
+  line-height: 0.4rem;
+  text-align: center;
+  margin-top: 0.2rem;
+}
+.shop_page_list .shop_recommend_list li p.price .red{
+  color: red;
+}
+.shop_page_list .shop_recommend_list li p.price .line{
+  text-decoration:line-through;
+  color: #aaa;
+}
+.shop_page_list .shop_recommend_list li p.shop_name{
+  width: 100%;
+  height: 0.5rem;
+  line-height: 0.5rem;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.shop_page_list .shop_recommend_list .bottom{
+  display: block;
+  width: 100%;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  color: #fff;
+  text-align: center;
+  clear: both;
+}
+.shop_page_list .shop_recommend_list .bottom b{
+  display: inline-block;
+  width: 0.3rem;
+  height: 0.3rem;
+  line-height: 0.3rem;
+  border-radius: 50%;
+  background: #fff;
+  color: #72a553;
+  text-align: center;
+  margin-left: 0.1rem;
+}
+.shop_page_list .three{
+  width: 100%;
+  text-align: center;
+}
+.shop_page_list .three .three_title{
+  width: 100%;
+  height: 2rem;
+  padding: 0 0.2rem;
+  box-sizing: border-box;
+  position: relative;
+}
+.shop_page_list .three .three_title h2{
+  color: #72a553;
   line-height: 1rem;
 }
-
-
-
-
-.shop-page-list .faker{
-  width:100%;
-  height:1rem;
+.shop_page_list .three .three_title b{
+  display: inline-block;
+  top: 0;
+  position: absolute;
+  width: 25%;
+  height: 1.2rem;
+  border-bottom: 0.02rem solid #aaa;
+}
+.shop_page_list .three .three_title b:nth-child(3){
+  left: 0.2rem;
+}
+.shop_page_list .three .three_title b:nth-child(4){
+  right: 0.2rem;
+}
+.shop_page_list .three li.hot_list{
+  width: 100%;
+  height: 4rem;
+}
+.shop_page_list .three li.hot_list img{
+  width: 100%;
 }
 
 </style>

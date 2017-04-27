@@ -2,7 +2,7 @@
 <div>
 	<div class="top_nav">
         <a href="javascript:history.back()" class="l"> < </a>
-        <p class="l">{{detailLists[0].class_name}}</p>
+        <p class="l">{{detailLists.class_name}}</p>
     </div>
 
 </div>
@@ -25,7 +25,7 @@ export default {
       this.$http.post('/api/com/getcom',search)
         .then((response) => {
           console.log(response.data);
-          that.detailLists = response.data
+          that.detailLists = response.data[0]
         })
         .catch((reject) => {
           console.log(reject)

@@ -1,11 +1,16 @@
 <template>
-<div>
-<h1>nihao</h1>
-    <mt-swipe :auto="3000" :speed="1500" :show-indicators="false" id="detail_list">
-
-  
-      <mt-swipe-item class="l page" v-for=" carousel in carousels" key="mt1">
-          <img :src="carousel.carousel_count">
+<div class="detail_content">
+    <mt-swipe
+     id="detail_list"
+     v-for=" detailList in detailLists"
+     :auto="3000"
+     :speed="1500"
+     :show-indicators="true"
+     key="detailList"
+     >
+      <mt-swipe-item class="l page" v-for="n in detailList.carousel_count"
+      key="n">
+          <img :src="'static/images/commodity/carousel_' + detailList.com_id + '_' + n + '.jpg'">
 
       </mt-swipe-item>
     </mt-swipe>

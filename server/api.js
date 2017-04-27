@@ -34,10 +34,7 @@ router.get('/api/login/getAccount',(req,res) => {
 });
 router.post('/api/home/getcontent',(req,res) => {
     // 通过模型去查找数据库
-    let obj = {
-        content : req.body.content
-    }
-    models.Home.find(obj,(err,data) => {
+    models.Home.find(req.body,(err,data) => {
         if (err) {
             res.send(err);
         } else {

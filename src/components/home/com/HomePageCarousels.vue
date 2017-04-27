@@ -1,13 +1,19 @@
 <template>
-  <div>
-    <mt-swipe :auto="3000" :speed="1500" :show-indicators="false" id="home_carousel">
-      <mt-swipe-item class="l page" v-for="carousel in carousels" key="mt1">
-          <img :src="'static/' + carousel.imgSrc">
+  <div id="home_carousel_page">
+    <mt-swipe
+     :auto="4000"
+     :speed="500"
+     :show-indicators="true"
+     id="home_carousel"
+     >
+      <mt-swipe-item class="page" v-for="(carousel,idx) in carousels.this_data" :key="idx" :id="idx">
+          <img :src="'static/images/' + carousel.imgSrc">
       </mt-swipe-item>
     </mt-swipe>
   </div>
 </template>
 <script>
+import { Swipe, SwipeItem } from 'mint-ui'
 export default {
   name: 'home-page-carousels',
   data () {
@@ -18,16 +24,11 @@ export default {
   beforeCreate () {
     //首页轮播图
     var homeSearch = {
-      content :'home_carousels'
-    };
-    this.$http.post('/api/home/getContent',homeSearch)
-    var homeSearch = {
-      content :'home_carousels'
+      content :"home_carousels"
     };
     this.$http.post('/api/home/getcontent',homeSearch)
       .then((response) => {
-        this.carousels = response.data
-        console.log(this.carousels)
+        this.carousels = response.data[0]
       })
       .catch((reject) => {
         console.log(reject)
@@ -36,22 +37,19 @@ export default {
 }
 </script>
 <style scoped>
+#home_carousel_page{
+  width: 100%;
+  overflow: hidden;
+}
 #home_carousel{
-  width: 7.5rem;
   height: 5rem;
-  position: relative;
+  overflow: hidden;
 }
 #home_carousel div.page{
-  width: 7.5rem;
   height: 5rem;
-  background: #fff;
-  position: absolute;
-  display: block;
-  box-sizing: border-box;
+  overflow: hidden;
 }
 #home_carousel div.page img{
   width: 100%;
-  height: 5.1rem;
 }
-
 </style>
