@@ -1,6 +1,6 @@
 <template>
   <ul class="bottom-nav">
-    <router-link to="/index" tag="li" active-class="active">
+    <router-link to="/index/home" tag="li" active-class="active">
       <i class="iconfont">&#xe600;</i>
       <span>首页</span>
     </router-link>
@@ -16,7 +16,7 @@
       <i class="iconfont">&#xe60d;</i>
       <span>购物车</span>
     </router-link>
-    <router-link to="/account" tag="li" active-class="active">
+    <router-link to="/mine" tag="li" active-class="active">
       <i class="iconfont">&#xe636;</i>
       <span>我的</span>
     </router-link>
