@@ -11,10 +11,8 @@
       <mt-swipe-item class="l page" v-for="n in detailList.carousel_count"
       key="n">
           <img :src="'static/images/commodity/carousel_' + detailList.com_id + '_' + n + '.jpg'">
-
       </mt-swipe-item>
     </mt-swipe>
-
     <div class="goodstop" v-for="detailLists in detailLists">
       <h3>{{detailLists.com_name}}</h3>
       <span class="newprice price">￥69</span>
@@ -24,7 +22,6 @@
       </div>
       <h3>商品：</h3>
       <div><span class="name">拖把</span></div>
-   
   </div>
 </template>
 <script>

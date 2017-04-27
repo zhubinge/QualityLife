@@ -4,7 +4,6 @@
     <h2 class="l">Quality Life</h2>
     <router-link to="/detail/all">搜索</router-link>
   </div>
-<!--     <input type="text" class="two" placeholder="搜索商家、商品" onfocus="this.placeholder=''" onblur="this.placeholder='搜索商家、商品'"/> -->
     <div class="two">
       <ul class="twoul">
         <router-link to="/index/home" tag="li" active-class="active" class="l">首页</router-link>
@@ -42,6 +41,8 @@ header.home-top{
   text-align: center;
   overflow: hidden;
   border-bottom: 0.04rem solid #ccc;
+  position: fixed;
+  z-index: 1;
 }
 .home-top .one{
   width: 6.9rem;
