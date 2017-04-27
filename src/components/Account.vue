@@ -14,10 +14,10 @@
     <ul class="server">
     	<li class="l"><a href="#"><i class="iconfont">&#xe625;</i>待支付</a></li>
     	<li class="l"><a href="#"><i class="iconfont">&#xe677;</i>待发货</a></li>
-    	<li class="l"><a href="#"><i class="iconfont">&#xe646;</i>待收货</a></li>
+    	<li class="l borderNone"><a href="#"><i class="iconfont">&#xe646;</i>待收货</a></li>
     	<li class="l"><a href="#"><i class="iconfont">&#x34bc;</i>待评论</a></li>
     	<li class="l"><a href="#"><i class="iconfont">&#xe630;</i>回复</a></li>
-    	<li class="l"><a href="#"><i class="iconfont">&#xe629;</i>退换货</a></li>
+    	<li class="l borderNone"><a href="#"><i class="iconfont">&#xe629;</i>退换货</a></li>
     </ul>
     <router-view class="child-view"></router-view>
     <bottom-nav></bottom-nav>
@@ -85,9 +85,12 @@ export default {
 	height: 2.2rem;
 }
 .server li{
-	width: 33%;
+	width: 27%;
 	height: 0.9rem;
 	border-right: 1px solid #ccc;
 	padding: 0.2rem;
+}
+.server li.borderNone{
+	border-right: none;
 }
 </style>
