@@ -2,6 +2,7 @@
 <div class="detail_all">
     <div class="detail_top">
         <div class="top_nav">全部产品</div>
+<<<<<<< HEAD
         <div class="top_search">
             <input type="text" placeholder="搜索商品" class="off l"
              v-if="focusD === true" autofocus />
@@ -10,6 +11,11 @@
             <span class="l" v-if="focusD === true" @touchend="focusNone">
                 取消
             </span>
+=======
+        <div class="top_search focusinput">
+            <input type="text" placeholder="搜索商品" class="int" @focus="handleFocus" :style="blocks">
+            <input type="button" value="取消" class="off" v-if="none===true" v-on:click="cli">
+>>>>>>> a910a5b1eddce98f4cecda913ac2f2381dcf9c66
         </div>
     </div>
     <div class="box"></div>
