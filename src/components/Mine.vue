@@ -51,7 +51,7 @@ export default {
     text-align: center;
 }
 .mine_nav a.iconfont{
-	font-size: 20px;
+	font-size: 26px;
 	color: #fff;
 }
 .loginRegisterChunk{
