@@ -39,7 +39,7 @@ export default {
     },
     beforeCreate () {
     	var cla = location.href;
-    	cla = cla.slice(37);
+    	cla = cla.slice(43);
         var that = this;
       // var search = {info_id:this.$route.params.classId}
       var search = {"info_id":cla}
