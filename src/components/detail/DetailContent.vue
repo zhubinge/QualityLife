@@ -1,6 +1,6 @@
 <template>
 <div class="detail_content">
-  <div id="top"><div class="return"><</div>商品介绍</div>
+  <div id="top"><div class="return"><a href="javascript:history.back()" style="color:#fff;font-size:0.5rem;"><</a></div>商品介绍</div>
     <mt-swipe
      id="detail_list"
      v-for=" detailList in detailLists"
@@ -92,13 +92,13 @@ export default {
 }
 
 #top{
-  height: 0.8rem;
+  height: 1rem;
   width: 100%;
   background:#ffda75;
   text-align: center;
   font-size: 0.4rem;
   color: #fff;
-  line-height: 0.8rem
+  line-height: 1rem
 }
 #top .return{
   float: left;
