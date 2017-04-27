@@ -1,7 +1,7 @@
 <template>
 <div class="detail_all">
     <div class="detail_top">
-        <div class="top_nav">全部产品</div>
+        <h2 class="top_nav">全部产品</h2>
         <div class="top_search">
             <input type="text" placeholder="搜索商品">
         </div>
@@ -39,6 +39,7 @@ export default {
         this.$http.get('/api/class/getclass')
           .then((response) => {
             this.detailLists = response.data
+            console.log(this.detailLists)
           })
           .catch((reject) => {
             console.log(reject)
