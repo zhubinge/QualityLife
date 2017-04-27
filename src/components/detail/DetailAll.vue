@@ -1,7 +1,7 @@
 <template>
 <div class="detail_all">
     <div class="detail_top">
-        <h2 class="top_nav">全部产品</h2>
+        <div class="top_nav">全部产品</div>
         <div class="top_search">
             <input type="text" placeholder="搜索商品">
         </div>
