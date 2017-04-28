@@ -37,7 +37,7 @@ export default {
 	width: 100%;
 	height: 1rem;
 	line-height: 1rem;
-    background:#ffda75;
+    background: #ffda75;
     color: #fff; 
     position: fixed;
 }

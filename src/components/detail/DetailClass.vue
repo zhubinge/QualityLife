@@ -1,7 +1,7 @@
 <template>
 <div class="detailClassBody">
 	<div class="top_nav"  v-for="product in productLists">
-        <a href="javascript:history.back()" class="l"> < </a>
+        <a href="javascript:history.back()" class="l"><i class="iconfont">&#xe604;</i></a>
          <p class="l">{{product.class_name}}</p>
 
     </div>
