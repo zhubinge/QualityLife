@@ -37,7 +37,7 @@ export default {
 	width: 100%;
 	height: 1rem;
 	line-height: 1rem;
-    background:#ffda75;
+    background: #ffda75;
     color: #fff; 
     position: fixed;
 }
@@ -110,4 +110,3 @@ export default {
 	border-right: none;
 }
 </style>
->>>>>>> 29a8cc580b690a2084a05d152e346855f68d0e52:src/components/Mine.vue
