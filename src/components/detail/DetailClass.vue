@@ -1,67 +1,53 @@
 <template>
 <div class="detailClassBody">
-	<div class="top_nav"  v-for="product in productLists">
-        <a href="javascript:history.back()" class="l"><i class="iconfont">&#xe604;</i></a>
-         <p class="l">{{product.class_name}}</p>
-
-    </div>
-    <div class="top_nav2">
-        <span>新品</span>
-        <span>畅销</span>
-        <span>价格</span>
-    </div>
-    <div class="productsList">
-        <div v-for="productList in productLists" class="goods">
-            <li :to="'/detail/' + productList.com_id">
-            <img :src="'static/images/commodity/'+productList.com_img">
-            <p>{{productList.com_name}}</p>
-            <div id="bot">
-                <span class="sign" v-if="productList.is_recommend">推荐</span>
-                <span class="newPrice">￥ {{productList.original_price}}</span>
-                <span class="oldPrice">￥{{productList.present_price}}</span>
-                <span class="new" v-if="productList.is_new">新</span>
-                <span class="right">评论：{{productList.sales_count}}</span>
-             </div>
-           </li>
-        </div>
-    </div>
+  <div class="top_nav"  v-for="productList in productLists">
+      <a href="javascript:history.back()" class="l iconfont">&#xe604;</a>
+      <p class="l">{{productList.info_name}}</p>
+  </div>
+  <div class="top_nav2">
+      <span>新品</span>
+      <span>畅销</span>
+      <span>价格</span>
+  </div>
+  <div class="productsList">
+      <div v-for="productList in productLists" class="goods">
+          <li :to="'/detail/' + productList.com_id">
+          <img :src="'static/images/commodity/'+productList.com_img">
+          <p>{{productList.com_name}}</p>
+          <div id="bot">
+              <span class="sign" v-if="productList.is_recommend">推荐</span>
+              <span class="newPrice">￥ {{productList.original_price}}</span>
+              <span class="oldPrice">￥{{productList.present_price}}</span>
+              <span class="new" v-if="productList.is_new">新</span>
+              <span class="right">评论：{{productList.sales_count}}</span>
+           </div>
+         </li>
+      </div>
+  </div>
 </div>
 </template>
 
 <script>
 export default {
   name: 'detail-class',
-    data () {
-        return {
-            productLists:{},
-            productList:{}
-        }
-    },
-    beforeCreate () {
-    	var cla = location.href;
-    	cla = cla.slice(43);
-        var that = this;
-      // var search = {info_id:this.$route.params.classId}
-      var search = {"info_id":cla}
-      console.log(search)
-      this.$http.post('/api/com/getcom',search)
-        .then((response) => {
-          that.productLists = response.data
-          console.log(that.productLists);
-        })
-        .catch((reject) => {
-          // console.log(reject)
-        })
-      // this.$http.get('/api/class/getClass')
-      // .then((response) => {
-      //   that.classLists = response.data
-      //   console.log(that.classLists)
-      // })
-      // .catch((reject) => {
-      //   console.log(reject)
-      // })
-
-    },
+  data () {
+    return {
+      title:'',
+      productLists:{}
+    }
+  },
+  beforeCreate () {
+  	var cla = location.href;
+  	cla = cla.slice(37);
+    var search = {"info_id":cla}
+    this.$http.post('/api/com/getcom',search)
+      .then((response) => {
+        this.productLists = response.data
+        console.log(this.productLists)
+      })
+      .catch((reject) => {
+      })
+  }
 }
 </script>
 <style scoped>
