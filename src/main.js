@@ -5,6 +5,7 @@ import store from './store'
 import 'mint-ui/lib/style.css'
 import jQuery from 'jQuery'
 import VueResource from 'vue-resource'
+
 Vue.use(VueResource)
 window.$ = jQuery
 Vue.config.productionTip = false
