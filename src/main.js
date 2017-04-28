@@ -6,13 +6,14 @@ import 'mint-ui/lib/style.css'
 import jQuery from 'jQuery'
 import VueResource from 'vue-resource'
 import VueScroll from 'vue-scroll'
-import { Loadmore, Spinner, DatetimePicker } from 'mint-ui'
+import { Loadmore, Spinner, DatetimePicker, Picker } from 'mint-ui'
 
 Vue.use(VueResource)
 Vue.use(VueScroll)
 Vue.component(Spinner.name, Spinner)
 Vue.component(Loadmore.name, Loadmore)
 Vue.component(DatetimePicker.name, DatetimePicker)
+Vue.component(Picker.name, Picker)
 window.$ = jQuery
 Vue.config.productionTip = false
 Vue.config.silent = true
