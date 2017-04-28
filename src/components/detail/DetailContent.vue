@@ -43,10 +43,18 @@
       </div>
       <div id="footer">
         <ul>
-          <li class="first"><i class="iconfont">&#xe636;</i>客服</li>
-          <li class="second"><i class="iconfont">&#xe600;</i>首页</li>
-          <li class="third"><i class="iconfont">&#xe60d;</i></li>
-          <li class="fourth" v-on:click="change()">加入购物车</li>
+        <router-link to="/index">
+             <li class="second"><i class="iconfont">&#xe600;</i>首页</li>
+          </router-link>
+          <router-link to="/index">
+            <li class="first"><i class="iconfont">&#xe636;</i>客服</li>
+          </router-link>
+          <router-link to="/cart">
+              <li class="third"><i class="iconfont">&#xe60d;</i></li>
+          </router-link>
+          
+             <li class="fourth" v-on:click="change()">加入购物车</li>
+          
         </ul>
         
       </div>
@@ -342,7 +350,6 @@ a.tag{
   height: 2rem;
   width: 2rem;
   margin:0 auto;
-  padding-top:0.1rem;
   border-radius: 1px solid #0ff;
 }
 #other .cart h3{
@@ -359,5 +366,8 @@ a.tag{
   margin:1.5rem auto;
   display: block;
   color: #fff;
+}
+a{
+  display: inline;
 }
 </style>
