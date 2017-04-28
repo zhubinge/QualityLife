@@ -43,6 +43,25 @@
       </div>
       <h3>商品：</h3>
       <div><span class="name">拖把</span></div>   
+      <div id="footer">
+        <ul>
+          <li class="first"><i class="iconfont">&#xe636;</i>客服</li>
+          <li class="second"><i class="iconfont">&#xe600;</i>首页</li>
+          <li class="third"><i class="iconfont">&#xe60d;</i></li>
+          <li class="fourth" v-on:click="change()">加入购物车</li>
+        </ul>
+        
+      </div>
+      <div id="other" v-if="other">
+        <div class="optt"></div>
+        <div class="cart" v-for="detailLists in detailLists">
+          <h1 v-on:click="change()">X</h1>
+          <img :src="'static/images/commodity/'+detailLists.com_img">
+          <h3>{{detailLists.com_name}}</h3>
+          <button>确定</button>
+        </div>
+      </div>
+ 
   </div>
 </template>
 <script>
@@ -51,7 +70,8 @@ export default {
     data () {
     return {
       detailLists: {},
-      count:0
+      count:1,
+      other:false
     }
   },
   beforeCreate () {
@@ -71,6 +91,12 @@ export default {
     },
     plus:function(){
       this.count++;
+    },
+    change:function(){
+      if(this.other===true){
+        this.other=false;
+      }else{
+      this.other=true}
     }
   }
 
@@ -234,5 +260,106 @@ a.tag{
   background: #ffda75;
   color: #fff;
   border-radius: 10px;
+}
+#footer{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  height: 1.1rem;
+}
+#footer ul{
+  width: 100%;
+  background: #fff;
+  height: 1.1rem;
+  line-height: 1.1rem;
+
+}
+#footer ul li.first{
+  width: 1.5rem;
+  color: #ffda75;
+}
+#footer ul li.second{
+  width: 1.5rem;
+  color: #ffda75
+}
+#footer ul li.third{
+  width: 2rem;
+  height: 1.1rem;
+}
+#footer ul li.third .iconfont{
+  height: 90%;
+  margin-top: 0;
+  font-size: 0.5rem;
+  color: #f60;
+  border: 1px solid #f60;
+  border-radius: 10px;
+  margin-top: 2px;
+  box-sizing: border-box;
+}
+#footer ul li.fourth{
+  width: 2.2rem;
+  height: 1.1rem;
+  background: #ffda75;
+  border-radius: 10px;
+  margin-left: 10px;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  margin-top: 8px;
+  color: #fff;
+  font-size: 0.3rem;
+}
+.iconfont{
+  display: block;
+  height: 0.4rem;
+  margin-top: -0.13rem;
+  font-size: 0.4rem;
+  color: #ffda75
+}
+#other{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 99999
+}
+#other .optt{
+  height: 50%;
+  width: 100%;
+  background: #000;
+  opacity: 0.3;
+}
+#other .cart{
+  background: #fff;
+  height: 50%;
+  width: 100%
+}
+#other .cart h1{
+  text-align: right;
+  height: 1rem;
+  font-weight: 100;
+  font-size: 0.4rem
+}
+#other .cart img{
+  height: 2rem;
+  width: 2rem;
+  margin:0 auto;
+  padding-top:0.1rem;
+  border-radius: 1px solid #0ff;
+}
+#other .cart h3{
+  width: 100%;
+  text-align: center;
+  height: 1rem;
+  line-height: 1rem;
+}
+#other .cart button{
+  width: 3rem;
+  height: 1rem;
+  border-radius: 10px;
+  background: #ffda75;
+  margin:1.5rem auto;
+  display: block;
+  color: #fff;
 }
 </style>
