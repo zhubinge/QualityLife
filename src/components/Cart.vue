@@ -1,13 +1,13 @@
 <template>
 <div class="sum">
 	<div class="header">
-		<router-link to="javascript:history.back()" class="l">?</router-link>
+		<router-link to="javascript:history.back()" class="l iconfont">&#xe604;</router-link>
 		<h2>{{title}}</h2>
 		<span class="iconfont r">&#xf0003;</span>
 	</div>
 	<div class="login">
-		<button>登录</button>
-		<div>你可以在登录后同步电脑与手机购物车中的商品</div>
+		<router-link to="/login"><a href=""><button>登录</button></a></router-link>
+		<span class="log">你可以在登录后同步电脑与手机购物车中的商品</span>
 	</div>
 	<div class="change">
 		<input type="text" class="int l" placeholder="礼品兑换处，请输入兑换码">
@@ -34,15 +34,19 @@
 			</p>
 		</div>
 	</div>
+	<bottom-nav></bottom-nav>
 </div>
 </template>
 <script>
-import HomeTop from './home/HomeTop'
 import BottomNav from './BottomNav'
 export default {
   name: 'cart',
+  data(){
+  	return {
+  		title:'购物车'
+  	}
+  },
   components: {
-    HomeTop,
     BottomNav
   }
 }
@@ -67,16 +71,11 @@ export default {
 .header a,.header span{
 	color: #fff;
 	font-size: 26px;
-	font-weight: bold;
 }
 .header .login{
 	display:flex;
 	height:1rem;
 }
-
-
-
-
 .login{
 	display:flex;
 	flex:10;
