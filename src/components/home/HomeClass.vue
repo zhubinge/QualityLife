@@ -33,7 +33,7 @@ export default {
       .catch((reject) => {
         console.log(reject)
       })
-	}
+  }
 }
 </script>
 <style scoped>

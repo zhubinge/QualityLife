@@ -2,7 +2,7 @@
   <div id="login">
   	<div id="fff">
 		<div id="login_header">
-			<router-link to="javascript :history.back(-1);" class="l">↺</router-link>
+			<router-link to="javascript :history.back(-1);" class="l iconfont">&#xe604;</router-link>
 			<span class="one">登录</span>
 		</div>
 		<div class="two">
@@ -180,7 +180,7 @@ export default {
 #login{
 	width: 7.5rem;
 	height: 13.34rem;
-	background: url("/static/images/login_background_3.jpg") no-repeat center;
+	background: url("/static/images/login_background.jpg") no-repeat center;
 	background-size: auto 100%;
 	position: relative;
 }
