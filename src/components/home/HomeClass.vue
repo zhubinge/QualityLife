@@ -7,7 +7,7 @@
         <router-link tag="li" key="classl" class="l"
         :to="'/index/class/' + classList.class_id"
         v-for="list in classList.class_info">
-          <img :src="'static/images/detailall/' + list.imgSrc">
+          <img :src="'static/images/detail/' + list.imgSrc">
           <p>{{list.text}}</p>
         </router-link>
       </ul>
@@ -27,8 +27,6 @@ export default {
     this.$http.get('/api/class/getclass')
       .then((response) => {
         this.classLists = response.data
-        console.log(this.classLists)
-        console.log(this.this_id-1)
       })
       .catch((reject) => {
         console.log(reject)
