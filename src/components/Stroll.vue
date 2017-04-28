@@ -2,7 +2,7 @@
 <div class="stroll_page">
   <div class="other-top">
     <h2 class="l">闲逛</h2>
-    <a href="/search">搜索</a>
+    <router-link to="/detail/all" class="iconfont">&#xe62c;</router-link>
   </div>
 <!--         v-for="(shopList,idx) in shopLists" -->  
   <div class="waterf" v-for="(shopList,idx) in shopLists">
@@ -149,6 +149,7 @@ export default {
   width: 1rem;
   height: 100%;
   color: #fff;
+  font-size: 20px;
 }
 .stroll_bottom{
   width: 100%;

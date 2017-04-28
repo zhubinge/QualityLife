@@ -12,11 +12,10 @@
      >
       <mt-swipe-item class="l page" v-for="n in detailList.carousel_count"
       key="n">
+          <img :src="'static/images/commodity/carousel_' + detailList.com_id + '_' + n + '.jpg'">
           <img :src="'static/images/commodity/carousel_' + detailList.com_id + '_' + n + '.jpg'" style="height: 8rem;">
-
       </mt-swipe-item>
     </mt-swipe>
-
     <div class="goodstop" v-for="detailLists in detailLists">
       <h3>{{detailLists.com_name}}</h3>
       <span class="newprice price">￥{{detailLists.original_price}}</span>
@@ -39,13 +38,11 @@
       </div>
       <div v-for=" detailList in detailLists">
         <div v-for="n in detailList.detail_count" key="n">
-
-          <img :src="'static/images/commodity/detail_' + detailList.com_id + '_' + n + '.jpg'" style="height: 6rem; width:100%">
-        
-        
+          <img :src="'static/images/commodity/detail_' + detailList.com_id + '_' + n + '.jpg'" style="height: 6rem; width:100%" />
+        </div>
       </div>
-      </div>
-   
+      <h3>商品：</h3>
+      <div><span class="name">拖把</span></div>   
   </div>
 </template>
 <script>
@@ -58,14 +55,11 @@ export default {
     }
   },
   beforeCreate () {
-
-      var search = {com_id:this.$route.params.detailId}
-      this.$http.post('/api/com/getcom',search)
-        .then((response) => {
-          this.detailLists = response.data;
-          console.log(this.detailLists)
-
-      
+    var search = {com_id:this.$route.params.detailId}
+    this.$http.post('/api/com/getcom',search)
+      .then((response) => {
+        this.detailLists = response.data;
+        console.log(this.detailLists)
     })
   },
   methods:{

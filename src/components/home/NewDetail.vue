@@ -2,7 +2,7 @@
   <div class="new-detail">
     <h1>最近一周新品</h1>
     <div v-for="shopList in shopLists" id="goods">
-    	<router-link :to="'/detail/' + shopList.class_info">
+    	<router-link :to="'/detail/' + shopList.com_id">
         <img :src="'static/images/commodity/'+shopList.com_img">
       	<p>{{shopList.com_name}}}</p>
       	<div id="bot">
@@ -13,7 +13,6 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
   name: 'new-detail',
@@ -22,18 +21,17 @@ export default {
       shopLists: {}
     }
   },
-
-
   beforeCreate () {
-          var search = {is_new:true}
-      this.$http.post('/api/com/getcom',search)
-        .then((response) => {
-          this.shopLists = response.data;
-          console.log(this.shopLists.class_info)
-        })
-        .catch((reject) => {
-          console.log(reject)
-        })
+
+    var search = {is_new:true}
+    this.$http.post('/api/com/getcom',search)
+      .then((response) => {
+        this.shopLists = response.data;
+      })
+      .catch((reject) => {
+        console.log(reject)
+      })
+
   },
   methods:{
     search(){

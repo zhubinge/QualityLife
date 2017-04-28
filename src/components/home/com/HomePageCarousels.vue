@@ -1,5 +1,6 @@
 <template>
   <div id="home_carousel_page">
+    <div class="box"></div>
     <mt-swipe
      :auto="4000"
      :speed="500"
@@ -41,6 +42,13 @@ export default {
   width: 100%;
   overflow: hidden;
 }
+#home_carousel_page .box{
+  width: 100%;
+  height: 2rem;
+  overflow: hidden;
+  background: #fff;
+}
+
 #home_carousel{
   height: 5rem;
   overflow: hidden;
