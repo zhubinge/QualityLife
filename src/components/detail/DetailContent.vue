@@ -41,6 +41,8 @@
           <img :src="'static/images/commodity/detail_' + detailList.com_id + '_' + n + '.jpg'" style="height: 6rem; width:100%" />
         </div>
       </div>
+      <h3>商品：</h3>
+      <div><span class="name">拖把</span></div>   
       <div id="footer">
         <ul>
         <router-link to="/index">
