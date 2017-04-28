@@ -19,6 +19,17 @@
     	<li class="l"><a href="#"><i class="iconfont">&#xe630;</i>回复</a></li>
     	<li class="l borderNone"><a href="#"><i class="iconfont">&#xe629;</i>退换货</a></li>
     </ul>
+    <ul class="myMessage">
+    	<li><a href="#"><i class="iconfont">&#xe652;</i>我的订单</a><span class="r"><i class="iconfont">&#xe609;</i></span></li>
+    	<li><a href="#"><i class="iconfont">&#xe605;</i>我的优惠券</a><span class="r"><i class="iconfont">&#xe609;</i></span></li>
+    	<li><a href="#"><i class="iconfont">&#xe61c;</i>现金积分</a><span class="r"><i class="iconfont">&#xe609;</i></span></li>
+    	<li><a href="#"><i class="iconfont">&#xe684;</i>关于发票</a><span class="r"><i class="iconfont">&#xe609;</i></span></li>
+    	<li><a href="#"><i class="iconfont">&#xf0003;</i>密码和登陆信息</a><span class="r"><i class="iconfont">&#xe609;</i></span></li>
+    	<li><a href="#"><i class="iconfont">&#xe652;</i>老会员建议</a><span class="r"><i class="iconfont">&#xe609;</i></span></li>
+    	<li><a href="#"><i class="iconfont">&#xe80a;</i>客户服务</a><span class="r"><i class="iconfont">&#xe609;</i></span></li>
+    	<li><a href="#"><i class="iconfont">&#xe5b4;</i>地址管理</a><span class="r"><i class="iconfont">&#xe609;</i></span></li>
+    	<li><a href="#"><i class="iconfont">&#xe6e2;</i>手机验证</a><span class="r"><i class="iconfont">&#xe609;</i></span></li>
+    </ul>
     <router-view class="child-view"></router-view>
     <bottom-nav></bottom-nav>
 </div>
@@ -52,19 +63,19 @@ export default {
 }
 .loginRegisterChunk p{
 	width: 100%;
-	height: 1rem;
-	line-height: 1rem;
+	height: 0.8rem;
+	line-height: 0.8rem;
 	text-align: center;
 	font-size: 16px;
 	font-weight: bold;
-	color: #666;
+	color: #fff;
 }
 .loginRegisterChunk .loginRegisterBoxWords{
 	padding: 0.1rem;
 	width: 4rem;
 	margin-left: 25%;
 	height: 0.6rem;
-	border:1px solid #ffda75;
+	border:2px solid #ffda75;
 	border-radius: 0.5rem; 
 }
 .loginRegisterChunk .loginRegisterBoxWords span{
@@ -82,15 +93,60 @@ export default {
 }
 .server{
 	width: 100%;
-	height: 2.2rem;
+	overflow: hidden;
+	border-bottom: 1px solid #ccc;
 }
 .server li{
-	width: 27%;
-	height: 0.9rem;
-	border-right: 1px solid #ccc;
-	padding: 0.2rem;
+	width: 33%;
+	height: 0.6rem;
+	padding:0.2rem 0;
 }
-.server li.borderNone{
+.server li a{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	border-right: 1px solid #ccc;
+}
+.iconfont{
+	font-size: 20px;
+	margin-right: 0.2rem;
+}
+.server li.borderNone a{
 	border-right: none;
+}
+.myMessage{
+	padding-left:0.2rem;
+}
+.myMessage li a{
+	display: inline-block;
+	height: 1rem;
+	line-height: 1rem;
+}
+.myMessage li:nth-child(1) a .iconfont:nth-child(1){
+	color: #00d800;
+}
+.myMessage li:nth-child(2) a .iconfont:nth-child(1){
+	color: #00d800;
+}
+.myMessage li:nth-child(1) a .iconfont:nth-child(1){
+	color: #00d800;
+}
+.myMessage li:nth-child(1) a .iconfont:nth-child(1){
+	color: #00d800;
+}
+.myMessage li:nth-child(1) a .iconfont:nth-child(1){
+	color: #00d800;
+}
+.myMessage li:nth-child(1) a .iconfont:nth-child(1){
+	color: #00d800;
+}
+.myMessage li:nth-child(1) a .iconfont:nth-child(1){
+	color: #00d800;
+}
+.myMessage li:nth-child(1) a .iconfont:nth-child(1){
+	color: #00d800;
+}
+.myMessage li:nth-child(1) a .iconfont:nth-child(1){
+	color: #00d800;
 }
 </style>
