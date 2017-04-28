@@ -1,16 +1,13 @@
 <template>
 <div class="sum">
 	<div class="header">
-		<span class="s"><a href="javascript:history.back()">&lt;</a></span>
-		<h1 class="h">购物车</h1>
-		<div class="alter">
-			<span class="iconfont">&#xf0003;</span>
-			<p>修改</p>
-		</div>
+		<router-link to="javascript:history.back()" class="l">?</router-link>
+		<h2>{{title}}</h2>
+		<span class="iconfont r">&#xf0003;</span>
 	</div>
 	<div class="login">
-		<router-link to="/login"><a href=""><button>登录</button></a></router-link>
-		<span class="log">你可以在登录后同步电脑与手机购物车中的商品</span>
+		<button>登录</button>
+		<div>你可以在登录后同步电脑与手机购物车中的商品</div>
 	</div>
 	<div class="change">
 		<input type="text" class="int l" placeholder="礼品兑换处，请输入兑换码">
@@ -55,42 +52,31 @@ export default {
 	background:#fff;
 }
 .header{
-	background:#ffda75;
 	width:100%;
 	height:1rem;
-	text-align:center;
 	line-height:1rem;
-	display:flex;
-	flex:10;
+	background:#ffda75;
+	text-align:center;
+	box-sizing: border-box;
 	color:#fff;
+	padding: 0 0.3rem;
 }
-.header a{
-	color:#fff;
+.header h2{
+	display: inline-block;
 }
-.header .s{
-	flex:2;
+.header a,.header span{
+	color: #fff;
 	font-size: 26px;
+	font-weight: bold;
 }
-.header .h{
-	flex:6;
-	font-size: 20px;
-}
-.header .alter{
-	flex:2;
-	margin-right:.2rem;
-}
-.header .alter{
+.header .login{
 	display:flex;
-	flex:2;
+	height:1rem;
 }
-.header .alter span{
-	flex:1;
-	font-size: 26px;
-}
-.header .alter p{
-	flex:1;
-	font-size: 18px;
-}
+
+
+
+
 .login{
 	display:flex;
 	flex:10;
@@ -158,6 +144,9 @@ export default {
 	display:inline-block;
 	margin-left: .1rem;	
 }
+
+
+
 .horse{
 	height:2rem;
 	border-bottom:1px solid #e7e7e7;

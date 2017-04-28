@@ -1,9 +1,17 @@
 <template>
-<div class="home">
-	<home-top></home-top>
-    <router-view class="child-view"></router-view>
-	<bottom-nav></bottom-nav>
-</div>
+  <div class="home">
+    <mt-loadmore class="mint-loadmore-top" slot="top">
+    hhhhhhh
+    </mt-loadmore>
+    <home-top></home-top>
+    <mt-loadmore :top-method="loadTop" 
+      :bottom-method="loadBottom" 
+      :bottom-all-loaded="allLoaded" 
+      ref="loadmore">
+      <router-view class="child-view"></router-view>
+    </mt-loadmore>
+  	<bottom-nav></bottom-nav>
+  </div>
 </template>
 <script>
 import HomeTop from './home/HomeTop'
