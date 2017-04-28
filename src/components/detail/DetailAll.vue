@@ -2,9 +2,15 @@
 <div class="detail_all">
     <div class="detail_top">
         <div class="top_nav">全部产品</div>
-        <div class="top_search focusinput">
-            <input type="text" placeholder="搜索商品" class="int" @focus="handleFocus" :style="blocks">
-            <input type="button" value="取消" class="off" v-if="none===true" v-on:click="cli">
+        <div class="top_search">
+            <input type="text" placeholder="搜索商品" class="off l"
+             v-if="focusD === true" autofocus />
+            <input type="text" placeholder="搜索商品" class="int" 
+            @touchend="handleFocus" v-if="focusD === false" 
+             disabled autocomplete="off"/>
+            <span class="l" v-if="focusD === true" @touchend="focusNone">
+                取消
+            </span>
         </div>
     </div>
     <div class="box"></div>
@@ -18,11 +24,12 @@
              :to="'/detail/class/' + list.info_id"
              :key="idx"
              >
-                <img :src="'static/images/dateilall/' + list.imgSrc"/>
+                <img :src="'static/images/detailall/' + list.imgSrc"/>
                 <p class="detail_text">{{list.text}}</p>
             </router-link>
         </ul>
     </div>
+    <div class="box2"></div>
     <bottom-nav></bottom-nav>
 </div>
 </template>
@@ -34,21 +41,15 @@ export default {
     data () {
         return {
             detailLists:{},
-            none:false,
-            blocks:{
-                width:'90%',
-                left: null
-            }
+            focusD:false
         }
     },
     methods: {
         handleFocus: function() {
-           this.none=true,
-           this.blocks.left = 0
+           this.focusD = true
         },
-        cli: function() {
-            this.none=false,
-            this.blocks.left = '0.4rem'
+        focusNone: function() {
+            this.focusD = false
         }
     },
     beforeCreate () {
@@ -89,35 +90,44 @@ export default {
     height: 1.2rem;
     line-height: 1.2rem;
     background:#f2f2f2;
-    border-bottom: 0.02rem solid #666;
-    position:relative;
+    box-sizing: border-box;
+    padding: 0 0.3rem;
+    overflow: hidden;
 }
 .detail_all .detail_top .top_search .int{
     display:inline-block;
+    width: 90%;
     height: 0.8rem;
+    background: #fff;
     font-size: 16px; 
     text-align: center;
     border-radius: 0.2rem;
-    background-image: url(/static/images/search.png);
-    background-repeat: no-repeat;
-    background-position: 1.7rem .1rem;
-    position:absolute;
-    top:0.2rem;
-    left:0.4rem;
 }
 .detail_all .detail_top .top_search .off{
-    height:0.8rem;
-    width:20%;
-    position:absolute;
-    top:0.19rem;
-    right:0;
-/*    display:none;  */
-    background:#f2f2f2;
-    color:black;
+    display:inline-block;
+    width: 88%;
+    height: 0.8rem;
+    background: #fff;
+    font-size: 16px;
+    text-align: left;
+    text-indent: 1em;
+    border-radius: 0.2rem;
+    margin-top: 0.2rem;
 }
+.detail_all .detail_top .top_search span{
+    display: block;
+    width: 12%;
+    height: 0.8rem;
+    text-align: center;
+}
+
 .detail_all .box{
     width: 100%;
     height: 2.2rem;
+}
+.detail_all .box2{
+    width: 100%;
+    height: 1rem;
 }
 .detail_all .detail_box{
     width:100%;

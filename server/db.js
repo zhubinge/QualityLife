@@ -12,7 +12,7 @@ db.once('error',() => console.log('Mongo connection error'));
 db.once('open',() => {console.log('Mongo connection successed')});
 /************** 定义模式loginSchema **************/
 const loginSchema = mongoose.Schema({
-    account : String,
+    username : String,
     password : String
 });
 const homeSchema = mongoose.Schema({

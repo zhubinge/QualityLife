@@ -1,42 +1,43 @@
 <template>
   <div id="login">
+  	<div id="fff">
 		<div id="login_header">
-			<router-link to="/index" class="l">↺</router-link>
+			<router-link to="javascript :history.back(-1);" class="l">↺</router-link>
 			<span class="one">登录</span>
 		</div>
 		<div class="two">
 			<div class="ipt-box">
-				<input type="text" placeholder="请输入手机号"
-					onfocus="this.placeholder=''" 
-					onblur="this.placeholder='请输入手机号'"
-					class="ipt" v-if="tel" ref="tel"
-					>
 				<input type="text" placeholder="用户名"
 					onfocus="this.placeholder=''" 
 					onblur="this.placeholder='用户名'"
 					class="ipt" v-if="user" ref="user"
-					>
-				<b v-if="rule === true" class="ok">√</b>
-				<b v-if="rule === false" class="no">×</b>
-				<b v-if="rule === 0" class="atwill">○</b>
+					@input="ruleFun">
+				<b v-if="ruleu === true" class="ok">√</b>
+				<b v-if="ruleu === false" class="no">×</b>
+				<b v-if="ruleu === 0" class="atwill"></b>
 			</div>
-			<input type="password" placeholder="请输入密码"
-				onfocus="this.placeholder=''"
-				onblur="this.placeholder='请输入密码'"
-				class="ipt" ref="password"
-				>
-			<button @touchend="ruleFun">登录</button>
-			<button @touchend="ruleFun">注册</button>
-			<span v-if="tel" @touchend="userFun">切换到用户名登录 ⇆</span>
-			<span v-if="user" @touchend="telFun">切换到手机号登录 ⇆</span>
-			<p class="rule ok" v-if="rule === true">* 密码8-16位,必须以字母开头,<br/>&nbsp;&nbsp;包含数字、字母、下划线</p>
-			<p class="rule no" v-if="rule === false">* 密码8-16位,必须以字母开头,<br/>&nbsp;&nbsp;可以包含数字、字母、下划线</p>
-			<p class="rule atwill" v-if="rule === 0">* 密码8-16位,必须以字母开头,<br/>&nbsp;&nbsp;可以包含数字、字母、下划线</p>
+			<div class="ipt-box">
+				<input type="text" placeholder="请输入密码"
+					onfocus="this.placeholder=''"
+					onblur="this.placeholder='请输入密码'"
+					class="ipt" ref="password"
+					@input="ruleFun">
+				<b v-if="rulep === true" class="ok">√</b>
+				<b v-if="rulep === false" class="no">×</b>
+				<b v-if="rulep === 0" class="atwill"></b>
+			</div>
+			<button @touchend="login">登录</button>
+			<button @touchend="ruleFun('reg')">注册</button>
+			<p class="rule ok" v-if="ruleu === true && rulep === true">* 密码8-16位,必须以字母开头,<br/>&nbsp;&nbsp;并且包含数字/字母/下划线,<br/>&nbsp;&nbsp;不能是纯数字/字母/下划线。</p>
+			<p class="rule no" v-if="ruleu === false || rulep === false">* 密码8-16位,必须以字母开头,<br/>&nbsp;&nbsp;并且包含数字/字母/下划线,<br/>&nbsp;&nbsp;不能是纯数字/字母/下划线。</p>
+			<p class="rule atwill" v-if="ruleu === 0 && rulep === 0">* 密码8-16位,必须以字母开头,<br/>&nbsp;&nbsp;并且包含数字/字母/下划线,<br/>&nbsp;&nbsp;不能是纯数字/字母/下划线。</p>
 		</div>
+	</div>
   </div>
 </template>
 
 <script>
+import { Toast } from 'mint-ui'
 export default {
 	name: 'login',
 	data () {
@@ -44,161 +45,162 @@ export default {
 			tel: false,
 			user: true,
 			userRule: /^[A-Za-z]{1}\w{8,16}/,
-		    rule: 0
+		    rulep: 0,
+		    ruleu: 0
 	  	}
 	},
 	components: {
 	},
 	methods: {
-    	telFun () {
-	  		this.$refs.user.value = ''
-	  		this.$refs.password.value = ''
-			this.user = false
-	  		this.tel = true
-	  	},
-	  	userFun () {
-	  		this.$refs.tel.value = ''
-	  		this.$refs.password.value = ''
-	  		this.tel = false
-	  		this.user = true
-	  	},
+		alertFun (message) {
+			Toast({
+				message: message ,
+				position: 'center',
+				duration: 2000
+			});
+		},
 	  	setCookie(){
 		  	document.cookie = 'user=' + this.$refs.user.value
-		  	// console.log(document.cookie)
+		  	console.log(document.cookie)
 	  	},
-	  	ruleFun () {
+	  	ruleFun (reg) {
 	  		let params = { 
-            	account : this.$refs.user.value, //this.account,
-            	password : this.$refs.password.value //this.password
+            	username : this.$refs.user.value,
+            	password : this.$refs.password.value
             };
 	  		if (this.$refs.password.value !== '' && this.$refs.password.value !== undefined ) {
-		  		if (this.user === true && this.$refs.user.value !== '' && this.$refs.user.value !== undefined ) {
+		  		this.rulep = true
+		  		if ( this.$refs.user.value !== '' && this.$refs.user.value !== undefined ) {
 		  			let userRule = this.userRule
 		  			if(userRule.test(this.$refs.user.value)){
-		  				this.rule = true
-		  				alert('注册成功,请登录！')
-		  				this.setCookie()
-		  				this.login(params);
+		  				this.ruleu = true
+		  				//格式验证成功，数据库校验用户名
+		  				if(reg === 'reg'){
+		  					this.$refs.user.value = ''
+				  			this.$refs.password.value = ''
+			  				this.isExist(params);
+		  				}else{
+		  					return
+		  				}
 					}else{
-		  				this.rule = false
-						alert('false')
+		  				this.ruleu = false
+		  				if (reg === 'reg') {
+		  					this.$refs.user.value = ''
+				  			this.$refs.password.value = ''
+			  				this.alertFun(
+			  					'密码8-16位,必须以字母开头，' +
+			  					'可以包含数字、字母、下划线。' +
+			  					'请重新输入！'
+			  				)
+		  				}
 		  			}
-	  				this.$refs.user.value = ''
-			  		this.$refs.password.value = ''
-		  		}else if (this.tel === true && this.$refs.tel.value !== '' && this.$refs.tel.value !== undefined ) {
-		  			console.log('tel----' + this.$refs.tel.value)
-		  			console.log('password----' + this.$refs.password.value)
-		  			this.$refs.tel.value = ''
-		  			this.$refs.password.value = ''
 		  		}else{
-		  			alert('请输入正确的用户名/手机号！！')
+		  			this.rulep = false
+		  			if (reg === 'reg') {
+		  				this.$refs.user.value = ''
+				  		this.$refs.password.value = ''
+						this.alertFun('密码不能为空，请重新输入！')
+		  			}
 		  		}
 	  		}else{
-				this.$refs.user.value = ''
-				alert('密码不能为空！')
+		  		this.ruleu = false
+		  		if (reg === 'reg') {
+		  			this.$refs.user.value = ''
+				  	this.$refs.password.value = ''
+					this.alertFun('密码不能为空，请重新输入！')
+		  		}
 	  		}
 	  	},
-    	register () {
-	        // 获取已有账号密码
-            let params = { 
-              account : this.account,
-              password : this.password
-            };
-	        this.$http.get('/api/login/getAccount',params)
+	  	isExist (params) {
+	        this.$http.post('/api/login/getaccount',params)
+	        	.then((res) => {
+	            	if (res.data.status) {
+	            		if (res.data.status === 1) {
+	            			//用户名不存在，可以注册
+	            			this.register (params)
+	            		}else if(res.data.status === 2){
+	            			//用户名已存在
+							this.alertFun('用户名已存在，请重新输入！')
+	            		}else if(res.data.status === 0){
+	            			//数据库响应失败
+							this.alertFun('服务器响应失败，请稍候重试！')
+	            		}else{
+							this.alertFun('注册失败，请重试！')
+	            		}
+	            	}
+	        	})
+		        .catch((reject) => {
+		        	console.log(reject)
+		        })
+	  	},
+    	register (params) {
+	        this.$http.post('/api/login/createAccount',params)
 	          .then((response) => {
-	            // 响应成功回调
-	            console.log(response.data)
-	            let res = response.data
-	            for (let i = 0; i < res.length; i++) {
-		            for (let key in res[i]){
-		            	console.log( key + "-------" + res[i][key])
-		            }	            	
-	            }
-
-	            // 创建一个账号密码
-	            // return this.$http.post('/api/login/createAccount',params);
+	          	if(response.data.status === 1){
+					this.alertFun('注册成功，请登录！')
+	          	}else if(response.data.status === 0){
+					this.alertFun('服务器响应失败，请稍候重试！')
+	          	}else{
+					this.alertFun('注册失败，请重试！')
+	          	}
 	          })
-	          // .then((response) => {
-	          //   console.log(response)
-	          // })
 	          .catch((reject) => {
 	            console.log(reject)
 	          })
 		},
 		login (params) {
 	        // 获取已有账号密码
-	        this.$http.get('/api/login/getAccount',params)
+	        this.$http.post('/api/login/getAccount',params)
 	        	.then((res) => {
-	            // 响应成功回调,进行格式化取值,判断是否有相同用户名
-            	var obj = this.pretty(res,params.account,params.password,'login')
-            	console.log(obj)
-	        })
-	    },
-	    pretty (res,user,passwd,type) {
-            let bodytext, respon;
-            let username = [] , pwd = [];
-        	for(let key in res){
-        		if (key === 'bodyText') {
-        			bodytext = Object.assign(JSON.parse(res[key]))
-		        }
-            }
-            let exist;
-        	for(let val in bodytext){
-        		if (bodytext[val].account === user) {
-        			//有此用户
-		           if(type === "register"){
-		           	 //如果是注册就返回
-		           		return 
-		            }
-        		}else{
-        			//没有此用户
-        			exist = false
-        		}
-        	}
-    		if (exist === true) {
-    			if (bodytext[val].password === passwd) {
-    				return true
-    			}else{
-    				//密码不匹配
-    				return 'no'
-    			}
-    		}else{
-    			return false
-    		}
+	            	console.log(res.data)
+	            	if (res.data.status) {
+	            		if (res.data.status === 1) {
+	            			//用户名不存在，可以注册
+							this.alertFun('用户名密码不匹配，请重新输入！')
+	            		}else if(res.data.status === 2){
+	            			//用户名密码匹配成功
+			  				// this.setCookie()
+							this.alertFun('登陆成功！')
+	            		}else if(res.data.status === 0){
+	            			//数据库响应失败
+							this.alertFun('服务器响应失败，请稍候重试！')
+	            		}else{
+							this.alertFun('注册失败，请重试！')
+	            		}
+	            	}
+	        	})
+	          .catch((reject) => {
+	            console.log(reject)
+	          })
 	    }
 	}
 }
-
-	          // // .then((response) => {
-	          // //   console.log(response)
-	          // // })
-	          // .catch((reject) => {
-	          //   console.log(reject)
 </script>
 <style scoped>
 #login{
 	width: 7.5rem;
 	height: 13.34rem;
-	background: url("/static/images/login_background.jpg") no-repeat center;
+	background: url("/static/images/login_background_3.jpg") no-repeat center;
 	background-size: auto 100%;
 	position: relative;
 }
 #login #login_header{
 	height: 1rem;
 	line-height: 1rem;
-	background-color: rgba(255,255,255,.5);
+	background-color: #ffda75;
 	text-align: center;
 	padding: 0 0.18rem;
-	color: #666;
+	color: #000;
 	font-size: 20px;
 }
 #login #login_header a{
+	color: #000;
 	font-size: 20px;
 }
 #login .two{
 	width: 6.4rem;
 	position: absolute;
-	bottom: 2rem;
+	bottom: 1.3rem;
 	left: 50%;
 	margin-left: -3.2rem;
 	overflow: hidden;
@@ -209,15 +211,20 @@ export default {
 #login .two .ipt-box b{
 	margin: 0;
 	display: block;
-	width: 0.6rem;
-	height: 0.6rem;
-	line-height: 0.4rem;
+	width: 0.5rem;
+	height: 0.5rem;
+	line-height: 0.55rem;
+	border: 0.04rem solid #fff;
+	border-radius: 50%;
 	position: absolute;
-	right: 0;
+	right: 0rem;
 	top: 50%;
-	margin-top: -0.3rem;
+	margin-top: -0.25rem;
 	text-align: center;
-	font-size: 50px;
+	font-size: 20px;
+}
+#login .two .ipt-box b.no{
+	line-height: 0.5rem;
 }
 #login .two input,#login .two button,#login .two a{
 	display: block;
@@ -228,25 +235,32 @@ export default {
 	border-bottom: 0.02rem solid #666;
 	background: none;
 	font-size: 18px;
+	color: #ffda75;
+}
+#login .two input{
+	width: 88%;
+	background: rgba(0,0,0,0.3);
+	border-radius: 0.2rem;
 }
 ::-webkit-input-placeholder{
-	color: #888; 
+	color: #ccc;
 } 
 :-moz-placeholder {
-	color: #888; 
+	color: #ccc; 
 } 
 ::-moz-placeholder {
-	color: #888; 
+	color: #ccc; 
 } 
 :-ms-input-placeholder {
-	color: #888; 
+	color: #ccc; 
 } 
 #login .two input.ipt{
 	text-indent: 1em;
 }
 #login .two button,#login .two a{
 	border: 0;
-	background-color: rgba(444,444,444,0.4);
+	color: #000;
+	background: #ffda75;
 	border-radius: 0.2rem;
 }
 #login .two span{
@@ -257,6 +271,7 @@ export default {
 }
 #login .two p.rule{
 	font-weight: bold;
+	margin-top: 0.5rem;
 }
 #login .two .ok{
 	color: green;
@@ -264,11 +279,6 @@ export default {
 #login .two .no{
 	color: red;
 }
-#login .two p.atwill{
-	color: blue;
-}
-#login .two p.atwill{
-	color: #ccc;
-}
+
 
 </style>

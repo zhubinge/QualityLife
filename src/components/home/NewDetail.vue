@@ -13,7 +13,6 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
   name: 'new-detail',
@@ -22,18 +21,17 @@ export default {
       shopLists: {}
     }
   },
-
-
   beforeCreate () {
-          var search = {is_new:true}
-      this.$http.post('/api/com/getcom',search)
-        .then((response) => {
-          this.shopLists = response.data;
-       
-        })
-        .catch((reject) => {
-          console.log(reject)
-        })
+
+    var search = {is_new:true}
+    this.$http.post('/api/com/getcom',search)
+      .then((response) => {
+        this.shopLists = response.data;
+      })
+      .catch((reject) => {
+        console.log(reject)
+      })
+
   },
   methods:{
     search(){
