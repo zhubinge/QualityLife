@@ -42,7 +42,6 @@
   </div>
 </template>
 <script>
-//v-if="
 export default {
   name: 'home-class',
   data () {
@@ -61,8 +60,9 @@ export default {
       .catch((reject) => {
         console.log(reject)
       })
+  },
   watch:{
-    '$route': 'getCom'
+    $route: 'getCom'
   },
   methods:{
     getCom(){
@@ -93,7 +93,6 @@ export default {
   created(){
     this.getCom()
   }
-}
 }
 </script>
 <style scoped>
