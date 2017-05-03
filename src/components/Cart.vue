@@ -21,7 +21,7 @@
 		<span class="s">满300，全场75折，截止4月28日</span>
 	</div>
 	<div class="horse">
-		<span class="f"></span>
+		<button class="f" v-if="change === false"></button>
 		<img src="static/images/cart.jpg">
 		<div class="content">
 			<p class="s">
@@ -54,8 +54,49 @@
 		<p>查看凑单单位<span>＞</span></p>
 	</div>
 	<div class="img">
-		
+		<ul>
+			<li>
+				<img src="/static/images/detailall/703.jpg">
+				<p>不伤手的立白</p>
+				<p>￥19</p>
+			</li>
+			<li>
+				<img src="/static/images/detailall/704.jpg">
+				<p>不伤手的立白</p>
+				<p>￥19</p>
+			</li>
+			<li>
+				<img src="/static/images/detailall/705.jpg">
+				<p>不伤手的立白</p>
+				<p>￥19</p>
+			</li>
+			<li>
+				<img src="/static/images/detailall/706.jpg">
+				<p>不伤手的立白</p>
+				<p>￥19</p>
+			</li>
+			<li>
+				<img src="/static/images/detailall/707.jpg">
+				<p>不伤手的立白</p>
+				<p>￥19</p>
+			</li>
+		</ul>
 	</div>
+	<div class="foot">
+		<div class="f l">
+			<span v-if="change === false" v-on:click="cli"></span>
+			<span class="o">全选</span>
+		</div>
+		<div class="s l">
+			<p>合计：￥0</p>
+			<p>商品 ￥0 - 优惠 ￥0</p>
+		</div>
+		<div class="t l">
+			<p v-if="change === false">去结算</p>
+		</div>
+	</div>
+	<div class="faker"></div>
+	<bottomNav></bottomNav>
 </div>
 </template>
 <script>
@@ -64,6 +105,17 @@ import HomeTop from './home/HomeTop'
 import BottomNav from './BottomNav'
 export default {
   name: 'cart',
+  data () {
+  	return {
+  		change: false
+  	}
+  },
+  methods: {
+  	cli: function(){
+  		change: true
+  		background: "green"
+  	}
+  },
   components: {
     HomeTop,
     BottomNav
@@ -78,6 +130,7 @@ export default {
 <style scoped>
 .sum{
 	background:#fff;
+/*	position: relative;*/
 }
 .header{
 	background:#ffda75;
@@ -275,5 +328,59 @@ export default {
 .order p:nth-child(2) span{
 	font-size:16px;
 	margin-left:.2rem;
+}
+.img{
+    width: 1069px;
+    height: 3.3rem;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    border-bottom: 1px solid #e7e7e7;
+}
+.img ul{
+	width:1069px;
+}
+.img ul li{
+	width:2rem;
+	height:3rem;
+	display:inline-block;
+	float:left;
+}
+.foot{
+	height:1rem;
+	background:#fff;
+	border-bottom:1px solid #e7e7e7;
+}
+.foot .f span:nth-child(1){
+	display:inline-block;
+	width:.4rem;
+	height:.4rem;
+	border-radius: 100%;
+	border:1px solid #a9a9a9;
+	margin-top:.3rem;
+	margin-left:.4rem;
+	float: left;
+}
+.foot .f .o{
+	margin-top:.3rem;
+	margin-left:.2rem;
+	float:left;
+}
+.foot .s{
+	margin-left:1.5rem;
+	margin-top:.1rem;
+	margin-right:.1rem;
+}
+.foot .s p{
+	text-align:right;
+}
+.foot .t{
+	width:1.8rem;
+	height:1rem;
+	background:#666;
+	text-align:center;
+	line-height:1rem;
+}
+.faker{
+	height:1rem;
 }
 </style>
