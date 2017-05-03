@@ -10,6 +10,7 @@ router.post('/api/login/createAccount',(req,res) => {
         username : req.body.username,
         password : req.body.password
     });
+    console.log(req.body)
     newAccount.save((err,data) => {
         if (err) {
             res.send({status:2,err:err});
@@ -39,6 +40,15 @@ router.post('/api/login/getAccount',(req,res) => {
         }
     });
 });
+router.get('/api/login/getAccount',(req,res) => {
+    models.Login.find((err,data) => {
+        if (err) {
+            res.send({status:3,err:err});
+        } else {
+            res.send(data)
+        }
+    });
+});
 router.post('/api/home/getcontent',(req,res) => {
     models.Home.find(req.body,(err,data) => {
         if (err) {
@@ -64,7 +74,7 @@ router.post('/api/com/getcom',(req,res) => {
         } else {
             res.send(data);
         }
-    });
+    }).sort({info_id:1});
 });
 
 module.exports = router;

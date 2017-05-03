@@ -8,16 +8,13 @@
       <ul class="twoul">
         <router-link to="/index/home" tag="li" active-class="active" class="l">首页</router-link>
         <router-link to="/index/newdetail" tag="li" active-class="active" class="l">新品</router-link>
-        <router-link tag="li" active-class="active" class="l" key="classList"
+        <router-link 
+         tag="li"
+         active-class="active"
+         class="l" key="classList"
          v-for="classList in classLists" :to="'/index/class/' + classList.class_id">
-         {{classList.class_name}}</router-link>
-<!--         <router-link to="/index/kitchen" tag="li" active-class="active" class="l">厨房餐饮</router-link>
-        <router-link to="/index/life" tag="li" active-class="active" class="l">家居布艺</router-link>
-        <router-link to="/index/decorate" tag="li" active-class="active" class="l">节日礼品</router-link>
-        <router-link to="/index/bedding" tag="li" active-class="active" class="l">床品</router-link>
-        <router-link to="/index/travel" tag="li" active-class="active" class="l">园艺</router-link>
-        <router-link to="/index/know" tag="li" active-class="active" class="l">收纳整理</router-link>
-        <router-link to="/index/about" tag="li" active-class="active" class="l">关于{{title}}</router-link> --> 
+         {{classList.class_name}}
+        </router-link>
       </ul>
     </div>
   </header>
@@ -30,8 +27,6 @@ export default {
       title:'Quality Life',
       classLists:[]
     }
-  },
-  components: {
   },
   beforeCreate () {
     this.$http.get('/api/class/getclass')

@@ -13,7 +13,8 @@ db.once('open',() => {console.log('Mongo connection successed')});
 /************** 定义模式loginSchema **************/
 const loginSchema = mongoose.Schema({
     username : String,
-    password : String
+    password : String,
+    tel : Number
 });
 const homeSchema = mongoose.Schema({
     content : String

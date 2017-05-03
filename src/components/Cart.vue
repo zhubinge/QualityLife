@@ -1,12 +1,9 @@
 <template>
 <div class="sum">
 	<div class="header">
-		<span class="s"><a href="javascript:history.back()">&lt;</a></span>
-		<h1 class="h">购物车</h1>
-		<div class="alter">
-			<span class="iconfont">&#xf0003;</span>
-			<p>修改</p>
-		</div>
+		<router-link to="javascript:history.back()" class="l iconfont">&#xe604;</router-link>
+		<h2>{{title}}</h2>
+		<span class="iconfont r">&#xf0003;</span>
 	</div>
 	<div class="login">
 		<router-link to="/login"><a href=""><button>登录</button></a></router-link>
@@ -105,19 +102,12 @@ import HomeTop from './home/HomeTop'
 import BottomNav from './BottomNav'
 export default {
   name: 'cart',
-  data () {
+  data(){
   	return {
-  		change: false
-  	}
-  },
-  methods: {
-  	cli: function(){
-  		change: true
-  		background: "green"
+  		title:'购物车'
   	}
   },
   components: {
-    HomeTop,
     BottomNav
   },
   methods: {
