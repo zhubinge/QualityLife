@@ -6,31 +6,67 @@
 			<span class="one">登录</span>
 		</div>
 		<div class="two">
-			<div class="ipt-box">
+			<div class="ipt-box"  v-if="user">
 				<input type="text" placeholder="用户名"
 					onfocus="this.placeholder=''" 
 					onblur="this.placeholder='用户名'"
-					class="ipt" v-if="user" ref="user"
-					@input="ruleFun">
+					class="ipt" ref="user"
+					v-model="params.username"
+					@input="ruleFun('u')">
+				<b v-if="ruleu === true" class="ok">√</b>
+				<b v-if="ruleu === false" class="no">×</b>
+				<b v-if="ruleu === 0" class="atwill"></b>
+			</div>
+			<div class="ipt-box"  v-if="tel">
+				<input type="text" placeholder="手机号码"
+					onfocus="this.placeholder=''" 
+					onblur="this.placeholder='手机号码'"
+					class="ipt"ref="tel"
+					v-model="params.tel"
+					@input="ruleFun('t')">
 				<b v-if="ruleu === true" class="ok">√</b>
 				<b v-if="ruleu === false" class="no">×</b>
 				<b v-if="ruleu === 0" class="atwill"></b>
 			</div>
 			<div class="ipt-box">
+<!-- 			vue-validator 内置一些常用的验证规则：
+				required — 输入值不能为空
+				pattern — 必须匹配pattern表示的正则表达式
+				minlength — 输入值长度不能小于minlength表示的值
+				maxlength — 输入的值不能大于maxlength表示的值
+				min — 输入值不能小于min表示的值
+				max — 输入值不能大于max表示的值 -->
 				<input type="text" placeholder="请输入密码"
 					onfocus="this.placeholder=''"
 					onblur="this.placeholder='请输入密码'"
 					class="ipt" ref="password"
-					@input="ruleFun">
+					v-model="params.password"
+					pattern
+					@input="ruleFun('p')">
 				<b v-if="rulep === true" class="ok">√</b>
 				<b v-if="rulep === false" class="no">×</b>
 				<b v-if="rulep === 0" class="atwill"></b>
 			</div>
 			<button @touchend="login">登录</button>
-			<button @touchend="ruleFun('reg')">注册</button>
-			<p class="rule ok" v-if="ruleu === true && rulep === true">* 密码8-16位,必须以字母开头,<br/>&nbsp;&nbsp;并且包含数字/字母/下划线,<br/>&nbsp;&nbsp;不能是纯数字/字母/下划线。</p>
-			<p class="rule no" v-if="ruleu === false || rulep === false">* 密码8-16位,必须以字母开头,<br/>&nbsp;&nbsp;并且包含数字/字母/下划线,<br/>&nbsp;&nbsp;不能是纯数字/字母/下划线。</p>
-			<p class="rule atwill" v-if="ruleu === 0 && rulep === 0">* 密码8-16位,必须以字母开头,<br/>&nbsp;&nbsp;并且包含数字/字母/下划线,<br/>&nbsp;&nbsp;不能是纯数字/字母/下划线。</p>
+			<button @touchend="register">注册</button>
+			<p class="rule ok" v-if="ruleu === true">
+				* 用户名：字母8-16位,汉字6-12位。
+			</p>
+			<p class="rule no" v-if="ruleu === false">
+				* 用户名：字母8-16位,汉字6-12位。
+			</p>
+			<p class="rule atwill" v-if="ruleu === 0">
+				* 用户名：字母8-16位,汉字6-12位。
+			</p>
+			<p class="rule ok" v-if="rulep === true">
+				* 密码8-16位,可以包含数字/字母/下划线。<br/>&nbsp;&nbsp;
+			</p>
+			<p class="rule no" v-if="rulep === false">
+				* 密码8-16位,可以包含数字/字母/下划线。<br/>&nbsp;&nbsp;
+			</p>
+			<p class="rule atwill" v-if="rulep === 0">
+				* 密码8-16位,可以包含数字/字母/下划线。<br/>&nbsp;&nbsp;
+			</p>
 		</div>
 	</div>
   </div>
@@ -38,16 +74,21 @@
 
 <script>
 import { Toast } from 'mint-ui'
+import md5 from 'js-md5'
 export default {
 	name: 'login',
 	data () {
 		return {
 			tel: false,
 			user: true,
-			userRule: /^[A-Za-z]{1}\w{8,16}/,
 		    rulep: 0,
-		    ruleu: 0
-	  	}
+		    ruleu: 0,
+	  		params : { 
+            	username : '',
+            	password : '',
+            	tel : ''
+            }
+        }
 	},
 	components: {
 	},
@@ -63,90 +104,127 @@ export default {
 		  	document.cookie = 'user=' + this.$refs.user.value
 		  	console.log(document.cookie)
 	  	},
-	  	ruleFun (reg) {
-	  		let params = { 
-            	username : this.$refs.user.value,
-            	password : this.$refs.password.value
-            };
-	  		if (this.$refs.password.value !== '' && this.$refs.password.value !== undefined ) {
-		  		this.rulep = true
-		  		if ( this.$refs.user.value !== '' && this.$refs.user.value !== undefined ) {
-		  			let userRule = this.userRule
-		  			if(userRule.test(this.$refs.user.value)){
+	  	ruleFun (w) {
+            let userfocus = 0;
+            let pwdfocus = 0;
+	  		if (w === 'p') {
+	  			pwdfocus = 1
+	  		}else if(w === 'u') {
+	  			userfocus = 1
+	  		}else{
+	  			return
+	  		}
+	  		if ( this.params.username !== '' && this.params.username !== undefined && userfocus === 1) {
+		  		//user不为空
+	  			if((/[\u4e00-\u9fa5]+/).test(this.params.username) === true){
+	  				if(this.params.username.length >= 6 && this.params.username.length < 12){
 		  				this.ruleu = true
-		  				//格式验证成功，数据库校验用户名
-		  				if(reg === 'reg'){
-		  					this.$refs.user.value = ''
-				  			this.$refs.password.value = ''
-			  				this.isExist(params);
-		  				}else{
-		  					return
-		  				}
+		  				return
+	  				}else{
+		  				this.ruleu = false
+		  				return
+	  				}
+	  				return
+	  			}else{
+		  			if(this.params.username.length >= 8 && this.params.username.length < 16) {
+		  				this.ruleu = true
+		  				return
 					}else{
 		  				this.ruleu = false
-		  				if (reg === 'reg') {
-		  					this.$refs.user.value = ''
-				  			this.$refs.password.value = ''
-			  				this.alertFun(
-			  					'密码8-16位,必须以字母开头，' +
-			  					'可以包含数字、字母、下划线。' +
-			  					'请重新输入！'
-			  				)
-		  				}
-		  			}
-		  		}else{
+		  				return
+					}
+					return
+	  			}
+	  			return
+	  		}else if(this.params.password !== '' && this.params.password !== undefined && pwdfocus === 1) {
+  				//password不为空
+  				if(this.params.password.length >= 8 && this.params.password.length < 16) {
+	  				this.rulep = true
+	  				return
+				}else{
+	  				this.rulep = false
+	  				return
+				}
+				return
+			}else{
+		  		if (userfocus === 1) {
+  					this.ruleu = false
+  					return
+		  		}	  		
+	  			if (pwdfocus === 1) {
 		  			this.rulep = false
-		  			if (reg === 'reg') {
-		  				this.$refs.user.value = ''
-				  		this.$refs.password.value = ''
-						this.alertFun('密码不能为空，请重新输入！')
-		  			}
+		  			return
 		  		}
-	  		}else{
-		  		this.ruleu = false
-		  		if (reg === 'reg') {
-		  			this.$refs.user.value = ''
-				  	this.$refs.password.value = ''
-					this.alertFun('密码不能为空，请重新输入！')
-		  		}
+	  			return
 	  		}
-	  	},
+		},
 	  	isExist (params) {
 	        this.$http.post('/api/login/getaccount',params)
 	        	.then((res) => {
 	            	if (res.data.status) {
 	            		if (res.data.status === 1) {
 	            			//用户名不存在，可以注册
-	            			this.register (params)
+	            			return true
 	            		}else if(res.data.status === 2){
 	            			//用户名已存在
 							this.alertFun('用户名已存在，请重新输入！')
+							return
 	            		}else if(res.data.status === 0){
 	            			//数据库响应失败
 							this.alertFun('服务器响应失败，请稍候重试！')
+							return
 	            		}else{
 							this.alertFun('注册失败，请重试！')
+							return
 	            		}
+	            	}else{
+	            		return
 	            	}
 	        	})
 		        .catch((reject) => {
 		        	console.log(reject)
 		        })
 	  	},
-    	register (params) {
-	        this.$http.post('/api/login/createAccount',params)
-	          .then((response) => {
-	          	if(response.data.status === 1){
-					this.alertFun('注册成功，请登录！')
-	          	}else if(response.data.status === 0){
-					this.alertFun('服务器响应失败，请稍候重试！')
-	          	}else{
-					this.alertFun('注册失败，请重试！')
-	          	}
-	          })
-	          .catch((reject) => {
-	            console.log(reject)
-	          })
+    	register () {
+    		let params = {};
+    		if (this.user === true) {
+    			params.username = this.params.username,
+    			params.password = this.params.password
+    		}else if(this.user === true){
+    			params.tel = this.params.tel,
+    			params.password = this.params.password
+    		}else{
+    			return
+    		}
+			if (this.rulep === true && this.ruleu === true) {
+  				var e = this.isExist(params);
+  				console.log(this.isExist(params))
+			  	if ( 'haha' === true) {
+			  		console.log('params true')
+			        this.$http.post('/api/login/createAccount',params)
+			        	.then((response) => {
+							this.params.username = ''
+			  				this.params.password = ''
+			        		if(response.data.status === 1){
+								this.alertFun('注册成功，请登录！')
+								return
+			          		}else if(response.data.status === 0){
+								this.alertFun('服务器响应失败，请稍候重试！')
+								return
+			          		}else{
+								this.alertFun('注册失败，请重试！')
+								return
+			          		}
+			        	})
+				        .catch((reject) => {
+				        	console.log(reject)
+				        })
+				    return
+			    }
+			}else{
+				this.alertFun('用户名或密码不正确，请重新输入！')
+				return
+			}
 		},
 		login (params) {
 	        // 获取已有账号密码
@@ -168,6 +246,13 @@ export default {
 							this.alertFun('注册失败，请重试！')
 	            		}
 	            	}
+	        	})
+	          .catch((reject) => {
+	            console.log(reject)
+	          })
+	        this.$http.get('/api/login/getAccount')
+	        	.then((res) => {
+	            	console.log(res.data)
 	        	})
 	          .catch((reject) => {
 	            console.log(reject)
@@ -278,6 +363,9 @@ export default {
 }
 #login .two .no{
 	color: red;
+}
+#login .two .atwill{
+	color: #fff;
 }
 
 
