@@ -5,6 +5,7 @@
 		<h2>{{title}}</h2>
 		<span class="iconfont r">&#xf0003;</span>
 	</div>
+	<div class="fak"></div>
 	<div class="login">
 		<router-link to="/login"><a href=""><button>登录</button></a></router-link>
 		<span class="log">你可以在登录后同步电脑与手机购物车中的商品</span>
@@ -18,7 +19,7 @@
 		<span class="s">满300，全场75折，截止4月28日</span>
 	</div>
 	<div class="horse">
-		<button class="f" v-if="change === false"></button>
+		<button :class="f" @touchend="chan" ref="lol"></button>
 		<img src="static/images/cart.jpg">
 		<div class="content">
 			<p class="s">
@@ -81,7 +82,7 @@
 	</div>
 	<div class="foot">
 		<div class="f l">
-			<span v-if="change === false" v-on:click="cli"></span>
+			<span></span>
 			<span class="o">全选</span>
 		</div>
 		<div class="s l">
@@ -89,7 +90,7 @@
 			<p>商品 ￥0 - 优惠 ￥0</p>
 		</div>
 		<div class="t l">
-			<p v-if="change === false">去结算</p>
+			<p>去结算</p>
 		</div>
 	</div>
 	<div class="faker"></div>
@@ -111,9 +112,9 @@ export default {
     BottomNav
   },
   methods: {
-    openPicker() {
-    this.$refs.picker.open()
-    }
+  	chan(){
+  		this.$refs.lol.class = 'f colorg'
+  	}
   }
 }
 </script>
@@ -131,33 +132,25 @@ export default {
 	display:flex;
 	flex:10;
 	color:#fff;
+	position:fixed;
 }
 .header a{
 	color:#fff;
 }
-.header .s{
+.header .l{
 	flex:2;
 	font-size: 26px;
 }
-.header .h{
+.header h2{
 	flex:6;
 	font-size: 20px;
 }
-.header .alter{
+.header .r{
 	flex:2;
-	margin-right:.2rem;
-}
-.header .alter{
-	display:flex;
-	flex:2;
-}
-.header .alter span{
-	flex:1;
 	font-size: 26px;
 }
-.header .alter p{
-	flex:1;
-	font-size: 18px;
+.fak{
+	height:1rem;
 }
 .login{
 	display:flex;
@@ -239,6 +232,11 @@ export default {
 	float:left;
 	margin-top:.8rem;
 	margin-left:.5rem;
+  	background-color: white;
+}
+.colorg{
+	border-color: green;
+	background-color: green;
 }
 .horse img{
 	float:left;
