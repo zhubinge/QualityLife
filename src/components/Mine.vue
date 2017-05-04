@@ -67,16 +67,18 @@ export default {
 	color: #fff;
 }
 .loginRegisterChunk{
+	z-index: 666s;
 	width: 100%;
-	height: 2.2rem;
-	background: url(../../static/images/login_background.jpg) no-repeat center;
+	height: 3rem;
+	background: url(../../static/images/background.jpg) no-repeat center;
+	position: relative;
 }
 .loginRegisterChunk p{
 	width: 100%;
-	height: 1rem;
-	line-height: 1rem;
+	height: 50%;
+	line-height: 1.5rem;
 	text-align: center;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: bold;
 	color: #fff;
 }
@@ -87,7 +89,7 @@ export default {
 	border-radius: 0.5rem;
 	border:0.02rem solid #ffda75;
 	background: rgba(255,255,255,0.5);
-	position: relative;
+	position: absolute;
 	left: 50%;
 	margin-left: -2rem;
 }

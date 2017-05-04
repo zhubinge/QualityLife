@@ -3,19 +3,18 @@ const express = require('express');
 const router = express.Router();
 
 /************** 创建(create) 读取(get) 更新(update) 删除(delete) **************/
-
 // 创建账号
 router.post('/api/login/createAccount',(req,res) => {
     let newAccount = new models.Login({
         username : req.body.username,
-        password : req.body.password
+        password : req.body.password,
+        tel : req.body.tel
     });
-    console.log(req.body)
     newAccount.save((err,data) => {
         if (err) {
             res.send({status:2,err:err});
         } else {
-            res.send({status:1});
+            res.send({status:1,data:data});
         }
     });
 });
@@ -23,14 +22,14 @@ router.post('/api/login/createAccount',(req,res) => {
 router.post('/api/login/getAccount',(req,res) => {
     let user = {
         username : req.body.username,
-        password : req.body.password
+        password : req.body.password,
+        tel : req.body.tel
     }
     models.Login.find(user,(err,data) => {
         if (err) {
             res.send({status:3,err:err});
-        } else {
+        }else {
             if (typeof data === 'object' && data.length > 0) {
-                if (true) {}
                 res.send({status:2});
             }else if (typeof data === 'object' && data.length <= 0){
                 res.send({status:1});
@@ -40,15 +39,15 @@ router.post('/api/login/getAccount',(req,res) => {
         }
     });
 });
-router.get('/api/login/getAccount',(req,res) => {
-    models.Login.find((err,data) => {
-        if (err) {
-            res.send({status:3,err:err});
-        } else {
-            res.send(data)
-        }
-    });
-});
+// router.get('/api/login/getAccount',(req,res) => {
+//     models.Login.find((err,data) => {
+//         if (err) {
+//             res.send({status:3,err:err});
+//         } else {
+//             res.send(data)
+//         }
+//     });
+// });
 router.post('/api/home/getcontent',(req,res) => {
     models.Home.find(req.body,(err,data) => {
         if (err) {
