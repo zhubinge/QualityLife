@@ -14,7 +14,6 @@ import DetailContent from '@/components/detail/DetailContent'
 import DetailEvaluate from '@/components/detail/DetailEvaluate'
 // import DetailMessage from '@/components/detail/DetailMessage'
 import Login from '@/components/other/Login'
-import Register from '@/components/other/Register'
 //
 import Stroll from '@/components/Stroll'
 //
@@ -97,7 +96,7 @@ export default new Router({
     {
       path: '/register',
       name: 'register',
-      component: Register
+      component: Login
     },
     {
       path: '/login',
