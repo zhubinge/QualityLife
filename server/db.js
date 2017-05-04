@@ -19,6 +19,10 @@ const loginSchema = mongoose.Schema({
 const homeSchema = mongoose.Schema({
     content : String
 });
+const cartSchema = mongoose.Schema({
+    username : String,
+    commodity: Number
+});
 const classeSchema = mongoose.Schema({
     class_id : Number,
     class_name : String,
@@ -49,7 +53,8 @@ const Models = {
     Login : mongoose.model('Login',loginSchema),
     Home : mongoose.model('Home',homeSchema),
     Classe : mongoose.model('Classe',classeSchema),
-    Commoditie : mongoose.model('Commoditie',comSchema)
+    Commoditie : mongoose.model('Commoditie',comSchema),
+    Cart : mongoose.model('Cart',cartSchema)
 };
 
 module.exports = Models;

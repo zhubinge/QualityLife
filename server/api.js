@@ -20,12 +20,9 @@ router.post('/api/login/createAccount',(req,res) => {
 });
 // 查询用户验证
 router.post('/api/login/getAccount',(req,res) => {
-    let user = {
-        username : req.body.username,
-        password : req.body.password,
-        tel : req.body.tel
-    }
-    models.Login.find(user,(err,data) => {
+    console.log(req.body)
+    models.Login.find(req.body,(err,data) => {
+        console.log(data)
         if (err) {
             res.send({status:3,err:err});
         }else {
@@ -39,15 +36,32 @@ router.post('/api/login/getAccount',(req,res) => {
         }
     });
 });
-// router.get('/api/login/getAccount',(req,res) => {
-//     models.Login.find((err,data) => {
-//         if (err) {
-//             res.send({status:3,err:err});
-//         } else {
-//             res.send(data)
-//         }
-//     });
-// });
+router.post('/api/cart/createCom',(req,res) => {
+    let newCart = new models.Cart({
+        username : req.body.username,
+        commodity : req.body.commodity
+    });
+    newCart.save((err,data) => {
+        if (err) {
+            res.send({status:2,err:err});
+        } else {
+            console.log('create--' + data)
+            res.send({status:1});
+        }
+    });
+});
+router.post('/api/cart/getCom',(req,res) => {
+    let username = req.body.username
+    let commodity = req.body.commodity
+    models.Cart.find(username,(err,data) => {
+        if (err) {
+            res.send({status:3,err:err});
+        } else {
+            console.log('get--' + data)
+            res.send(data)
+        }
+    });
+});
 router.post('/api/home/getcontent',(req,res) => {
     models.Home.find(req.body,(err,data) => {
         if (err) {

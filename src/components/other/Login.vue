@@ -132,9 +132,6 @@ export default {
 	},
 	components: {
 	},
-	watch:{
-		$router:'or'
-	},
 	methods: {
 		alertFun (message) {
 			//mint-ui 弹框
@@ -152,10 +149,13 @@ export default {
 				this.user = true
 				this.tel = false
 			}
+        	this.params.username = '',
+        	this.params.password = '',
+        	this.params.tel = ''
 		},
-	  	setCookie(){
-		  	document.cookie = 'user=' + this.$refs.user.value
-		  	console.log(document.cookie)
+	  	setCookie(user){
+		  	document.cookie = ''
+		  	document.cookie = 'user=' + user
 	  	},
 	  	ruleFun (w) {
             let userfocus = 0;
@@ -274,7 +274,9 @@ export default {
 	  				this.params.tel = ''
 	        		if(response.data.status === 1){
 						this.alertFun('注册成功，请登录！')
-						location.href = '/#/login'
+						setTimeout(function(){
+							location.href = '/#/login'
+						},2000)
 						return
 	          		}else if(response.data.status === 0){
 						this.alertFun('服务器响应失败，请稍候重试！')
@@ -288,33 +290,36 @@ export default {
 		        	console.log(reject)
 		        })
 		},
-		login (params) {
+		login () {
 	        // 获取已有账号密码
+	  		let params = {};
+			if (this.user === true) {
+				params.username = this.params.username
+				params.password = md5(this.params.password)
+			}else if(this.tel === true){
+				tel : this.params.tel
+				params.password = md5(this.params.password)
+			}
 	        this.$http.post('/api/login/getAccount',params)
 	        	.then((res) => {
-	            	console.log(res.data)
-	            	if (res.data.status) {
-	            		if (res.data.status === 1) {
+	            	if (res.body.status) {
+	            		if (res.body.status === 1) {
 	            			//用户名不存在，可以注册
 							this.alertFun('用户名密码不匹配，请重新输入！')
-	            		}else if(res.data.status === 2){
+	            		}else if(res.body.status === 2){
 	            			//用户名密码匹配成功
-			  				// this.setCookie()
+			  				this.setCookie(params.username)
 							this.alertFun('登陆成功！')
-	            		}else if(res.data.status === 0){
+							setTimeout(function(){
+								location.href = '/#/index'
+							},2000)
+	            		}else if(res.body.status === 0){
 	            			//数据库响应失败
 							this.alertFun('服务器响应失败，请稍候重试！')
 	            		}else{
 							this.alertFun('注册失败，请重试！')
 	            		}
 	            	}
-	        	})
-	          .catch((reject) => {
-	            console.log(reject)
-	          })
-	        this.$http.get('/api/login/getAccount')
-	        	.then((res) => {
-	            	console.log(res.data)
 	        	})
 	          .catch((reject) => {
 	            console.log(reject)
@@ -341,11 +346,15 @@ export default {
 	},
 	mounted () {
 		heightMessage:{
-		    this.$set(this.$refs.two.style,'margin-top',-this.$refs.two.offsetHeight/2 + 'px')
 			this.params.username = ''
 			this.params.password = ''
 			this.params.tel = ''
-	    }
+			if (this.$route.name === 'login' || this.$route.name === 'register') {
+			    this.$set(this.$refs.two.style,'margin-top',-this.$refs.two.offsetHeight/2 + 'px')
+		    }else{
+		    	return
+		    }
+		}
 	}
 }
 </script>

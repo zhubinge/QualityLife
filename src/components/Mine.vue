@@ -6,8 +6,9 @@
     </div>
     <div class="box"></div>
     <div class="loginRegisterChunk">
-    	<p>您 还 未 登 陆</p>
-    	<div class="loginRegisterBoxWords">
+    	<p>{{user}}</p>
+    	<p v-if="login === true" @touchend="goOut" class="login">退出登录</p>
+    	<div class="loginRegisterBoxWords" v-if="login === false">
     		<router-link to="/login">登陆</router-link>
     		<router-link to="/register">注册</router-link>
     	</div>
@@ -39,8 +40,42 @@
 import BottomNav from './BottomNav'
 export default {
   name: 'mine',
+  data(){
+  	return {
+  		login:false,
+  		user: '您 还 未 登 陆'
+  	}
+  },
   components: {
     BottomNav
+  },
+  methods:{
+  	goOut(){
+  		console.log('goOut')
+  	}
+  },
+  mounted(){
+		var cook = document.cookie
+		cook = cook.slice(cook.indexOf('='),cook.length)
+		cook = cook.slice(cook.lastIndexOf('=')+1,cook.length)
+		if (cook.indexOf('=') === -1 && cook.length !== 0) {
+			if (cook[cook.length-1] === ';') {
+				cook = cook.slice(0,cook.length-1)
+				this.login = true
+				this.user = cook + ' 您已登陆！'
+			}
+			if ( cook[cook.length-2] === ';') {
+				cook = cook.slice(0,cook.length-2)
+				this.login = true
+				this.user = cook + ' 您已登陆！'
+			}
+			this.login = true
+			this.user = cook + ' 您已登陆！'
+		}else{
+			document.cookie = ''
+			this.login = false
+			this.user = '您 还 未 登 陆'
+		}
   }
 }
 </script>
@@ -80,7 +115,10 @@ export default {
 	text-align: center;
 	font-size: 18px;
 	font-weight: bold;
-	color: #fff;
+	color: #000;
+}
+.loginRegisterChunk .login{
+
 }
 .loginRegisterChunk .loginRegisterBoxWords{
 	width: 4rem;
@@ -107,9 +145,7 @@ export default {
 .loginRegisterChunk .loginRegisterBoxWords a:nth-child(1){
 	border-right:0.02rem solid #ffda75;
 }
-.loginRegisterChunk .loginRegisterBoxWords a:nth-child(1){
-	border-right:0.02rem solid #ffda75;
-}
+
 .server{
 	width: 100%;
 	overflow: hidden;

@@ -19,7 +19,10 @@
 		<span class="s">满300，全场75折，截止4月28日</span>
 	</div>
 	<div class="horse">
-		<button :class="f" @touchend="chan" ref="lol"></button>
+		<button class="f" @touchend="chan" ref="lol"
+		 :style="{'background-color': backgroundC, 'border-color': borderC}"
+
+		 >√</button>
 		<img src="static/images/cart.jpg">
 		<div class="content">
 			<p class="s">
@@ -81,8 +84,9 @@
 		</ul>
 	</div>
 	<div class="foot">
-		<div class="f l">
-			<span></span>
+		<div class="f l" >
+			<span class="f" @touchend="chan" ref="lol"
+		 :style="{'background-color': backgroundC, 'border-color': borderC}">√</span>
 			<span class="o">全选</span>
 		</div>
 		<div class="s l">
@@ -105,7 +109,9 @@ export default {
   name: 'cart',
   data(){
   	return {
-  		title:'购物车'
+  		title:'购物车',
+  		backgroundC:'white',
+  		borderC:'#ccc'
   	}
   },
   components: {
@@ -113,7 +119,14 @@ export default {
   },
   methods: {
   	chan(){
-  		this.$refs.lol.class = 'f colorg'
+  		console.log(document.cookie)
+  		if (this.borderC === '#8bc146') {
+	  		this.borderC = '#a9a9a9';
+	  		this.backgroundC = '#fff';  			
+  		}else{
+	  		this.borderC = '#8bc146';
+	  		this.backgroundC = '#8bc146';  			
+  		}
   	}
   }
 }
@@ -227,17 +240,18 @@ export default {
 .horse .f{
 	width:.5rem;
 	height:.5rem;
+	line-height:.5rem;
+	text-align: center;
 	border:1px solid #a9a9a9;
 	border-radius: 100%;
 	float:left;
 	margin-top:.8rem;
 	margin-left:.5rem;
-  	background-color: white;
+	color: #fff;
+	font-weight: bold;
+	font-size: 16px;
 }
-.colorg{
-	border-color: green;
-	background-color: green;
-}
+
 .horse img{
 	float:left;
 	width:2rem;
