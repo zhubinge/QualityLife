@@ -2,7 +2,7 @@
 <div class="detailClassBody">
   <div class="top_nav"  v-for="productList in productLists">
       <a href="javascript:history.back()" class="l iconfont">&#xe604;</a>
-      <p class="l">{{productList.info_name}}</p>
+      <p class="l">{{productList.class_name}}</p>
   </div>
   <div class="top_nav2">
       <span>新品</span>
