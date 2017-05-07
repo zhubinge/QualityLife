@@ -4,8 +4,8 @@
     <h2 class="l">闲逛</h2>
     <router-link to="/detail/all" class="iconfont">&#xe62c;</router-link>
   </div>
-<!--         v-for="(shopList,idx) in shopLists" -->  
-  <div class="waterf" v-for="(shopList,idx) in shopLists">
+        <!-- v-for="(shopList,idx) in shopLists"   -->
+  <div class="waterf">
       <waterfall>
         <waterfall-slot>
         <!-- <a class="item"> -->
@@ -18,12 +18,13 @@
             <a href="/">hot热卖</a>
             <a href="/">今日新品</a>
           </b> -->
-     <!--      <img :src="'static/images/commodity/' + shopList.com_img"/>
-          <span class="shop_name">{{shopList.com_name}}</span>
+          <!-- {{shopLists[0]}} -->
+          <img />
+          <span class="shop_name">shopList.com_name</span>
           <p>
-            <span class="l">￥{{shopList.original_price}}</span>
-            <span class="r">月销{{shopList.sales_count}}</span>
-          </p> -->
+            <span class="l">￥shopList.original_price</span>
+            <span class="r">月销shopList.sales_count</span>
+          </p>
         <!-- </a> -->
       </waterfall-slot>
     </waterfall>
@@ -42,26 +43,12 @@ export default {
       details: {},
       detail: {},
       line: 'v',
-      // items: ItemFactory.get(100),
+      items: null,
       isBusy: false,
       shopLists:[]
     }
   },
   methods: {
-    // addItems: function () {
-    //   if (!this.isBusy && this.items.length < 500) {
-    //     this.isBusy = true
-    //     this.items.push.apply(this.items, ItemFactory.get(50))
-    //   }
-    // },
-    // shuffle: function () {
-    //   this.items.sort(function () {
-    //     return Math.random() - 0.5
-    //   })
-    // },
-    // reflowed: function () {
-    //   this.isBusy = false
-    // }
   },
   components: {
     BottomNav,
@@ -74,45 +61,63 @@ export default {
     }
     this.$http.post('/api/com/getcom',recommend)
       .then((response) => {
+        // this.items = response.data.length
+        var data = response.data;
+          this.isBusy = true
+          // var ItemFactory = (function () {
+          let lastIndex = 0
+                // function generateRandomItems (count) {
+          // let items = [], i;
+          // var colors = [
+          //     'rgba(21,174,103,.5)',
+          //     'rgba(245,163,59,.5)',
+          //     'rgba(255,230,135,.5)',
+          //     'rgba(194,217,78,.5)',
+          //     'rgba(195,123,177,.5)',
+          //     'rgba(125,205,244,.5)',
+          //     'rgba(80,216,216,.5)',
+          //     'rgba(255,73,73,.5)'
+          //   ]
+          // colorLen = [~~(Math.random() * colors.length)]
+          for (let i = 0; i < data.length; i++) {
+            data[i].height =  150 + ~~(Math.random() * 50)
+            }
+            data[i].push.apply(data, data.length)
+          }
+          // shuffle: function () {
+          //   this.items.sort(function () {
+          //     return Math.random() - 0.5
+          //   })
+          // }
+          // reflowed: function () {
+          //   this.isBusy = false
+          // }
+              // addItems: function () {
+      // }
+          // }
+                //   return items
+                // // }
+                // function getRandomColor () {
+
+                // }
+                // return {
+                //   get: generateRandomItems
+                // }
+              // })()
+
+
+
+
         this.shopLists = response.data;
+
         console.log(this.shopLists)
       })
+
+
+
+    
   }
 }
-// var ItemFactory = (function () {
-  // var lastIndex = 0
-  // function generateRandomItems (count) {
-  //   var items = [], i
-  //   for (i = 0; i < count; i++) {
-  //     items[i] = {
-  //       index: lastIndex++,
-  //       rancolor: {
-  //         color: getRandomColor()
-  //       },
-  //       ranborder: getRandomColor(),
-  //       width: 100 + ~~(Math.random() * 50),
-  //       height: 150 + ~~(Math.random() * 50)
-  //     }
-  //   }
-  //   return items
-  // }
-  // function getRandomColor () {
-  //   var colors = [
-  //     'rgba(21,174,103,.5)',
-  //     'rgba(245,163,59,.5)',
-  //     'rgba(255,230,135,.5)',
-  //     'rgba(194,217,78,.5)',
-  //     'rgba(195,123,177,.5)',
-  //     'rgba(125,205,244,.5)',
-  //     'rgba(80,216,216,.5)',
-  //     'rgba(255,73,73,.5)'
-  //   ]
-    // return colors[~~(Math.random() * colors.length)]
-  // }
-  // return {
-  //   get: generateRandomItems
-  // }
-// })()
 // document.body.addEventListener('click', function () {
 //   app.shuffle()
 //   app.$refs.waterfall.$emit('reflow') // manually trigger reflow action

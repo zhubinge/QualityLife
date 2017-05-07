@@ -6,8 +6,11 @@
         <img :src="'static/images/commodity/'+shopList.com_img">
       	<p>{{shopList.com_name}}}</p>
       	<div id="bot">
-        	<span class="new">新品首发优惠</span><span class="newPrice">￥ {{shopList.original_price}}</span><span class="oldPrice">￥{{shopList.present_price}}</span><span class="sign">新</span>
-        	<span class="right">评论：0</span>
+        	<span class="new l">新品首发优惠</span>
+          <span class="newPrice l">￥ {{shopList.original_price}}</span>
+          <span class="oldPrice l">￥{{shopList.present_price}}</span>
+          <span class="sign l">新</span>
+        	<span class="right r">评论：0</span>
     	 </div>
        </router-link>
     </div>
@@ -43,7 +46,6 @@ export default {
 <style scoped>
 .new-detail{
 	background: #eee;
-	padding: 8px
 }
 #goods{
 	background:#fff;
@@ -60,8 +62,6 @@ h1{
 }
 img{
 	width: 100%;
-	height: 3.3rem
-	
 }
 p{
 	width: 100%;
@@ -78,26 +78,36 @@ p{
 span.new{
 	display: inline-block;
 	background: #ff0;
-	margin-left: 0.5rem;
-
+  padding:0 0.2rem;
+  color: #3e3e3e;
 }
 span.oldPrice{
 	text-decoration: line-through;
+  line-height: 0.5rem;
 	color: #ccc;
-
+}
+span.newPrice{
+  line-height: 0.5rem;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 0.2rem;
 }
 span.sign{
-	display: inline-block;
-	background: #f00;
-	color: #fff;
-	margin-left: 0.1rem
+  display: inline-block;
+  background: #f00;
+  color: #fff;
+  padding: 0 0.1rem;
+  margin-left: 0.2rem;
+  margin-right: 0.1rem;
 }
 span.right{
 	display: inline-block;
-	float: right;
-	margin-right: 0.8rem
 }
 #bot{
-	height: 30px;
+  box-sizing: border-box;
+  padding: 0 0.3rem;
+	height: 0.6rem;
+  text-align: center;
 }
 </style>
